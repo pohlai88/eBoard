@@ -1,0 +1,8 @@
+{
+  "name": "@axis/shared",
+  "version": "1.0.0",
+  "exports": "./mod.ts",
+  "imports": {
+    "zod": "npm:zod@^3.22.0"
+  }
+}

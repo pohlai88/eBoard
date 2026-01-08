@@ -1,0 +1,14 @@
+{
+  "name": "@axis/admin-api",
+  "version": "1.0.0",
+  "exports": "./main.ts",
+  "imports": {
+    "@hono/hono": "jsr:@hono/hono@^4.11.3",
+    "@std/dotenv": "jsr:@std/dotenv@^0.224.0",
+    "@shared": "../shared/mod.ts"
+  },
+  "tasks": {
+    "dev": "deno run --allow-net --allow-env --allow-read --allow-write --watch main.ts",
+    "start": "deno run --allow-net --allow-env main.ts"
+  }
+}

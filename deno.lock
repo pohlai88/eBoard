@@ -1,0 +1,35 @@
+{
+  "version": "5",
+  "specifiers": {
+    "jsr:@hono/hono@^4.11.3": "4.11.3",
+    "jsr:@std/dotenv@0.224": "0.224.2"
+  },
+  "jsr": {
+    "@hono/hono@4.11.3": {
+      "integrity": "de7f245516a970c60c6f4bf5b0f1585efbee38ee4e01171994c2b9d69d035d70"
+    },
+    "@std/dotenv@0.224.2": {
+      "integrity": "29081695357e4534696c9e986b2560be29c141ccf52daa32b6c20ff5b5c64ab9"
+    }
+  },
+  "workspace": {
+    "members": {
+      "admin-api": {
+        "dependencies": [
+          "jsr:@hono/hono@^4.11.3",
+          "jsr:@std/dotenv@0.224"
+        ]
+      },
+      "main-app": {
+        "dependencies": [
+          "jsr:@std/dotenv@0.224"
+        ]
+      },
+      "shared": {
+        "dependencies": [
+          "npm:zod@^3.22.0"
+        ]
+      }
+    }
+  }
+}
