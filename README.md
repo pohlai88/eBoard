@@ -1,6 +1,9 @@
 # Axis eBoard
 
-A modern web application built with Deno and Hono framework.
+![CI Status](https://github.com/pohlai88/eBoard/actions/workflows/deno-ci.yml/badge.svg)
+
+A modern web application built with Deno. This repo is optimized for Deno-first workflows in VS Code
+with tasks, debugging, linting, tests, and CI coverage.
 
 ## Prerequisites
 
@@ -9,11 +12,9 @@ A modern web application built with Deno and Hono framework.
 ## Quick Start
 
 ```bash
-# Run the web server
-deno task server
-
-# Or run the main application
-deno task dev
+# Run admin API and main app (watch)
+deno task dev:admin
+deno task dev:app
 
 # Format code
 deno fmt
@@ -22,34 +23,39 @@ deno fmt
 deno lint
 ```
 
-The server will run on `http://localhost:3000`
+The app runs under Deno tasks; see [deno.json](deno.json) for available scripts.
 
 ## Available Commands
 
-| Command | Description |
-|---------|------------|
-| `deno task dev` | Run main application with auto-reload |
-| `deno task server` | Start web server with auto-reload |
-| `deno task practice` | Run learning examples |
-| `deno run --allow-net server-example.ts` | Run server directly |
-| `deno fmt` | Format all code |
-| `deno lint` | Check code for issues |
-| `deno add <package>` | Add a new dependency |
+| Command                   | Description             |
+| ------------------------- | ----------------------- |
+| `deno task dev:admin`     | Run Admin API (watch)   |
+| `deno task dev:app`       | Run Main App (watch)    |
+| `deno task docs:serve`    | Serve PRD docs          |
+| `deno task docs:validate` | Validate PRD docs       |
+| `deno task analyze:prd`   | Analyze PRD docs        |
+| `deno fmt`                | Format all code         |
+| `deno lint`               | Check code for issues   |
+| `deno task check`         | Format + Lint + Test    |
+| `deno task test:coverage` | Run tests with coverage |
+| `deno add <package>`      | Add a new dependency    |
 
-## Project Structure
+## Project Structure (Deno Workspace)
 
 ```
-├── main.ts              # Main application entry point
-├── server-example.ts    # Example REST API server
-├── practice.ts          # Learning exercises
-├── deno.json           # Configuration and dependencies
-└── README.md           # This file
+├── admin-api/           # Admin API service
+├── main-app/            # Frontend app (Fresh/Preact/Twind planned)
+├── shared/              # Shared types, utils, validation
+├── tools/               # PRD analysis/serve/cleanup scripts
+├── .PRD/                # Product requirements and docs
+├── deno.json            # Workspace tasks & import map
+└── README.md            # This file
 ```
 
 ## Technologies
 
-- **Runtime:** Deno 2.6.4+
-- **Framework:** Hono (lightweight web framework)
+- **Runtime:** Deno 2.x
+- **Frontend:** Fresh + Preact + Twind (per PRD strategy)
 - **Language:** TypeScript
 - **Package Registry:** JSR & NPM
 
@@ -74,15 +80,52 @@ Dependencies are automatically added to `deno.json` under `imports`.
 3. **Check browser/terminal** for results
 4. **Format code:** `deno fmt`
 5. **Check errors:** `deno lint`
+6. **Run tests:** `deno test`
+7. **Aggregate checks:** `deno task check`
+
+### VS Code Integration
+
+- Deno extension enabled; see [.vscode/settings.json](.vscode/settings.json)
+- Debug configs available; see [.vscode/launch.json](.vscode/launch.json)
+- Common tasks; see [.vscode/tasks.json](.vscode/tasks.json)
+
+### Coverage
+
+Generate coverage locally:
+
+```powershell
+deno task test:coverage
+deno coverage coverage --lcov > coverage.lcov
+```
+
+HTML coverage is available at `coverage/html/index.html` if generated.
+
+### Pre-commit Hook
+
+This repo uses a Git pre-commit hook to keep code quality high. It runs format (check), lint, and
+tests before allowing a commit.
+
+Setup (already configured by the repo):
+
+- Hooks path is set to `.githooks`.
+- Script: `.githooks/pre-commit` (shell script).
+
+If hooks don’t run, set the hooks path manually:
+
+```powershell
+git config core.hooksPath .githooks
+```
 
 ## API Examples
 
 ### Get All Todos
+
 ```bash
 curl http://localhost:3000/todos
 ```
 
 ### Create New Todo
+
 ```bash
 curl -X POST http://localhost:3000/todos \
   -H "Content-Type: application/json" \
@@ -90,6 +133,7 @@ curl -X POST http://localhost:3000/todos \
 ```
 
 ### Greet Someone
+
 ```bash
 curl http://localhost:3000/hello/YourName
 ```
@@ -140,6 +184,7 @@ Deno requires explicit permissions. Common flags:
 ## Troubleshooting
 
 **Module not found error?**
+
 ```bash
 # Clear Deno cache
 deno clean
@@ -149,13 +194,14 @@ deno run main.ts
 ```
 
 **Permission denied?**
+
 ```bash
 # Run with required permissions
 deno run --allow-net --allow-read server-example.ts
 ```
 
-**Port already in use?**
-Change port in server code or kill existing process:
+**Port already in use?** Change port in server code or kill existing process:
+
 ```powershell
 Get-Process -Name "node" | Stop-Process -Force
 ```

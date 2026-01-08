@@ -1,7 +1,8 @@
 # DRY Component Patterns - Deno/Fresh Best Practices
+
 ## Don't Repeat Yourself - Build Once, Use Everywhere
 
-**Generated:** ${new Date().toISOString()}  
+**Generated:** ${new Date().toISOString()}\
 **Principle:** Reusable Components > Repeated Classes
 
 ---
@@ -29,6 +30,7 @@ export default function Dashboard() {
 ```
 
 **Problems:**
+
 - Need to update 50+ places to change button style
 - Inconsistencies creep in (`bg-blue-500` vs `bg-blue-600`)
 - No type safety
@@ -342,7 +344,8 @@ export function Card({
 
   const hover = hoverable ? "hover:shadow-2xl hover:-translate-y-1 cursor-pointer" : "";
 
-  const className = `${base} ${variants[variant]} ${paddings[padding]} ${hover} ${customClass}`.trim();
+  const className = `${base} ${variants[variant]} ${paddings[padding]} ${hover} ${customClass}`
+    .trim();
 
   return <div class={className}>{children}</div>;
 }
@@ -383,7 +386,7 @@ export function CardFooter({ children, class: customClass = "" }: CardFooterProp
 }
 
 // ✅ Usage
-import { Card, CardHeader, CardBody, CardFooter } from "../../shared/ui/mod.ts";
+import { Card, CardBody, CardFooter, CardHeader } from "../../shared/ui/mod.ts";
 import { Button } from "../../shared/ui/mod.ts";
 
 <Card variant="elevated" hoverable>
@@ -399,7 +402,7 @@ import { Button } from "../../shared/ui/mod.ts";
       <Button variant="primary">Approve</Button>
     </div>
   </CardFooter>
-</Card>
+</Card>;
 ```
 
 ---
@@ -547,26 +550,26 @@ export const colors = {
     800: "#1e40af",
     900: "#1e3a8a",
   },
-  
+
   // Semantic colors
   success: {
     light: "#d1fae5",
     DEFAULT: "#10b981",
     dark: "#047857",
   },
-  
+
   warning: {
     light: "#fef3c7",
     DEFAULT: "#f59e0b",
     dark: "#d97706",
   },
-  
+
   danger: {
     light: "#fee2e2",
     DEFAULT: "#ef4444",
     dark: "#dc2626",
   },
-  
+
   // Neutral colors
   gray: {
     50: "#f9fafb",
@@ -584,28 +587,28 @@ export const colors = {
 
 export const spacing = {
   0: "0",
-  1: "0.25rem",  // 4px
-  2: "0.5rem",   // 8px
-  3: "0.75rem",  // 12px
-  4: "1rem",     // 16px
-  5: "1.25rem",  // 20px
-  6: "1.5rem",   // 24px
-  8: "2rem",     // 32px
-  10: "2.5rem",  // 40px
-  12: "3rem",    // 48px
-  16: "4rem",    // 64px
-  20: "5rem",    // 80px
+  1: "0.25rem", // 4px
+  2: "0.5rem", // 8px
+  3: "0.75rem", // 12px
+  4: "1rem", // 16px
+  5: "1.25rem", // 20px
+  6: "1.5rem", // 24px
+  8: "2rem", // 32px
+  10: "2.5rem", // 40px
+  12: "3rem", // 48px
+  16: "4rem", // 64px
+  20: "5rem", // 80px
 } as const;
 
 export const borderRadius = {
   none: "0",
-  sm: "0.125rem",   // 2px
+  sm: "0.125rem", // 2px
   DEFAULT: "0.25rem", // 4px
-  md: "0.375rem",   // 6px
-  lg: "0.5rem",     // 8px
-  xl: "0.75rem",    // 12px
-  "2xl": "1rem",    // 16px
-  "3xl": "1.5rem",  // 24px
+  md: "0.375rem", // 6px
+  lg: "0.5rem", // 8px
+  xl: "0.75rem", // 12px
+  "2xl": "1rem", // 16px
+  "3xl": "1.5rem", // 24px
   full: "9999px",
 } as const;
 
@@ -621,19 +624,19 @@ export const shadows = {
 } as const;
 
 export const fontSizes = {
-  xs: "0.75rem",    // 12px
-  sm: "0.875rem",   // 14px
-  base: "1rem",     // 16px
-  lg: "1.125rem",   // 18px
-  xl: "1.25rem",    // 20px
-  "2xl": "1.5rem",  // 24px
-  "3xl": "1.875rem",// 30px
+  xs: "0.75rem", // 12px
+  sm: "0.875rem", // 14px
+  base: "1rem", // 16px
+  lg: "1.125rem", // 18px
+  xl: "1.25rem", // 20px
+  "2xl": "1.5rem", // 24px
+  "3xl": "1.875rem", // 30px
   "4xl": "2.25rem", // 36px
-  "5xl": "3rem",    // 48px
+  "5xl": "3rem", // 48px
 } as const;
 
 // Usage in components
-import { colors, spacing, borderRadius, shadows } from "../../shared/styles/design-tokens.ts";
+import { borderRadius, colors, shadows, spacing } from "../../shared/styles/design-tokens.ts";
 
 const buttonStyle = {
   backgroundColor: colors.primary[500],
@@ -763,6 +766,7 @@ export default function LoginPage() {
 ```
 
 **Result:**
+
 - ✅ **Zero repeated classes** - All styling is in reusable components
 - ✅ **Type-safe** - Full TypeScript autocomplete
 - ✅ **Consistent** - Same look & feel across app
@@ -775,21 +779,22 @@ export default function LoginPage() {
 
 ### Component-Based Approach
 
-| Aspect | Repeated Classes | Reusable Components |
-|--------|-----------------|---------------------|
-| **Maintainability** | ❌ Update 100+ places | ✅ Update 1 file |
-| **Consistency** | ❌ Manual enforcement | ✅ Automatic |
-| **Type Safety** | ❌ None | ✅ Full TypeScript |
-| **Bundle Size** | ⚠️ Repeated strings | ✅ Optimized |
-| **Testability** | ❌ Hard to test | ✅ Unit testable |
-| **Reusability** | ❌ Copy-paste | ✅ Import |
-| **Learning Curve** | ✅ Easy to start | ⚠️ Initial setup |
+| Aspect              | Repeated Classes      | Reusable Components |
+| ------------------- | --------------------- | ------------------- |
+| **Maintainability** | ❌ Update 100+ places | ✅ Update 1 file    |
+| **Consistency**     | ❌ Manual enforcement | ✅ Automatic        |
+| **Type Safety**     | ❌ None               | ✅ Full TypeScript  |
+| **Bundle Size**     | ⚠️ Repeated strings   | ✅ Optimized        |
+| **Testability**     | ❌ Hard to test       | ✅ Unit testable    |
+| **Reusability**     | ❌ Copy-paste         | ✅ Import           |
+| **Learning Curve**  | ✅ Easy to start      | ⚠️ Initial setup    |
 
 ---
 
 ## Recommendation for Axis eBoard
 
 ### Phase 1: Setup Component Library (Week 1)
+
 ```bash
 # Create structure
 mkdir -p shared/ui shared/styles shared/icons shared/hooks
@@ -805,15 +810,17 @@ mkdir -p shared/ui shared/styles shared/icons shared/hooks
 ```
 
 ### Phase 2: Use Everywhere (Week 2+)
+
 ```typescript
 // Every route/component imports from shared
 import { Button, Card, Input, Modal } from "../../shared/ui/mod.ts";
 
 // Never repeat classes again!
-<Button variant="primary">Consistent everywhere!</Button>
+<Button variant="primary">Consistent everywhere!</Button>;
 ```
 
 ### Phase 3: Extend as Needed
+
 ```typescript
 // Add custom variants
 const customButton = `${buttonStyles.base} bg-gradient-to-r from-purple-500 to-pink-500`;
@@ -821,7 +828,7 @@ const customButton = `${buttonStyles.base} bg-gradient-to-r from-purple-500 to-p
 // Or extend existing components
 <Button variant="primary" class="custom-override">
   Extended Button
-</Button>
+</Button>;
 ```
 
 ---
@@ -829,6 +836,7 @@ const customButton = `${buttonStyles.base} bg-gradient-to-r from-purple-500 to-p
 ## Conclusion
 
 **DON'T:**
+
 ```typescript
 <button class="px-4 py-2 bg-blue-500...">Button 1</button>
 <button class="px-4 py-2 bg-blue-500...">Button 2</button>
@@ -836,6 +844,7 @@ const customButton = `${buttonStyles.base} bg-gradient-to-r from-purple-500 to-p
 ```
 
 **DO:**
+
 ```typescript
 <Button>Button 1</Button>
 <Button>Button 2</Button>

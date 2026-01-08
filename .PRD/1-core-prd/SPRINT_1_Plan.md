@@ -1,4 +1,5 @@
 # Sprint Planning - Axis eBoard MVP
+
 ## Sprint 1: Foundation & Shared Library (Week 1-2)
 
 **Goal:** Build reusable shared library with Deno-native utilities
@@ -8,6 +9,7 @@
 ## Sprint Backlog
 
 ### Epic 1: Project Setup
+
 - [ ] **Task 1.1:** Initialize Deno workspace structure
   - Create `shared/`, `main-app/`, `admin-api/` folders
   - Configure `deno.json` with workspace and tasks
@@ -25,6 +27,7 @@
 ---
 
 ### Epic 2: Shared Library - Authentication Module
+
 **🎯 REUSABLE COMPONENT - This will be used by all future projects!**
 
 - [ ] **Task 2.1:** Create `shared/auth.ts` with Web Crypto utilities
@@ -51,6 +54,7 @@
 ---
 
 ### Epic 3: Shared Library - Database Module (Deno KV)
+
 **🎯 REUSABLE COMPONENT**
 
 - [ ] **Task 3.1:** Create `shared/db.ts` with KV abstractions
@@ -79,6 +83,7 @@
 ---
 
 ### Epic 4: Shared Library - WebSocket Module
+
 **🎯 REUSABLE COMPONENT**
 
 - [ ] **Task 4.1:** Create `shared/websocket.ts` utilities
@@ -99,6 +104,7 @@
 ---
 
 ### Epic 5: Shared Library - Validation Module
+
 **🎯 REUSABLE COMPONENT**
 
 - [ ] **Task 5.1:** Set up Zod for runtime validation
@@ -117,6 +123,7 @@
 ---
 
 ### Epic 6: Documentation
+
 - [ ] **Task 6.1:** Document shared library API
   - JSDoc comments for all exports
   - Usage examples
@@ -158,6 +165,7 @@
 ## Reusability Checklist
 
 For each shared module, ensure:
+
 - [ ] **Generic:** Works for any project, not just eBoard
 - [ ] **Typed:** Full TypeScript support
 - [ ] **Tested:** Comprehensive test coverage
@@ -170,16 +178,19 @@ For each shared module, ensure:
 ## Future Sprints Preview
 
 ### Sprint 2: Main App - User Management (Week 3-4)
+
 - Use `shared/auth.ts` for signup/login
 - Use `shared/db.ts` for user CRUD
 - Build user profile API
 
 ### Sprint 3: Main App - Real-time Features (Week 5-6)
+
 - Use `shared/websocket.ts` for live updates
 - Notifications system
 - Activity feeds
 
 ### Sprint 4: Admin Dashboard (Week 7-8)
+
 - Reuse ALL shared modules
 - Admin-specific features
 - Analytics
@@ -187,6 +198,7 @@ For each shared module, ensure:
 ---
 
 **Tools for Sprint Management:**
+
 - **Deno-based:** Create custom issue tracker in Deno KV
 - **External (if needed):** GitHub Projects, Linear, Notion
 - **Recommendation:** Start with markdown checklists, scale to tools later

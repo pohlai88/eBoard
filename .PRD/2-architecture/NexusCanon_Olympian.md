@@ -6,33 +6,34 @@
 
 ### Metadata
 
-| Field | Details |
-|-------|---------|
-| **Version** | 1.0.0 (Olympian Standard) |
-| **Status** | Active Implementation Guide |
-| **Scope** | Deno Runtime Implementation & Dual-Framework Strategy |
-| **Parent Document** | NexusCanon Constitution v4.0.0 |
-| **Target Audience** | Platform Engineers, Security Teams, DevOps |
+| Field               | Details                                               |
+| ------------------- | ----------------------------------------------------- |
+| **Version**         | 1.0.0 (Olympian Standard)                             |
+| **Status**          | Active Implementation Guide                           |
+| **Scope**           | Deno Runtime Implementation & Dual-Framework Strategy |
+| **Parent Document** | NexusCanon Constitution v4.0.0                        |
+| **Target Audience** | Platform Engineers, Security Teams, DevOps            |
 
 ---
 
 ## Part I — Why Deno IS The Prime Monad
 
-The Constitution demands specific laws that Node.js struggles to enforce, but Deno enforces by default.
+The Constitution demands specific laws that Node.js struggles to enforce, but Deno enforces by
+default.
 
 ### 1.1 Constitutional Alignment Matrix
 
-| NexusCanon Law | Node.js / Next.js Reality | Deno Reality | Verdict |
-|----------------|--------------------------|--------------|---------|
-| **"Reject Entropy"** | ❌ Fails. `node_modules` is a black hole of entropy (1GB+ of files). | ✅ **Success.** No `node_modules`. Dependencies are cached globally. The Monad is pure. | **DENO WINS** |
-| **"The Loom (Security)"** | ⚠️ Weak. Any package can read your `.env` or steal data without permission. | ✅ **Success.** Secure by Default. Deno cannot access network or filesystem unless explicitly granted via permission flags (`--allow-net`). | **DENO WINS** |
-| **"The Codex (Logic)"** | ⚠️ Messy. Requires TypeScript config, Babel, Webpack build steps. | ✅ **Success.** TypeScript Native. No config. The "Law" runs exactly as written. | **DENO WINS** |
-| **"Zero Latency"** | ⚠️ Slow cold starts (heavy runtime). | ✅ **Success.** Deno Deploy (Isolates) starts in milliseconds globally. | **DENO WINS** |
-| **"The Vault (Secrets)"** | ⚠️ Requires `dotenv` packages. | ✅ **Success.** Built-in `Deno.env` API. | **DENO WINS** |
-| **"The Quorum (Testing)"** | ⚠️ Requires Jest/Mocha/Vitest setup. | ✅ **Success.** Built-in test runner (`deno test`). | **DENO WINS** |
-| **"Standard Gauge (Format)"** | ⚠️ Requires Prettier/ESLint configuration. | ✅ **Success.** Built-in `deno fmt` and `deno lint`. | **DENO WINS** |
-| **"Ecosystem (Libraries)"** | ✅ **Success.** Massive npm ecosystem. | ⚠️ Growing. JSR + npm compatibility. | **NODE WINS** |
-| **"Hiring (Talent Pool)"** | ✅ **Success.** Large talent pool familiar with Node.js. | ⚠️ Smaller pool. Requires training. | **NODE WINS** |
+| NexusCanon Law                | Node.js / Next.js Reality                                                   | Deno Reality                                                                                                                                | Verdict       |
+| ----------------------------- | --------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
+| **"Reject Entropy"**          | ❌ Fails. `node_modules` is a black hole of entropy (1GB+ of files).        | ✅ **Success.** No `node_modules`. Dependencies are cached globally. The Monad is pure.                                                     | **DENO WINS** |
+| **"The Loom (Security)"**     | ⚠️ Weak. Any package can read your `.env` or steal data without permission. | ✅ **Success.** Secure by Default. Deno cannot access network or filesystem unless explicitly granted via permission flags (`--allow-net`). | **DENO WINS** |
+| **"The Codex (Logic)"**       | ⚠️ Messy. Requires TypeScript config, Babel, Webpack build steps.           | ✅ **Success.** TypeScript Native. No config. The "Law" runs exactly as written.                                                            | **DENO WINS** |
+| **"Zero Latency"**            | ⚠️ Slow cold starts (heavy runtime).                                        | ✅ **Success.** Deno Deploy (Isolates) starts in milliseconds globally.                                                                     | **DENO WINS** |
+| **"The Vault (Secrets)"**     | ⚠️ Requires `dotenv` packages.                                              | ✅ **Success.** Built-in `Deno.env` API.                                                                                                    | **DENO WINS** |
+| **"The Quorum (Testing)"**    | ⚠️ Requires Jest/Mocha/Vitest setup.                                        | ✅ **Success.** Built-in test runner (`deno test`).                                                                                         | **DENO WINS** |
+| **"Standard Gauge (Format)"** | ⚠️ Requires Prettier/ESLint configuration.                                  | ✅ **Success.** Built-in `deno fmt` and `deno lint`.                                                                                        | **DENO WINS** |
+| **"Ecosystem (Libraries)"**   | ✅ **Success.** Massive npm ecosystem.                                      | ⚠️ Growing. JSR + npm compatibility.                                                                                                        | **NODE WINS** |
+| **"Hiring (Talent Pool)"**    | ✅ **Success.** Large talent pool familiar with Node.js.                    | ⚠️ Smaller pool. Requires training.                                                                                                         | **NODE WINS** |
 
 ### 1.2 Strategic Verdict
 
@@ -48,7 +49,8 @@ The Constitution demands specific laws that Node.js struggles to enforce, but De
 
 ### Amendment 1.1.A — Isomorphic Sovereignty
 
-The Constitution Section 1.3 establishes dual runtime support. This amendment provides implementation details.
+The Constitution Section 1.3 establishes dual runtime support. This amendment provides
+implementation details.
 
 **The Law:** The system shall execute on **two sanctioned runtimes**:
 
@@ -62,7 +64,8 @@ The Constitution Section 1.3 establishes dual runtime support. This amendment pr
    - Rationale: Security-by-default, zero-config, TypeScript-native
    - Trade-off: Smaller ecosystem for greater purity
 
-**The Codex MUST be Isomorphic:** Business logic written in `/canon/codex` must run on both runtimes without modification.
+**The Codex MUST be Isomorphic:** Business logic written in `/canon/codex` must run on both runtimes
+without modification.
 
 ---
 
@@ -70,16 +73,16 @@ The Constitution Section 1.3 establishes dual runtime support. This amendment pr
 
 ### 3.1 Core Technologies
 
-| Layer | Technology | Purpose |
-|-------|-----------|---------|
-| **Runtime** | Deno 2.x | Secure-by-default JavaScript/TypeScript runtime |
-| **Framework** | Fresh 2.x | Islands Architecture web framework |
-| **Database** | PostgreSQL | ACID-compliant relational database |
-| **ORM** | Drizzle ORM | Type-safe, Deno-compatible ORM |
-| **Validation** | Zod | Schema validation (isomorphic) |
-| **Testing** | Deno Test | Built-in test runner |
-| **Formatting** | Deno fmt | Built-in code formatter |
-| **Linting** | Deno lint | Built-in linter |
+| Layer          | Technology  | Purpose                                         |
+| -------------- | ----------- | ----------------------------------------------- |
+| **Runtime**    | Deno 2.x    | Secure-by-default JavaScript/TypeScript runtime |
+| **Framework**  | Fresh 2.x   | Islands Architecture web framework              |
+| **Database**   | PostgreSQL  | ACID-compliant relational database              |
+| **ORM**        | Drizzle ORM | Type-safe, Deno-compatible ORM                  |
+| **Validation** | Zod         | Schema validation (isomorphic)                  |
+| **Testing**    | Deno Test   | Built-in test runner                            |
+| **Formatting** | Deno fmt    | Built-in code formatter                         |
+| **Linting**    | Deno lint   | Built-in linter                                 |
 
 ### 3.2 Fresh Framework (The Cobalt for Deno)
 
@@ -401,15 +404,15 @@ Deno's security model aligns with "The Vault" and "The Loom" requirements.
 
 #### Permission Flags
 
-| Flag | Purpose | Example |
-|------|---------|---------|
-| `--allow-read` | File system read access | Reading config files |
-| `--allow-write` | File system write access | Writing logs, cache |
-| `--allow-net` | Network access | API calls, webhooks |
-| `--allow-env` | Environment variables | Reading secrets from `.env` |
-| `--allow-run` | Subprocess execution | Running external commands |
-| `--allow-ffi` | Foreign Function Interface | Native library access |
-| `--allow-all` | All permissions | Development/testing only |
+| Flag            | Purpose                    | Example                     |
+| --------------- | -------------------------- | --------------------------- |
+| `--allow-read`  | File system read access    | Reading config files        |
+| `--allow-write` | File system write access   | Writing logs, cache         |
+| `--allow-net`   | Network access             | API calls, webhooks         |
+| `--allow-env`   | Environment variables      | Reading secrets from `.env` |
+| `--allow-run`   | Subprocess execution       | Running external commands   |
+| `--allow-ffi`   | Foreign Function Interface | Native library access       |
+| `--allow-all`   | All permissions            | Development/testing only    |
 
 #### Granular Permissions (The Fort Knox Protocol)
 
@@ -470,6 +473,7 @@ Deno.test("pricing calculation rejects negative prices", () => {
 ```
 
 **Run tests:**
+
 ```bash
 deno test --allow-all
 ```
@@ -503,4 +507,4 @@ This document is the **Olympian Implementation Guide** for the NexusCanon Consti
 
 ---
 
-*Version 1.0.0 — Last Updated: January 8, 2026*
+_Version 1.0.0 — Last Updated: January 8, 2026_

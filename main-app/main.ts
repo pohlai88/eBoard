@@ -1,12 +1,12 @@
-// Main App - Placeholder for Full-Stack Application
-// You can replace this with Fresh, Hono, or any other framework
+// Fresh 2.0 entry point
+// Builder.listen() expects this file to export an App instance
+import { App, staticFiles } from "fresh";
 
-import { load } from "@std/dotenv";
+export const app = new App();
 
-const env = await load();
+// Enable static file serving from static/ directory
+app.use(staticFiles());
 
-console.log(`✅ Main App ready!`);
-console.log(`📌 Port: ${env["APP_PORT"] || "3000"}`);
-console.log(`📝 Ready to add Fresh, Hono, Oak, or any framework`);
-console.log(`\n📚 Use shared types from @shared/`);
-console.log(`   import { User, Post } from "@shared";`);
+// Register file-system routes from routes/ directory
+// This is REQUIRED for routes to work - Builder does not auto-register them
+app.fsRoutes();

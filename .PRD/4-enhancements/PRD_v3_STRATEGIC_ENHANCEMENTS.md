@@ -6,11 +6,13 @@
 
 ## Executive Summary
 
-Your feedback is strategically sound. The three proposed enhancements + config layering are all valuable, but with different priorities and implementation timelines.
+Your feedback is strategically sound. The three proposed enhancements + config layering are all
+valuable, but with different priorities and implementation timelines.
 
 **My Recommendation:** YES (all 3), with HYBRID pacing. Phase 1 → 2 → 3.
 
-**Critical Addition:** The **Broadcast Announcements System** (CEO/Admin sticky banner with proposal linking) is foundational and should be **Phase 1 MVP**.
+**Critical Addition:** The **Broadcast Announcements System** (CEO/Admin sticky banner with proposal
+linking) is foundational and should be **Phase 1 MVP**.
 
 ---
 
@@ -19,6 +21,7 @@ Your feedback is strategically sound. The three proposed enhancements + config l
 ### Verdict: **YES** ✅
 
 **Reasoning:**
+
 - Solves real UX friction ("blank page burden" for CEO)
 - Reduces cognitive load on Sovereign (they review, don't invent)
 - Maintains CEO authority (they can reject/edit pre-drafted to-dos)
@@ -49,15 +52,16 @@ suggested_todos: {
   assignee_id: string;
   due_days_from_approval: number;
   priority: "high" | "normal" | "low";
-}[];
+}
+[];
 
 // Example:
 {
   suggested_todos: [
     { title: "Post job on LinkedIn", assignee_id: "marketing_id", due_days: 3, priority: "high" },
     { title: "Brief engineering team", assignee_id: "cto_id", due_days: 7, priority: "normal" },
-    { title: "Prepare onboarding", assignee_id: "hr_id", due_days: 14, priority: "normal" }
-  ]
+    { title: "Prepare onboarding", assignee_id: "hr_id", due_days: 14, priority: "normal" },
+  ];
 }
 ```
 
@@ -103,17 +107,18 @@ WHEN CEO APPROVES:
 
 ### Benefits
 
-| Benefit | Impact |
-|---------|--------|
-| **Reduced Sovereign Cognitive Load** | CEO focuses on "Should we do this?" not "What do we do after?" |
-| **Faster Decision-Making** | No pausing to define follow-up tasks |
-| **Accountability** | Manager owns the "how," Sovereign owns the "whether" |
-| **Audit Trail** | Chronos tracks: Manager proposed → CEO approved → Tasks created |
-| **Flexibility** | CEO can still reject/edit suggested to-dos |
+| Benefit                              | Impact                                                          |
+| ------------------------------------ | --------------------------------------------------------------- |
+| **Reduced Sovereign Cognitive Load** | CEO focuses on "Should we do this?" not "What do we do after?"  |
+| **Faster Decision-Making**           | No pausing to define follow-up tasks                            |
+| **Accountability**                   | Manager owns the "how," Sovereign owns the "whether"            |
+| **Audit Trail**                      | Chronos tracks: Manager proposed → CEO approved → Tasks created |
+| **Flexibility**                      | CEO can still reject/edit suggested to-dos                      |
 
 ### Implementation Timeline
 
 **Phase 2** (Post-Launch)
+
 - Add `suggested_todos` field to proposals schema
 - Add form UI for managers to define suggested to-dos
 - Modify approval modal to show pre-drafted tasks
@@ -125,50 +130,61 @@ WHEN CEO APPROVES:
 
 ### Verdict: **HYBRID → YES (with variance extension)** 🔀→✅
 
-**Strategic Shift:** Instead of simple budget conflict detection, integrate What-If scenarios with the **Case Template System** and add **Variance Analysis** (Budgeted vs Planned vs Actual). This transforms What-If from "approval gating" to "decisiveness enablement"—giving managers the "Know-How" and "Know-Why" before CEO approves.
+**Strategic Shift:** Instead of simple budget conflict detection, integrate What-If scenarios with
+the **Case Template System** and add **Variance Analysis** (Budgeted vs Planned vs Actual). This
+transforms What-If from "approval gating" to "decisiveness enablement"—giving managers the
+"Know-How" and "Know-Why" before CEO approves.
 
 **Why This Matters:**
+
 - **Current problem:** 50+ pending proposals create analysis paralysis; manager can't justify impact
-- **Your insight:** Use Case templates to standardize What-If planning, then track variance to create learning loop
-- **Result:** Managers come prepared with budgeted/planned/actual analysis; CEO gets decision-ready intelligence
+- **Your insight:** Use Case templates to standardize What-If planning, then track variance to
+  create learning loop
+- **Result:** Managers come prepared with budgeted/planned/actual analysis; CEO gets decision-ready
+  intelligence
 
 ### Architecture: Case-Based What-If with Variance Tracking
 
 #### 1. What-If Case Template Extension
 
-Each Codex Stencil (Hiring Request, Capex, Marketing Budget, etc.) gets a **What-If Planning Section**:
+Each Codex Stencil (Hiring Request, Capex, Marketing Budget, etc.) gets a **What-If Planning
+Section**:
 
 ```typescript
 // /canon/codex/case-template-whatif.ts
 
 export interface CaseWhatIfTemplate {
-  stencil_id: string;                    // e.g., "hiring_request_v2"
+  stencil_id: string; // e.g., "hiring_request_v2"
   budgeted_section: {
     fields: [
-      { label: "Annual Salary Budget", type: "currency", key: "budgeted_salary" },
-      { label: "Benefits Budget", type: "currency", key: "budgeted_benefits" },
-      { label: "Equipment Budget", type: "currency", key: "budgeted_equipment" },
-      { label: "Training Budget", type: "currency", key: "budgeted_training" }
-    ]
+      { label: "Annual Salary Budget"; type: "currency"; key: "budgeted_salary" },
+      { label: "Benefits Budget"; type: "currency"; key: "budgeted_benefits" },
+      { label: "Equipment Budget"; type: "currency"; key: "budgeted_equipment" },
+      { label: "Training Budget"; type: "currency"; key: "budgeted_training" },
+    ];
   };
   planned_section: {
     fields: [
-      { label: "Expected Start Date", type: "date", key: "planned_start" },
-      { label: "Onboarding Duration (weeks)", type: "number", key: "planned_onboarding" },
-      { label: "Ramp-Up Timeline (days)", type: "number", key: "planned_rampup" },
-      { label: "Productivity Target (% of senior)", type: "percentage", key: "planned_productivity" }
-    ]
+      { label: "Expected Start Date"; type: "date"; key: "planned_start" },
+      { label: "Onboarding Duration (weeks)"; type: "number"; key: "planned_onboarding" },
+      { label: "Ramp-Up Timeline (days)"; type: "number"; key: "planned_rampup" },
+      {
+        label: "Productivity Target (% of senior)";
+        type: "percentage";
+        key: "planned_productivity";
+      },
+    ];
   };
   variance_tracking: {
     enabled: true;
     review_interval: "quarterly" | "bi-annual" | "annual";
     milestones: [
-      { key: "first_month", label: "1-Month Review", days: 30 },
-      { key: "three_month", label: "Q1 Review", days: 90 },
-      { key: "six_month", label: "Mid-Year Review", days: 180 },
-      { key: "annual", label: "Annual Review", days: 365 }
+      { key: "first_month"; label: "1-Month Review"; days: 30 },
+      { key: "three_month"; label: "Q1 Review"; days: 90 },
+      { key: "six_month"; label: "Mid-Year Review"; days: 180 },
+      { key: "annual"; label: "Annual Review"; days: 365 },
     ];
-  }
+  };
 }
 
 // Example: Hiring Stencil Extended with What-If
@@ -179,16 +195,16 @@ export const HIRING_WHATIF_STENCIL: CaseWhatIfTemplate = {
       { label: "Annual Salary Budget", type: "currency", key: "budgeted_salary" },
       { label: "Benefits Budget (30% of salary)", type: "currency", key: "budgeted_benefits" },
       { label: "Equipment + Setup", type: "currency", key: "budgeted_equipment" },
-      { label: "Training (first year)", type: "currency", key: "budgeted_training" }
-    ]
+      { label: "Training (first year)", type: "currency", key: "budgeted_training" },
+    ],
   },
   planned_section: {
     fields: [
       { label: "Expected Start Date", type: "date", key: "planned_start" },
       { label: "Time-to-Productivity (days)", type: "number", key: "planned_ttp" },
       { label: "Expected ROI (months)", type: "number", key: "planned_roi" },
-      { label: "Retention Confidence (%)", type: "percentage", key: "planned_retention" }
-    ]
+      { label: "Retention Confidence (%)", type: "percentage", key: "planned_retention" },
+    ],
   },
   variance_tracking: {
     enabled: true,
@@ -197,10 +213,10 @@ export const HIRING_WHATIF_STENCIL: CaseWhatIfTemplate = {
       { key: "onboarding", label: "Onboarded", days: 30 },
       { key: "q1_review", label: "Q1 Review", days: 90 },
       { key: "mid_year", label: "Mid-Year Review", days: 180 },
-      { key: "annual", label: "Annual Review", days: 365 }
-    ]
-  }
-}
+      { key: "annual", label: "Annual Review", days: 365 },
+    ],
+  },
+};
 ```
 
 #### 2. Variance Analysis Database Schema
@@ -210,33 +226,33 @@ export const HIRING_WHATIF_STENCIL: CaseWhatIfTemplate = {
 export const case_whatif_budgets = pgTable("case_whatif_budgets", {
   id: uuid("id").primaryKey().defaultRandom(),
   proposal_id: uuid("proposal_id").notNull(),
-  case_number: text("case_number").notNull(),      // Link to Case
-  stencil_id: text("stencil_id").notNull(),        // Which template
-  
+  case_number: text("case_number").notNull(), // Link to Case
+  stencil_id: text("stencil_id").notNull(), // Which template
+
   // BUDGETED (from proposal/case creation)
   budgeted_total: numeric("budgeted_total", { precision: 12, scale: 2 }).notNull(),
   budgeted_breakdown: jsonb("budgeted_breakdown"), // { salary: 150000, benefits: 45000, ... }
-  budgeted_by: uuid("budgeted_by").notNull(),      // Manager who created
+  budgeted_by: uuid("budgeted_by").notNull(), // Manager who created
   budgeted_at: timestamp("budgeted_at").notNull().defaultNow(),
-  
+
   // PLANNED (manager's expectation at approval time)
   planned_total: numeric("planned_total", { precision: 12, scale: 2 }),
-  planned_metrics: jsonb("planned_metrics"),       // { ttp: 60, roi: 9, retention: 85, ... }
+  planned_metrics: jsonb("planned_metrics"), // { ttp: 60, roi: 9, retention: 85, ... }
   planned_notes: text("planned_notes"),
   planned_at: timestamp("planned_at"),
-  
+
   // ACTUAL (tracking against reality)
   actual_total: numeric("actual_total", { precision: 12, scale: 2 }),
-  actual_breakdown: jsonb("actual_breakdown"),     // Populated as time progresses
+  actual_breakdown: jsonb("actual_breakdown"), // Populated as time progresses
   actual_metrics: jsonb("actual_metrics"),
   actual_review_count: integer("actual_review_count").default(0),
   last_actual_at: timestamp("last_actual_at"),
-  
+
   // VARIANCE ANALYSIS
-  variance_pct: numeric("variance_pct", { precision: 5, scale: 2 }),  // (actual - budgeted) / budgeted * 100
-  variance_reason: text("variance_reason"),                            // Why did it vary? Free-form or category
-  variance_status: text("variance_status"),                            // "on_track" | "warning" | "overrun" | "underrun"
-  
+  variance_pct: numeric("variance_pct", { precision: 5, scale: 2 }), // (actual - budgeted) / budgeted * 100
+  variance_reason: text("variance_reason"), // Why did it vary? Free-form or category
+  variance_status: text("variance_status"), // "on_track" | "warning" | "overrun" | "underrun"
+
   created_at: timestamp("created_at").notNull().defaultNow(),
   updated_at: timestamp("updated_at").notNull().defaultNow(),
 });
@@ -245,21 +261,21 @@ export const case_whatif_budgets = pgTable("case_whatif_budgets", {
 export const case_whatif_milestones = pgTable("case_whatif_milestones", {
   id: uuid("id").primaryKey().defaultRandom(),
   whatif_budget_id: uuid("whatif_budget_id").notNull(),
-  milestone_key: text("milestone_key").notNull(),         // "onboarding", "q1_review", etc.
+  milestone_key: text("milestone_key").notNull(), // "onboarding", "q1_review", etc.
   milestone_label: text("milestone_label").notNull(),
-  
-  scheduled_date: date("scheduled_date").notNull(),       // When it should happen
-  actual_date: date("actual_date"),                        // When it actually happened
-  
+
+  scheduled_date: date("scheduled_date").notNull(), // When it should happen
+  actual_date: date("actual_date"), // When it actually happened
+
   // Metrics captured at this milestone
   budget_to_date: numeric("budget_to_date", { precision: 12, scale: 2 }),
   actual_to_date: numeric("actual_to_date", { precision: 12, scale: 2 }),
   variance_to_date_pct: numeric("variance_to_date_pct", { precision: 5, scale: 2 }),
-  
-  notes: text("notes"),                                   // Reviewer observations
+
+  notes: text("notes"), // Reviewer observations
   reviewed_by: uuid("reviewed_by"),
   reviewed_at: timestamp("reviewed_at"),
-  
+
   created_at: timestamp("created_at").notNull().defaultNow(),
 });
 ```
@@ -275,20 +291,20 @@ interface WhatIfScenarioCard {
   case_number: string;
   proposal_title: string;
   status: "active" | "under_review" | "completed";
-  
+
   // The "Past-Present-Future" Tri-Vector
   budgeted: {
     total: number;
     breakdown: Record<string, number>;
     date: Date;
   };
-  
+
   planned: {
     total: number;
     metrics: Record<string, any>;
     date: Date;
   };
-  
+
   actual: {
     current_total: number;
     projection_eoy: number;
@@ -296,7 +312,7 @@ interface WhatIfScenarioCard {
     variance_pct: number;
     status: "on_track" | "warning" | "overrun" | "underrun";
   };
-  
+
   next_milestone: {
     label: string;
     scheduled_date: Date;
@@ -310,7 +326,7 @@ export function WhatIfAnalysisFigure({ scenario }: { scenario: WhatIfScenarioCar
   return (
     <div className="what-if-analysis">
       <h3>{scenario.case_number}: {scenario.proposal_title}</h3>
-      
+
       {/* The Know-How: Visual Tri-Vector */}
       <div className="tri-vector">
         <div className="vector past">
@@ -323,7 +339,7 @@ export function WhatIfAnalysisFigure({ scenario }: { scenario: WhatIfScenarioCar
           </ul>
           <p className="date">{scenario.budgeted.date.toLocaleDateString()}</p>
         </div>
-        
+
         <div className="vector present">
           <h4>📊 Planned</h4>
           <p className="amount">${scenario.planned.total.toLocaleString()}</p>
@@ -334,24 +350,25 @@ export function WhatIfAnalysisFigure({ scenario }: { scenario: WhatIfScenarioCar
           </ul>
           <p className="date">{scenario.planned.date.toLocaleDateString()}</p>
         </div>
-        
+
         <div className="vector future">
           <h4>🎯 Actual (Now)</h4>
           <p className={`amount ${scenario.actual.status}`}>
             ${scenario.actual.current_total.toLocaleString()}
           </p>
           <p className="variance">
-            Variance: {scenario.actual.variance_pct > 0 ? '+' : ''}{scenario.actual.variance_pct.toFixed(1)}%
+            Variance: {scenario.actual.variance_pct > 0 ? "+" : ""}
+            {scenario.actual.variance_pct.toFixed(1)}%
           </p>
           <p className={`status ${scenario.actual.status}`}>
-            {scenario.actual.status === 'on_track' && '✅ On Track'}
-            {scenario.actual.status === 'warning' && '⚠️ Warning'}
-            {scenario.actual.status === 'overrun' && '❌ Over Budget'}
-            {scenario.actual.status === 'underrun' && '💰 Under Budget'}
+            {scenario.actual.status === "on_track" && "✅ On Track"}
+            {scenario.actual.status === "warning" && "⚠️ Warning"}
+            {scenario.actual.status === "overrun" && "❌ Over Budget"}
+            {scenario.actual.status === "underrun" && "💰 Under Budget"}
           </p>
         </div>
       </div>
-      
+
       {/* The Know-Why: Analysis Chart */}
       <div className="analysis-chart">
         <h4>Budget Variance Over Time</h4>
@@ -363,11 +380,14 @@ export function WhatIfAnalysisFigure({ scenario }: { scenario: WhatIfScenarioCar
           milestones={scenario.milestones}
         />
       </div>
-      
+
       {/* Next Actions */}
       <div className="next-milestone">
         <h4>Next Milestone</h4>
-        <p>{scenario.next_milestone.label} — {scenario.next_milestone.scheduled_date.toLocaleDateString()}</p>
+        <p>
+          {scenario.next_milestone.label} —{" "}
+          {scenario.next_milestone.scheduled_date.toLocaleDateString()}
+        </p>
         <button>Schedule Review</button>
       </div>
     </div>
@@ -474,6 +494,7 @@ Response:
 ### Decision
 
 **Phase 1 MVP (UPGRADED from "simple budget check"):**
+
 - Single-case variance tracking: Budgeted → Planned → Actual
 - Case-template What-If planning sections
 - Tri-Vector dashboard visualization (Past/Present/Future)
@@ -482,12 +503,14 @@ Response:
 - **Effort: MEDIUM-LOW | Value: VERY HIGH** (transforms decision-making culture)
 
 **Phase 2:**
+
 - Multi-case scenario pooling (Aggressive, Conservative, Balanced)
 - Advanced constraint solving (what's the optimal approval order?)
 - Predictive variance modeling (ML learning from past variances)
 - Integration with CI/CD for automated variance reporting
 
 **Why This Addresses Your Insight:**
+
 - ✅ Managers come prepared with budgeted/planned/actual analysis before CEO meeting
 - ✅ What-If planning is baked into Case templates (not a separate system)
 - ✅ Variance tracking creates learning loop: why do hiring plans consistently overrun by 8%?
@@ -501,6 +524,7 @@ Response:
 ### Verdict: **HYBRID** 🔀
 
 **Why Hybrid (not full YES):**
+
 - **Excellent for safety** (prevents premature execution)
 - **Adds complexity** (conditional state machine)
 - **Admin overhead** (requires CEO to think through gating rules)
@@ -530,12 +554,14 @@ Create To-Do Modal:
 ```
 
 **How It Works:**
+
 1. Manager creates Task B with "Depends on Task A"
 2. Task B shows as "Blocked" (grayed out) until Task A is marked Done
 3. When trying to mark Task B Done, system checks: "Task A marked Done?" → if yes, allow
 4. Notification sent: "Task B is now unblocked!"
 
 **Implementation:**
+
 - Add `depends_on_todo_id` field to todos table
 - Add blocking logic in update endpoint
 - Show "Blocked" state in UI with red banner
@@ -570,12 +596,13 @@ When Task 1 marked 'Done':
 
 ### Benefits & Risks
 
-| Version | Benefit | Risk | Timeline |
-|---------|---------|------|----------|
-| Simple (v3.2) | Prevents out-of-order execution | Minimal | 2 weeks |
-| Complex (v3.3) | Adds verification gate for high-value tasks | Admin overhead | 4 weeks |
+| Version        | Benefit                                     | Risk           | Timeline |
+| -------------- | ------------------------------------------- | -------------- | -------- |
+| Simple (v3.2)  | Prevents out-of-order execution             | Minimal        | 2 weeks  |
+| Complex (v3.3) | Adds verification gate for high-value tasks | Admin overhead | 4 weeks  |
 
-**Recommendation:** Start with Simple version (Phase 2), learn from usage, then decide if Complex version is needed (Phase 3).
+**Recommendation:** Start with Simple version (Phase 2), learn from usage, then decide if Complex
+version is needed (Phase 3).
 
 ---
 
@@ -586,6 +613,7 @@ When Task 1 marked 'Done':
 **This is essential architecture. Not optional.**
 
 **Why YES:**
+
 - Prevents performance degradation as config scope grows
 - Follows DRY principle (no duplicating global config at user level)
 - Enables cache invalidation strategy (know exactly what changed)
@@ -632,17 +660,17 @@ Layer 3: USER PREFS (Manager Sets)
 function getEffectiveConfig(user_id: string, circle_id: string) {
   // START with GLOBAL LAW (immutable)
   let config = await getGlobalConfig();
-  
+
   // LAYER Circle Rules (if it exists)
   const circleOverrides = await getCircleRules(circle_id);
   if (circleOverrides) {
     config = { ...config, ...circleOverrides };
   }
-  
+
   // LAYER User Preferences (only for UI, not governance)
   const userPrefs = await getUserConfig(user_id);
   config = { ...config, ...userPrefs };
-  
+
   return config;
 }
 ```
@@ -677,9 +705,8 @@ function getEffectiveConfig(user_id: string, circle_id: string) {
 
 ### Implementation Roadmap
 
-**Phase 1:** Global Config + User Prefs (2 layers)
-**Phase 2:** Add Circle Rules layer (if customers request regional governance)
-**Phase 3:** Add Team Rules layer (if needed for granular control)
+**Phase 1:** Global Config + User Prefs (2 layers) **Phase 2:** Add Circle Rules layer (if customers
+request regional governance) **Phase 3:** Add Team Rules layer (if needed for granular control)
 
 ---
 
@@ -690,6 +717,7 @@ function getEffectiveConfig(user_id: string, circle_id: string) {
 **This is your most important insight.** You're absolutely right that this is missing and critical.
 
 **Why It's Critical:**
+
 - CEO actions (decisions, comments, approvals) need **visibility across the organization**
 - Current PRD lacks a **channel for executive announcements**
 - "Sticky banner" = persistent, non-dismissible (until read)
@@ -718,13 +746,13 @@ function getEffectiveConfig(user_id: string, circle_id: string) {
 
 ### What Can Be Broadcast
 
-| Event | Example | Audience | Icon |
-|-------|---------|----------|------|
-| **Approval** | "Approved: Hiring 5 Engineers" | Entire org | ✅ |
-| **Veto** | "Vetoed: Q4 Capex (needs rework)" | Entire org | ❌ |
-| **Announcement** | "All proposals >$1M now require board vote" | Entire org | 📢 |
-| **Poll** | "Voting: Should we acquire StartupX?" | Circle members | 🗳️ |
-| **Emergency** | "PAUSE all hiring approvals immediately" | Entire org | 🚨 |
+| Event            | Example                                     | Audience       | Icon |
+| ---------------- | ------------------------------------------- | -------------- | ---- |
+| **Approval**     | "Approved: Hiring 5 Engineers"              | Entire org     | ✅   |
+| **Veto**         | "Vetoed: Q4 Capex (needs rework)"           | Entire org     | ❌   |
+| **Announcement** | "All proposals >$1M now require board vote" | Entire org     | 📢   |
+| **Poll**         | "Voting: Should we acquire StartupX?"       | Circle members | 🗳️   |
+| **Emergency**    | "PAUSE all hiring approvals immediately"    | Entire org     | 🚨   |
 
 ### Database Schema
 
@@ -732,26 +760,26 @@ function getEffectiveConfig(user_id: string, circle_id: string) {
 // New table: broadcasts
 export const broadcasts = pgTable("broadcasts", {
   id: uuid("id").primaryKey().defaultRandom(),
-  
+
   // WHO
-  created_by: uuid("created_by").notNull(),  // CEO/Admin
-  
+  created_by: uuid("created_by").notNull(), // CEO/Admin
+
   // WHAT
   type: text("type").notNull(), // "approval" | "veto" | "announcement" | "poll" | "emergency"
   title: text("title").notNull(),
   message: text("message"),
-  
+
   // LINKED TO
-  proposal_id: uuid("proposal_id"),          // If about a proposal
-  case_number: text("case_number"),          // If about a ticket/case
-  
+  proposal_id: uuid("proposal_id"), // If about a proposal
+  case_number: text("case_number"), // If about a ticket/case
+
   // TARGETING
-  audience: text("audience").notNull(),      // "all" | "circle:{id}" | "role:{role}"
-  
+  audience: text("audience").notNull(), // "all" | "circle:{id}" | "role:{role}"
+
   // VISIBILITY
-  sticky: boolean("sticky").default(true),   // Non-dismissible?
-  expires_at: timestamp("expires_at"),       // Auto-remove after N days
-  
+  sticky: boolean("sticky").default(true), // Non-dismissible?
+  expires_at: timestamp("expires_at"), // Auto-remove after N days
+
   // TRACKING
   created_at: timestamp("created_at").notNull().defaultNow(),
   updated_at: timestamp("updated_at").notNull().defaultNow(),
@@ -802,7 +830,7 @@ GET /api/broadcasts?limit=50&offset=0
 // /islands/BroadcastBanner.tsx
 export default function BroadcastBanner() {
   const [broadcasts, setBroadcasts] = useState([]);
-  
+
   useEffect(() => {
     // Subscribe to WebSocket for new broadcasts
     const ws = new WebSocket("ws://localhost/api/broadcasts/stream");
@@ -811,10 +839,10 @@ export default function BroadcastBanner() {
       setBroadcasts([newBroadcast, ...broadcasts]);
     };
   }, []);
-  
+
   return (
     <>
-      {broadcasts.map(broadcast => (
+      {broadcasts.map((broadcast) => (
         <div className="sticky-banner">
           <div className="icon">{getIcon(broadcast.type)}</div>
           <div className="content">
@@ -860,18 +888,19 @@ export default function BroadcastBanner() {
 
 ### Benefits
 
-| Benefit | Impact |
-|---------|--------|
+| Benefit                    | Impact                                                   |
+| -------------------------- | -------------------------------------------------------- |
 | **Organization Alignment** | Everyone knows CEO decisions immediately (no rumor mill) |
-| **Transparency** | Reasoning behind approvals/vetoes visible org-wide |
-| **Accountability** | Forensic record of who said what when |
-| **Urgency** | Sticky banner makes urgent announcements inescapable |
-| **Compliance** | Audit trail for "CEO announced policy change on Jan 8" |
-| **Morale** | Recognition of approvals (positive feedback) |
+| **Transparency**           | Reasoning behind approvals/vetoes visible org-wide       |
+| **Accountability**         | Forensic record of who said what when                    |
+| **Urgency**                | Sticky banner makes urgent announcements inescapable     |
+| **Compliance**             | Audit trail for "CEO announced policy change on Jan 8"   |
+| **Morale**                 | Recognition of approvals (positive feedback)             |
 
 ### Implementation Timeline
 
 **Phase 1 MVP:**
+
 - Broadcasts table + broadcast_reads table
 - POST /api/admin/broadcasts (create)
 - GET /api/broadcasts/active (fetch sticky)
@@ -879,6 +908,7 @@ export default function BroadcastBanner() {
 - Basic template types (approval, veto, announcement)
 
 **Phase 2:**
+
 - Broadcast history page + search
 - Advanced targeting (circles, roles)
 - Email notification option
@@ -888,16 +918,16 @@ export default function BroadcastBanner() {
 
 ## 📊 Complete Enhancement Priority Matrix
 
-| Feature | Verdict | Phase | Effort | Value | Dependency |
-|---------|---------|-------|--------|-------|------------|
-| **Broadcast Announcements** (Herald) ⭐ | YES | 1 | LOW | CRITICAL | None |
-| **What-If Variance Analysis** (Oracle) ⭐ | YES | 1 | MEDIUM | VERY HIGH | None |
-| **Config Layering** ⭐ | YES | 1 | MEDIUM | CRITICAL | None |
-| **Simple Budget Check** | YES | 1 | LOW | HIGH | Config Layering |
-| **Delegated Draft To-Dos** | YES | 2 | LOW | HIGH | Phase 1 |
-| **Advanced What-If Scenarios** | HYBRID | 2 | MEDIUM | HIGH | Oracle Phase 1 |
-| **Simple To-Do Gating** | HYBRID | 2 | MEDIUM | MEDIUM | Phase 1 |
-| **Guardian Verification** | HYBRID | 3 | MEDIUM | MEDIUM | Phase 2 |
+| Feature                                   | Verdict | Phase | Effort | Value     | Dependency      |
+| ----------------------------------------- | ------- | ----- | ------ | --------- | --------------- |
+| **Broadcast Announcements** (Herald) ⭐   | YES     | 1     | LOW    | CRITICAL  | None            |
+| **What-If Variance Analysis** (Oracle) ⭐ | YES     | 1     | MEDIUM | VERY HIGH | None            |
+| **Config Layering** ⭐                    | YES     | 1     | MEDIUM | CRITICAL  | None            |
+| **Simple Budget Check**                   | YES     | 1     | LOW    | HIGH      | Config Layering |
+| **Delegated Draft To-Dos**                | YES     | 2     | LOW    | HIGH      | Phase 1         |
+| **Advanced What-If Scenarios**            | HYBRID  | 2     | MEDIUM | HIGH      | Oracle Phase 1  |
+| **Simple To-Do Gating**                   | HYBRID  | 2     | MEDIUM | MEDIUM    | Phase 1         |
+| **Guardian Verification**                 | HYBRID  | 3     | MEDIUM | MEDIUM    | Phase 2         |
 
 ---
 
@@ -906,16 +936,20 @@ export default function BroadcastBanner() {
 Based on your strategic insight about variance tracking transforming decision-making culture:
 
 ### CRITICAL FOR MVP (Week 1-3)
-- ☑️ **What-If Variance Analysis** (Oracle) — Case templates + Budgeted/Planned/Actual tracking + Tri-Vector dashboard
+
+- ☑️ **What-If Variance Analysis** (Oracle) — Case templates + Budgeted/Planned/Actual tracking +
+  Tri-Vector dashboard
 - ☑️ **Broadcast Announcements** (Herald) — Sticky banner + templates + read tracking
 - ☑️ **Config Layering** — 3-tier inheritance (Global Law → Circle Rules → User Prefs)
 - ☑️ **Simple Budget Check** — Remaining budget warning per proposal
 
 ### SHOULD HAVE (Week 3-4)
+
 - ☑️ **Delegated Draft To-Dos** — Managers pre-draft suggested tasks for CEO approval
 - ☑️ **Broadcast History Page** — Audit trail + compliance + search
 
 ### NICE TO HAVE (Phase 2)
+
 - ☐ **Advanced What-If Scenarios** — Multi-case pooling (50+ proposals → 3-4 scenarios)
 - ☐ **To-Do Gating** — Linear dependencies + Guardian verification
 - ☐ **Email/Slack Integration** — Notification channels
@@ -928,7 +962,10 @@ Based on your strategic insight about variance tracking transforming decision-ma
 **Your Strategic Shift:** Transform What-If from "approval gating" → "decisiveness enablement"
 
 **Key Insight Validated:**
-> "Everything should be planned. Budgeted vs Planned vs Actual. Draw important analysis figures at dashboard. Give managers Know-How (what happened) and Know-Why (why it happened), not simply ask for approval."
+
+> "Everything should be planned. Budgeted vs Planned vs Actual. Draw important analysis figures at
+> dashboard. Give managers Know-How (what happened) and Know-Why (why it happened), not simply ask
+> for approval."
 
 **My Recommendations (UPDATED):**
 
@@ -939,11 +976,12 @@ Based on your strategic insight about variance tracking transforming decision-ma
 5. **Config Layering** — **YES, Phase 1** (Essential architecture)
 
 **Updated Timeline:**
+
 - **Phase 1 MVP (v3.0):** Pool Table + Configs + To-Dos + **Broadcasts** + Budget Check
 - **Phase 2 (v3.1):** Delegated Drafts + What-If + Gating + Broadcast History
 - **Phase 3 (v3.2):** Guardian Verification + Advanced Automation
 
 ---
 
-*Recommendations prepared: January 8, 2026*  
-*Status: Ready for engineering team review*
+_Recommendations prepared: January 8, 2026_\
+_Status: Ready for engineering team review_

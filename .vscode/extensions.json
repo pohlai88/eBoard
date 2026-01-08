@@ -1,0 +1,11 @@
+{
+  "recommendations": [
+    "denoland.vscode-deno",
+    "ms-vscode.powershell",
+    "usernamehw.errorlens",
+    "streetsidesoftware.code-spell-checker",
+    "GitHub.copilot",
+    "editorconfig.editorconfig",
+    "anthropic.claude-code"
+  ]
+}

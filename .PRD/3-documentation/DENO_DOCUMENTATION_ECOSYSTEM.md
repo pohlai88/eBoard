@@ -1,12 +1,15 @@
 # Deno Documentation Tools Ecosystem & Best Practices
+
 ## Comprehensive Guide for PRD Documentation Management
+
 ### Date: January 8, 2026
 
 ---
 
 ## 📚 Overview: What Deno Offers for Documentation
 
-Deno has a **rich built-in toolchain** for managing documentation. Unlike Node.js which requires third-party tools, Deno includes:
+Deno has a **rich built-in toolchain** for managing documentation. Unlike Node.js which requires
+third-party tools, Deno includes:
 
 1. **`deno doc`** — Built-in documentation generator
 2. **`deno fmt`** — Code formatter (ensures consistency)
@@ -25,39 +28,44 @@ Generates **production-ready documentation** from TypeScript/JavaScript code com
 
 ### Key Features
 
-| Feature | Capability |
-|---------|-----------|
-| **HTML Output** | Generate static site (deployable anywhere) |
-| **JSON Output** | Machine-readable format (for custom processing) |
-| **Linting** | Validate documentation completeness |
-| **Symbol Filtering** | Document specific classes/functions |
-| **JSDoc Support** | Full JSDoc/TSDoc tag support |
-| **Search** | Client-side search in HTML output |
-| **Categories** | Organize symbols by category |
+| Feature              | Capability                                      |
+| -------------------- | ----------------------------------------------- |
+| **HTML Output**      | Generate static site (deployable anywhere)      |
+| **JSON Output**      | Machine-readable format (for custom processing) |
+| **Linting**          | Validate documentation completeness             |
+| **Symbol Filtering** | Document specific classes/functions             |
+| **JSDoc Support**    | Full JSDoc/TSDoc tag support                    |
+| **Search**           | Client-side search in HTML output               |
+| **Categories**       | Organize symbols by category                    |
 
 ### Usage Examples
 
 #### Basic: View documentation
+
 ```bash
 deno doc ./path/to/module.ts
 ```
 
 #### Generate HTML documentation
+
 ```bash
 deno doc --html --name="The Apex API" --output=./docs ./src/mod.ts
 ```
 
 #### Lint documentation completeness
+
 ```bash
 deno doc --lint ./src/mod.ts
 ```
 
 #### Output as JSON (for automation)
+
 ```bash
 deno doc --json ./src/mod.ts > ./docs.json
 ```
 
 #### Document specific symbols
+
 ```bash
 deno doc ./src/mod.ts MyClass.method
 ```
@@ -66,15 +74,15 @@ deno doc ./src/mod.ts MyClass.method
 
 You could document your Case schema with `deno doc`:
 
-```typescript
+````typescript
 // src/schemas/case.ts
 
 /**
  * Represents a Case in The Apex system.
- * 
+ *
  * A Case is the primary unit of work—it contains a proposal,
  * execution plan, and budget/variance tracking.
- * 
+ *
  * @example
  * ```typescript
  * const myCase: Case = {
@@ -87,7 +95,7 @@ You could document your Case schema with `deno doc`:
  *   variance_pct: 9.6
  * };
  * ```
- * 
+ *
  * @category Core Schemas
  * @since 3.0.0
  */
@@ -100,9 +108,10 @@ export interface Case {
   actual_total?: number;
   variance_pct?: number;
 }
-```
+````
 
 Then run:
+
 ```bash
 deno doc --html --name="The Apex API Reference" ./src/schemas/case.ts
 ```
@@ -133,13 +142,13 @@ Deno fully supports rich documentation through JSDoc/TSDoc tags.
 
 ### Complete Example for Your System
 
-```typescript
+````typescript
 /**
  * Creates a new Case with What-If variance tracking.
- * 
+ *
  * The Oracle system requires budgeted and planned forecasts
  * at creation time to enable variance analysis over time.
- * 
+ *
  * @param input - The case creation input with budgets
  * @param input.title - Case title (e.g., "Senior Engineer Hire")
  * @param input.budgeted_total - Initial manager estimate
@@ -162,11 +171,11 @@ Deno fully supports rich documentation through JSDoc/TSDoc tags.
  * @since 3.0.0
  */
 export async function createCaseWithVariance(
-  input: CreateCaseInput
+  input: CreateCaseInput,
 ): Promise<Case> {
   // Implementation
 }
-```
+````
 
 ---
 
@@ -260,17 +269,18 @@ import { serveFile } from "jsr:@std/http/file_server";
 
 serve(async (req) => {
   const url = new URL(req.url);
-  
+
   // Serve .md files from .PRD/
-  if (url.pathname.endsWith('.md') || url.pathname === '/') {
+  if (url.pathname.endsWith(".md") || url.pathname === "/") {
     return await serveFile(req, `./.PRD/${url.pathname}`);
   }
-  
+
   return new Response("Not Found", { status: 404 });
 }, { port: 8000 });
 ```
 
 **Advantages:**
+
 - ✅ Zero build step
 - ✅ Markdown stays readable
 - ✅ Version control friendly
@@ -320,7 +330,7 @@ import { serveDir } from "jsr:@std/http/file_server";
 
 serve((req) => {
   const url = new URL(req.url);
-  
+
   // Serve .PRD directory
   return serveDir(req, {
     fsRoot: "./.PRD",
@@ -330,6 +340,7 @@ serve((req) => {
 ```
 
 Run:
+
 ```bash
 deno run --allow-read --allow-net serve-prd.ts
 # Open http://localhost:3000/PRD_eBoard_v3.md
@@ -371,6 +382,7 @@ console.log("✅ Documentation built to ./docs/");
 ```
 
 Run:
+
 ```bash
 deno run --allow-read --allow-write --allow-run build-docs.ts
 ```
@@ -409,6 +421,7 @@ Validates that public APIs are documented.
 ```
 
 Then run:
+
 ```bash
 deno task docs:serve      # Serve PRD locally
 deno task docs:generate   # Generate HTML docs
@@ -436,19 +449,24 @@ deno task docs:validate   # Full validation
 # The Apex v3.0.0 Documentation Hub
 
 ## Core Specification
+
 - [PRD_eBoard_v3.md](./PRD_eBoard_v3.md) — Main specification (9 weapons)
 
 ## Strategic Enhancements
+
 - [PRD_v3_STRATEGIC_ENHANCEMENTS.md](./PRD_v3_STRATEGIC_ENHANCEMENTS.md) — Feature verdicts
 
 ## Implementation Guides
+
 - [ORACLE_WHATIF_ENHANCEMENT.md](./ORACLE_WHATIF_ENHANCEMENT.md) — What-If system
 - [APEX_v3_COMPLETE_ARCHITECTURE.md](./APEX_v3_COMPLETE_ARCHITECTURE.md) — Integration
 
 ## API Documentation
+
 - [Deno API Docs](./docs/api/) — Generated from code
 
 ## Navigation
+
 - [v3_DOCUMENTATION_INDEX.md](./v3_DOCUMENTATION_INDEX.md) — Reading guide by role
 ```
 
@@ -466,28 +484,28 @@ on:
   push:
     branches: [main]
     paths:
-      - '.PRD/**'
-      - 'src/**'
+      - ".PRD/**"
+      - "src/**"
 
 jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      
+
       - uses: denoland/setup-deno@v1
         with:
           deno-version: vx.x.x
-      
+
       - name: Lint Markdown
         run: deno fmt --check ./.PRD/
-      
+
       - name: Lint Code Docs
         run: deno doc --lint ./src/
-      
+
       - name: Generate HTML Docs
         run: deno doc --html --output=./docs ./src/mod.ts
-      
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
@@ -499,22 +517,23 @@ jobs:
 
 ## 📈 9. Comparison: Documentation Tools
 
-| Tool | Built-In | Format | Best For |
-|------|----------|--------|----------|
-| **deno doc** | ✅ Yes | HTML/JSON | API documentation from code |
-| **deno fmt** | ✅ Yes | Markdown | Consistent formatting |
-| **deno lint** | ✅ Yes | Terminal | Validation |
-| **std/fs** | ✅ Yes | File ops | File management |
-| **std/yaml** | ✅ Yes | YAML | Configuration |
-| **Cliffy** | ❌ NPM | CLI | Interactive CLI docs |
-| **Markdown Server** | ❌ Custom | HTML | Serve Markdown directly |
-| **Lume** | ❌ NPM | Static site | Static site generation |
+| Tool                | Built-In  | Format      | Best For                    |
+| ------------------- | --------- | ----------- | --------------------------- |
+| **deno doc**        | ✅ Yes    | HTML/JSON   | API documentation from code |
+| **deno fmt**        | ✅ Yes    | Markdown    | Consistent formatting       |
+| **deno lint**       | ✅ Yes    | Terminal    | Validation                  |
+| **std/fs**          | ✅ Yes    | File ops    | File management             |
+| **std/yaml**        | ✅ Yes    | YAML        | Configuration               |
+| **Cliffy**          | ❌ NPM    | CLI         | Interactive CLI docs        |
+| **Markdown Server** | ❌ Custom | HTML        | Serve Markdown directly     |
+| **Lume**            | ❌ NPM    | Static site | Static site generation      |
 
 ### Recommendation for Your Project
 
 **Use:** `deno doc` (for code API) + Markdown files (for PRD) + deno tasks (for automation)
 
 **Why:**
+
 - ✅ No external dependencies
 - ✅ Built into Deno
 - ✅ Version control friendly
@@ -563,11 +582,13 @@ jobs:
 ## 📚 Reference: Deno Documentation Ecosystem
 
 **Official Resources:**
+
 - Deno Docs: https://docs.deno.com/
 - JSDoc Standard: https://jsdoc.app/
 - TSDoc Spec: https://tsdoc.org/
 
 **Tools Mentioned:**
+
 - deno doc: Built-in
 - Cliffy: jsr:@cliffy/table
 - Lume: Static site generator (if you want advanced features)
@@ -606,4 +627,3 @@ For **your PRD documentation system**, I recommend:
 5. **Serve with a simple Deno server** — No build step needed
 
 This gives you a **zero-dependency, production-ready documentation system** that's native to Deno.
-

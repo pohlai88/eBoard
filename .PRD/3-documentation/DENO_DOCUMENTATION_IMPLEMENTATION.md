@@ -1,5 +1,7 @@
 # Deno Documentation Tools: Practical Implementation for The Apex
+
 ## Ready-to-Use Configuration & Setup Guide
+
 ### Date: January 8, 2026
 
 ---
@@ -42,11 +44,11 @@ deno task docs:validate   # Validate completeness
 
 **Purpose:** Serve your .PRD markdown files locally during development
 
-```typescript
+````typescript
 // tools/serve-prd.ts
 /**
  * Serves The Apex PRD documentation locally
- * 
+ *
  * @example
  * ```bash
  * deno run --allow-read --allow-net tools/serve-prd.ts
@@ -62,21 +64,21 @@ const PORT = 3000;
 
 const handler = async (req: Request): Promise<Response> => {
   const url = new URL(req.url);
-  
+
   // Root path shows index
   if (url.pathname === "/" || url.pathname === "") {
     return await serveFile(req, "./.PRD/v3_DOCUMENTATION_INDEX.md");
   }
-  
+
   // Try to serve markdown file
   const filePath = `./.PRD${url.pathname}`;
-  
+
   try {
     // If it's a markdown file, serve it
     if (extname(filePath) === ".md") {
       return await serveFile(req, filePath);
     }
-    
+
     // Otherwise list directory
     return await serveDir(req, {
       fsRoot: "./.PRD",
@@ -94,7 +96,7 @@ console.log(`✅ PRD Documentation Server running`);
 console.log(`📖 Open http://localhost:${PORT} to view`);
 console.log(`📂 Serving from: ./.PRD/`);
 console.log(`⏹️  Press Ctrl+C to stop`);
-```
+````
 
 ---
 
@@ -102,11 +104,11 @@ console.log(`⏹️  Press Ctrl+C to stop`);
 
 **Purpose:** Generate production documentation (HTML, JSON, validation)
 
-```typescript
+````typescript
 // tools/build-docs.ts
 /**
  * Builds production documentation from code and markdown
- * 
+ *
  * @example
  * ```bash
  * deno run --allow-read --allow-write --allow-run tools/build-docs.ts
@@ -121,19 +123,19 @@ async function run(
   description: string,
 ): Promise<void> {
   console.log(`🔨 ${description}...`);
-  
+
   const process = new Deno.Command(cmd[0], {
     args: cmd.slice(1),
     stdout: "inherit",
     stderr: "inherit",
   }).spawn();
-  
+
   const status = await process.status;
-  
+
   if (!status.success) {
     throw new Error(`Failed: ${description}`);
   }
-  
+
   console.log(`✅ ${description}`);
 }
 
@@ -150,13 +152,13 @@ async function copyFile(
 
 async function main() {
   console.log("🚀 Building Apex Documentation...\n");
-  
+
   // 1. Ensure directories exist
   console.log("📁 Creating directories...");
   await ensureDir("./docs");
   await ensureDir("./docs/api");
   await ensureDir("./docs/prd");
-  
+
   // 2. Copy PRD markdown files
   console.log("\n📋 Copying PRD documentation...");
   const prdFiles = [
@@ -168,7 +170,7 @@ async function main() {
     "v3_DOCUMENTATION_INDEX.md",
     "DENO_DOCUMENTATION_ECOSYSTEM.md",
   ];
-  
+
   for (const file of prdFiles) {
     await copyFile(
       `./.PRD/${file}`,
@@ -176,10 +178,10 @@ async function main() {
       `Copy ${file}`,
     );
   }
-  
+
   // 3. Generate API documentation from code
   console.log("\n🔧 Generating API documentation...");
-  
+
   // Only run if src directory exists
   try {
     await Deno.stat("./src");
@@ -197,7 +199,7 @@ async function main() {
   } catch {
     console.log("⚠️  src/mod.ts not found, skipping API docs");
   }
-  
+
   // 4. Validate documentation
   console.log("\n✔️  Validating documentation...");
   try {
@@ -209,7 +211,7 @@ async function main() {
     console.log("⚠️  Some Markdown files are not formatted");
     console.log("   Run: deno task docs:fmt");
   }
-  
+
   // 5. Create index.html
   console.log("\n📑 Creating documentation index...");
   const indexHtml = `<!DOCTYPE html>
@@ -326,9 +328,9 @@ async function main() {
   </footer>
 </body>
 </html>`;
-  
+
   await Deno.writeTextFile("./docs/index.html", indexHtml);
-  
+
   console.log("\n✨ Documentation build complete!");
   console.log("📂 Output directory: ./docs/");
   console.log("🌐 View at: ./docs/index.html");
@@ -338,7 +340,7 @@ main().catch((err) => {
   console.error("❌ Build failed:", err.message);
   Deno.exit(1);
 });
-```
+````
 
 ---
 
@@ -346,11 +348,11 @@ main().catch((err) => {
 
 **Purpose:** Validate that all documentation is complete and correct
 
-```typescript
+````typescript
 // tools/validate-docs.ts
 /**
  * Validates The Apex documentation structure and completeness
- * 
+ *
  * @example
  * ```bash
  * deno run --allow-read tools/validate-docs.ts
@@ -380,10 +382,10 @@ async function validateFile(
     });
     return;
   }
-  
+
   const content = await Deno.readTextFile(path);
   const lines = content.split("\n").length;
-  
+
   if (lines < minLines) {
     results.push({
       file: path,
@@ -392,7 +394,7 @@ async function validateFile(
     });
     return;
   }
-  
+
   // Check for required headers
   const hasHeaders = content.includes("#");
   if (!hasHeaders) {
@@ -403,7 +405,7 @@ async function validateFile(
     });
     return;
   }
-  
+
   results.push({
     file: path,
     status: "ok",
@@ -413,7 +415,7 @@ async function validateFile(
 
 async function main() {
   console.log("🔍 Validating Apex Documentation...\n");
-  
+
   // Check critical PRD files
   const criticalFiles = [
     "./.PRD/PRD_eBoard_v3.md",
@@ -422,43 +424,43 @@ async function main() {
     "./.PRD/APEX_v3_COMPLETE_ARCHITECTURE.md",
     "./.PRD/v3_DOCUMENTATION_INDEX.md",
   ];
-  
+
   console.log("📋 Checking critical files...");
   for (const file of criticalFiles) {
     await validateFile(file, 50);
   }
-  
+
   // Check all markdown files
   console.log("\n📄 Checking all markdown files...");
   const allMarkdownFiles = glob("./.PRD/*.md");
   for await (const file of allMarkdownFiles) {
     await validateFile(file);
   }
-  
+
   // Summary
   console.log("\n" + "=".repeat(60));
   const errors = results.filter((r) => r.status === "error");
   const warnings = results.filter((r) => r.status === "warning");
   const ok = results.filter((r) => r.status === "ok");
-  
+
   console.log(`\n✅ Valid: ${ok.length}`);
   console.log(`⚠️  Warnings: ${warnings.length}`);
   console.log(`❌ Errors: ${errors.length}`);
-  
+
   if (errors.length > 0) {
     console.log("\n🚨 Errors:");
     for (const result of errors) {
       console.log(`  ❌ ${result.file}: ${result.message}`);
     }
   }
-  
+
   if (warnings.length > 0) {
     console.log("\n⚠️  Warnings:");
     for (const result of warnings) {
       console.log(`  ⚠️  ${result.file}: ${result.message}`);
     }
   }
-  
+
   const hasErrors = errors.length > 0;
   Deno.exit(hasErrors ? 1 : 0);
 }
@@ -467,7 +469,7 @@ main().catch((err) => {
   console.error("Error:", err);
   Deno.exit(1);
 });
-```
+````
 
 ---
 
@@ -504,6 +506,7 @@ Add this to your `deno.json`:
 ## 🎯 Usage: Complete Workflow
 
 ### Local Development
+
 ```bash
 # Serve PRD locally (live preview)
 deno task docs:serve
@@ -511,6 +514,7 @@ deno task docs:serve
 ```
 
 ### Before Committing
+
 ```bash
 # Format all markdown
 deno task docs:fmt
@@ -520,6 +524,7 @@ deno task docs:validate
 ```
 
 ### Building for Production
+
 ```bash
 # Generate complete documentation
 deno task docs:generate
@@ -527,6 +532,7 @@ deno task docs:generate
 ```
 
 ### Validating Code Docs
+
 ```bash
 # Check code documentation completeness
 deno task docs:check
@@ -538,16 +544,15 @@ deno task docs:check
 
 ### Instant Features
 
-✅ **Local Server** — Serve PRD markdown locally on http://localhost:3000
-✅ **Formatting** — Consistent Markdown formatting
-✅ **Validation** — Automated documentation checks
-✅ **HTML Generation** — Build static site with docs
-✅ **API Docs** — Auto-generated from TypeScript code
-✅ **One-Command Deploy** — Run one task, get production docs
+✅ **Local Server** — Serve PRD markdown locally on http://localhost:3000 ✅ **Formatting** —
+Consistent Markdown formatting ✅ **Validation** — Automated documentation checks ✅ **HTML
+Generation** — Build static site with docs ✅ **API Docs** — Auto-generated from TypeScript code ✅
+**One-Command Deploy** — Run one task, get production docs
 
 ### No Additional Dependencies
 
 All tools are:
+
 - Built into Deno
 - Or from standard library (jsr:@std)
 - Or from trusted ecosystem (jsr:@cliffy)
@@ -587,9 +592,9 @@ Once built, your `./docs/` directory contains static HTML that you can deploy to
 ---
 
 This gives you a **production-ready documentation system** that's:
+
 - ✅ Zero dependencies (Deno native)
 - ✅ Easy to maintain (Markdown files)
 - ✅ Automated (deno tasks)
 - ✅ Version-controlled (Git friendly)
 - ✅ Deployable (Static HTML)
-

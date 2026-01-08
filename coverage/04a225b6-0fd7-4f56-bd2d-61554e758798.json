@@ -1,0 +1,17 @@
+{
+  "scriptId": "362",
+  "url": "file:///C:/AI-BOS/eBoard/shared/validation.ts",
+  "functions": [
+    {
+      "functionName": "",
+      "ranges": [
+        {
+          "startOffset": 0,
+          "endOffset": 1120,
+          "count": 1
+        }
+      ],
+      "isBlockCoverage": true
+    }
+  ]
+}

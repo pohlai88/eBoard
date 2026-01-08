@@ -1,0 +1,220 @@
+/* Tailwind CSS v4 - CSS-First Configuration */
+/* Axis Visual Canon: Material-Based Color System */
+@import "tailwindcss";
+
+/* @theme is a Tailwind CSS v4 directive - CSS linter warnings are expected */
+/* stylelint-disable-next-line unknown-at-rules */
+@theme {
+  /* Axis Visual Canon: Material-Based Colors (Not UI States) */
+  /* Derived from: Axis_visual_canon_official_design_system.md */
+  
+  /* Material Tokens - Core Palette */
+  --color-void: #0E0E0F; /* Absence / Authority */
+  --color-obsidian: #161618; /* Surface / Weight */
+  --color-parchment: #E9E3D2; /* Knowledge */
+  --color-ash: #CFC8B8; /* Commentary */
+  --color-gold: #B8A56A; /* Ratified Authority */
+  --color-ember: #8C6A2F; /* Consequence */
+  
+  /* Material States - Light Variations */
+  --color-obsidian-light: #1E1E20;
+  --color-parchment-light: #F5F0E6;
+  --color-gold-light: #D4C18A;
+  --color-gold-hover: #A68F4F;
+  
+  /* Material States - Dark Variations */
+  --color-void-dark: #050505;
+  --color-obsidian-dark: #0A0A0B;
+  --color-parchment-dark: #D9D3C2;
+  --color-ash-dark: #B8B0A0;
+  --color-gold-dark: #9D8A5A;
+  
+  /* Semantic Mappings (Material-Based) */
+  --color-primary: var(--color-gold); /* Ratified Authority */
+  --color-primary-hover: var(--color-gold-hover);
+  --color-on-primary: var(--color-void);
+  
+  --color-secondary: var(--color-ash); /* Commentary */
+  --color-secondary-hover: var(--color-ash-dark);
+  --color-on-secondary: var(--color-void);
+  
+  --color-success: var(--color-gold); /* Authority */
+  --color-success-hover: var(--color-gold-hover);
+  --color-error: var(--color-ember); /* Consequence */
+  --color-error-hover: #6B4F1F;
+  --color-warning: var(--color-gold-light);
+  --color-warning-hover: var(--color-gold);
+  --color-info: var(--color-ash);
+  --color-info-hover: var(--color-ash-dark);
+
+  /* Surface Colors (Material-Based) */
+  --color-surface: var(--color-parchment); /* Knowledge Surface */
+  --color-surface-variant: var(--color-parchment-light);
+  --color-on-surface: var(--color-void); /* Authority Text */
+  --color-on-surface-variant: var(--color-ash); /* Commentary Text */
+
+  /* Border Colors (Material-Based) */
+  --color-border: var(--color-ash); /* Commentary Border */
+  --color-border-focus: var(--color-gold); /* Authority Focus */
+  --color-border-error: var(--color-ember); /* Consequence */
+  --color-charcoal: #2A2A2C; /* Dim border for cards */
+  --color-border-charcoal: var(--color-charcoal); /* Alias for card borders */
+
+  /* Dark Mode - Material Inversion */
+  --color-primary-dark: var(--color-gold);
+  --color-primary-hover-dark: var(--color-gold-light);
+  --color-on-primary-dark: var(--color-void);
+
+  --color-surface-dark: var(--color-obsidian); /* Weight Surface */
+  --color-surface-variant-dark: var(--color-obsidian-light);
+  --color-on-surface-dark: var(--color-parchment); /* Knowledge Text */
+  --color-on-surface-variant-dark: var(--color-ash);
+
+  --color-border-dark: var(--color-charcoal);
+  --color-border-focus-dark: var(--color-gold);
+
+  /* Typography Doctrine - Axis Visual Canon */
+  /* Editorial Authority: Serif for headings (written, not rendered) */
+  --font-family-serif: "Cormorant Garamond", "Playfair Display", "Georgia", serif;
+  /* Forensic Data: Monospace for numeric/immutable data */
+  --font-family-mono: "JetBrains Mono", "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", Consolas, monospace;
+  /* System fallback for body text */
+  --font-family-sans:
+    system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  --font-size-xs: 0.75rem; /* 12px */
+  --font-size-sm: 0.875rem; /* 14px */
+  --font-size-base: 1rem; /* 16px */
+  --font-size-lg: 1.125rem; /* 18px */
+  --font-size-xl: 1.25rem; /* 20px */
+  --font-size-2xl: 1.5rem; /* 24px */
+  --font-size-3xl: 1.875rem; /* 30px */
+  --font-size-4xl: 2.25rem; /* 36px */
+
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+
+  /* Spacing Scale */
+  --spacing-0: 0;
+  --spacing-1: 0.25rem; /* 4px */
+  --spacing-2: 0.5rem; /* 8px */
+  --spacing-3: 0.75rem; /* 12px */
+  --spacing-4: 1rem; /* 16px */
+  --spacing-5: 1.25rem; /* 20px */
+  --spacing-6: 1.5rem; /* 24px */
+  --spacing-8: 2rem; /* 32px */
+  --spacing-10: 2.5rem; /* 40px */
+  --spacing-12: 3rem; /* 48px */
+  --spacing-16: 4rem; /* 64px */
+
+  /* Border Radius */
+  --radius-none: 0;
+  --radius-sm: 0.125rem; /* 2px */
+  --radius-md: 0.375rem; /* 6px */
+  --radius-lg: 0.5rem; /* 8px */
+  --radius-xl: 0.75rem; /* 12px */
+  --radius-2xl: 1rem; /* 16px */
+  --radius-full: 9999px;
+
+  /* Shadows - Material Depth (Subtle, Not Plastic) */
+  --shadow-sm: 0 1px 2px 0 rgb(14 14 15 / 0.08);
+  --shadow-md: 0 4px 6px -1px rgb(14 14 15 / 0.12), 0 2px 4px -2px rgb(14 14 15 / 0.08);
+  --shadow-lg: 0 10px 15px -3px rgb(14 14 15 / 0.15), 0 4px 6px -4px rgb(14 14 15 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(14 14 15 / 0.18), 0 8px 10px -6px rgb(14 14 15 / 0.12);
+  
+  /* Motion Physics - Gravitational Time (Axis Visual Canon) */
+  /* No bounce, snap, or elastic easing - only gravitational decay */
+  --transition-hover: 1200ms cubic-bezier(0.4, 0, 0.2, 1); /* 700-1200ms hover */
+  --transition-commitment: 1618ms cubic-bezier(0.4, 0, 0.2, 1); /* Golden Ratio: 1.618s */
+  --transition-illumination: 1000ms cubic-bezier(0.4, 0, 0.2, 1); /* Light descends */
+  
+  /* Tracking - Editorial Authority */
+  --tracking-tight: -0.02em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.05em;
+  --tracking-decree: 0.1em; /* For buttons/ratification */
+}
+
+/* Class-based Dark Mode - Material Inversion */
+.dark {
+  --color-primary: var(--color-primary-dark);
+  --color-primary-hover: var(--color-primary-hover-dark);
+  --color-on-primary: var(--color-on-primary-dark);
+
+  --color-surface: var(--color-surface-dark);
+  --color-surface-variant: var(--color-surface-variant-dark);
+  --color-on-surface: var(--color-on-surface-dark);
+  --color-on-surface-variant: var(--color-on-surface-variant-dark);
+
+  --color-border: var(--color-border-dark);
+  --color-border-focus: var(--color-border-focus-dark);
+}
+
+/* Axis Visual Canon: Material Truth - Anti-Plastic Surfaces */
+/* Surfaces behave like material: Wood (grain), Stone (weight), Parchment (absorption) */
+
+/* Cards: Illuminate Knowledge */
+/* Dim at rest, light descends on hover, borders warm before content */
+.card-illumination {
+  background-color: var(--color-obsidian);
+  border: 1px solid var(--color-border-charcoal);
+  transition: border-color var(--transition-illumination), 
+              background-color var(--transition-illumination);
+}
+
+.card-illumination:hover {
+  border-color: var(--color-gold);
+  background-color: var(--color-obsidian-light);
+}
+
+/* Buttons: Ratify Decisions */
+/* Quiet visibility at rest, resistance before activation, time-based confirmation */
+.button-ratify {
+  border: 1px solid var(--color-gold);
+  background-color: transparent;
+  color: var(--color-gold);
+  padding: 1.25rem 4rem;
+  font-family: var(--font-family-mono);
+  letter-spacing: var(--tracking-decree);
+  transition: background-color var(--transition-commitment),
+              color var(--transition-commitment);
+}
+
+.button-ratify:hover {
+  background-color: var(--color-gold);
+  color: var(--color-void);
+}
+
+/* Typography: Editorial Authority */
+.heading-editorial {
+  font-family: var(--font-family-serif);
+  font-weight: 700;
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-void);
+}
+
+.data-forensic {
+  font-family: var(--font-family-mono);
+  color: var(--color-void);
+  letter-spacing: var(--tracking-normal);
+}
+
+/* Anti-Pure White Rule: Spoken White */
+/* Pure white (#FFFFFF) is FORBIDDEN - use living neutral spectrum */
+.text-parchment {
+  color: var(--color-parchment);
+}
+
+.text-ash {
+  color: var(--color-ash);
+}
+
+.text-gold {
+  color: var(--color-gold);
+}

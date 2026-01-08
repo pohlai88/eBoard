@@ -1,21 +1,34 @@
 {
-  "workspace": ["./admin-api", "./main-app", "./shared"],
+  "workspace": [
+    "./admin-api",
+    "./main-app",
+    "./shared"
+  ],
+  "nodeModulesDir": "manual",
   "tasks": {
     "dev:admin": "deno run --allow-net --allow-env --allow-read --allow-write --watch admin-api/main.ts",
-    "dev:app": "deno run -A --watch main-app/main.ts",
+    "dev:app": "cd main-app && deno run -A --watch=static/,routes/ dev.ts",
     "dev:all": "echo 'Run in separate terminals: deno task dev:admin && deno task dev:app'",
+    "check": "deno fmt && deno lint && deno test",
+    "check:ci": "deno fmt --check && deno lint && deno test --coverage=coverage",
+    "test:coverage": "deno test --coverage=coverage",
+    "cache": "deno cache -r admin-api/main.ts main-app/main.ts",
     "analyze:prd": "deno run --allow-read --allow-write tools/analyze-prd.ts",
     "docs:serve": "deno run --allow-net --allow-read --watch tools/serve-prd.ts",
     "docs:validate": "deno run --allow-read tools/validate-docs.ts",
     "docs:fmt": "deno fmt ./.PRD/",
     "docs:cleanup": "deno run --allow-read --allow-write tools/cleanup-docs.ts",
+    "validate:lsp": "deno run --allow-read --allow-write --allow-env --allow-run tools/validate-lsp.ts",
+    "health": "deno run --allow-read --allow-write --allow-env --allow-run tools/workspace-health.ts",
     "fmt": "deno fmt",
     "lint": "deno lint",
     "test": "deno test"
   },
   "imports": {
+    "@std/assert": "jsr:@std/assert@^1.0.0",
     "@std/fs": "jsr:@std/fs@^1.0.0",
     "@std/http": "jsr:@std/http@^1.0.0",
+    "@std/path": "jsr:@std/path@^1.1.4",
     "marked": "npm:marked@^12.0.0",
     "marked-highlight": "npm:marked-highlight@^2.1.0",
     "highlight.js": "npm:highlight.js@^11.9.0",

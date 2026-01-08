@@ -1,22 +1,23 @@
 # Fresh Framework Compatibility Guide
+
 ## Tailwind v4, ShadCN, Preact vs React - The Complete Truth
 
-**Generated:** ${new Date().toISOString()}  
+**Generated:** ${new Date().toISOString()}\
 **Last Updated:** January 2026
 
 ---
 
 ## TL;DR - What Works with Fresh?
 
-| Technology | Compatible? | Notes |
-|------------|------------|-------|
-| **Tailwind v4** | ✅ YES | Via Twind v1 (Tailwind-in-JS) |
-| **Preact** | ✅ YES | **Built-in!** Fresh uses Preact by default |
-| **React** | ⚠️ Possible | Can use React, but defeats Fresh's purpose |
-| **ShadCN** | ❌ Not Direct | Built for React/Next.js, need Preact alternatives |
-| **Twind** | ✅ YES | **Recommended!** Tailwind syntax, zero build |
-| **UnoCSS** | ✅ YES | Alternative to Tailwind |
-| **Preact Signals** | ✅ YES | Built-in state management |
+| Technology         | Compatible?   | Notes                                             |
+| ------------------ | ------------- | ------------------------------------------------- |
+| **Tailwind v4**    | ✅ YES        | Via Twind v1 (Tailwind-in-JS)                     |
+| **Preact**         | ✅ YES        | **Built-in!** Fresh uses Preact by default        |
+| **React**          | ⚠️ Possible   | Can use React, but defeats Fresh's purpose        |
+| **ShadCN**         | ❌ Not Direct | Built for React/Next.js, need Preact alternatives |
+| **Twind**          | ✅ YES        | **Recommended!** Tailwind syntax, zero build      |
+| **UnoCSS**         | ✅ YES        | Alternative to Tailwind                           |
+| **Preact Signals** | ✅ YES        | Built-in state management                         |
 
 ---
 
@@ -25,6 +26,7 @@
 ### What is Fresh?
 
 Fresh is Deno's **full-stack web framework** that:
+
 - Uses **Preact** (3KB React alternative)
 - Ships **zero JavaScript by default** (Islands architecture)
 - Has **Twind built-in** (Tailwind-in-JS)
@@ -46,17 +48,17 @@ Preact: ~3KB (minified)
 
 ```typescript
 // ✅ Most React code works in Preact
-import { useState, useEffect } from "preact/hooks";
+import { useEffect, useState } from "preact/hooks";
 import { signal } from "@preact/signals";
 
 // React code (works in Preact):
 function Counter() {
   const [count, setCount] = useState(0);
-  
+
   useEffect(() => {
     console.log("Count changed:", count);
   }, [count]);
-  
+
   return (
     <button onClick={() => setCount(count + 1)}>
       Count: {count}
@@ -69,7 +71,7 @@ import { signal } from "@preact/signals";
 
 function Counter() {
   const count = signal(0);
-  
+
   // Signals auto-track dependencies, no useEffect needed!
   return (
     <button onClick={() => count.value++}>
@@ -115,7 +117,7 @@ export default function HomePage() {
           Login
         </button>
       </nav>
-      
+
       <main class="container mx-auto p-8">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div class="p-6 bg-white rounded-xl shadow-lg hover:shadow-2xl transition">
@@ -133,16 +135,16 @@ export default function HomePage() {
 
 ### Twind vs Tailwind v4 Comparison
 
-| Feature | Tailwind v4 | Twind v1 (Fresh) |
-|---------|-------------|------------------|
-| **Syntax** | Tailwind classes | Tailwind classes |
-| **Build Step** | ❌ Required | ✅ None |
-| **Bundle Size** | ~50KB (after purge) | ~10KB (on-demand) |
-| **Setup** | Complex (Node.js) | ✅ Pre-configured |
-| **JIT Mode** | Yes | ✅ Yes (built-in) |
-| **Custom Config** | tailwind.config.js | twind.config.ts |
-| **Deno Compatible** | ❌ No | ✅ Yes |
-| **Production Ready** | ✅ Yes | ✅ Yes |
+| Feature              | Tailwind v4         | Twind v1 (Fresh)  |
+| -------------------- | ------------------- | ----------------- |
+| **Syntax**           | Tailwind classes    | Tailwind classes  |
+| **Build Step**       | ❌ Required         | ✅ None           |
+| **Bundle Size**      | ~50KB (after purge) | ~10KB (on-demand) |
+| **Setup**            | Complex (Node.js)   | ✅ Pre-configured |
+| **JIT Mode**         | Yes                 | ✅ Yes (built-in) |
+| **Custom Config**    | tailwind.config.js  | twind.config.ts   |
+| **Deno Compatible**  | ❌ No               | ✅ Yes            |
+| **Production Ready** | ✅ Yes              | ✅ Yes            |
 
 ### Custom Twind Configuration
 
@@ -187,6 +189,7 @@ export default defineConfig({
 ### What is ShadCN?
 
 ShadCN is a **component collection** built for:
+
 - React (not Preact)
 - Next.js
 - Tailwind CSS
@@ -196,24 +199,24 @@ ShadCN is a **component collection** built for:
 
 ```typescript
 // ShadCN components use React-specific APIs:
-import * as React from "react"           // ❌ Fresh uses Preact
-import { Slot } from "@radix-ui/react-slot"  // ❌ Radix UI is React-only
-import { cva } from "class-variance-authority" // ✅ This works
-import { cn } from "@/lib/utils"           // ✅ This works
+import * as React from "react"; // ❌ Fresh uses Preact
+import { Slot } from "@radix-ui/react-slot"; // ❌ Radix UI is React-only
+import { cva } from "class-variance-authority"; // ✅ This works
+import { cn } from "@/lib/utils"; // ✅ This works
 
 // ShadCN Button.tsx (React):
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, size, asChild = false, ...props }, ref) => {
-    const Comp = asChild ? Slot : "button"
+    const Comp = asChild ? Slot : "button";
     return (
       <Comp
         className={cn(buttonVariants({ variant, size, className }))}
         ref={ref}
         {...props}
       />
-    )
-  }
-)
+    );
+  },
+);
 ```
 
 ### ✅ Solution: Build Preact Equivalents
@@ -280,14 +283,14 @@ import { Button } from "../components/ui/Button.tsx";
 
 ### Preact Component Library Alternatives to ShadCN
 
-| Need | ShadCN (React) | Preact Alternative |
-|------|----------------|-------------------|
-| **UI Components** | ShadCN/UI | Build with CVA (shown above) |
-| **Headless UI** | Radix UI | **Headless UI for Preact** (WIP) or build custom |
-| **Icons** | Lucide React | **Preact Icons** or SVG components |
-| **Forms** | React Hook Form | **Preact Signals** + custom validation |
-| **Styling** | Tailwind v3 | **Twind** (built into Fresh) |
-| **Animations** | Framer Motion | **CSS transitions** or **Motion One** |
+| Need              | ShadCN (React)  | Preact Alternative                               |
+| ----------------- | --------------- | ------------------------------------------------ |
+| **UI Components** | ShadCN/UI       | Build with CVA (shown above)                     |
+| **Headless UI**   | Radix UI        | **Headless UI for Preact** (WIP) or build custom |
+| **Icons**         | Lucide React    | **Preact Icons** or SVG components               |
+| **Forms**         | React Hook Form | **Preact Signals** + custom validation           |
+| **Styling**       | Tailwind v3     | **Twind** (built into Fresh)                     |
+| **Animations**    | Framer Motion   | **CSS transitions** or **Motion One**            |
 
 ---
 
@@ -318,7 +321,7 @@ echo '{
 
 ```typescript
 // lib/utils.ts
-import { clsx, type ClassValue } from "clsx";
+import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 
 // ✅ Same utility as ShadCN uses
@@ -348,28 +351,23 @@ const cardVariants = cva(
     defaultVariants: {
       variant: "default",
     },
-  }
+  },
 );
 
 export interface CardProps
-  extends JSX.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof cardVariants> {
+  extends JSX.HTMLAttributes<HTMLDivElement>, VariantProps<typeof cardVariants> {
   children?: ComponentChildren;
 }
 
 export function Card({ class: className, variant, ...props }: CardProps) {
-  return (
-    <div class={cn(cardVariants({ variant }), className)} {...props} />
-  );
+  return <div class={cn(cardVariants({ variant }), className)} {...props} />;
 }
 
 export function CardHeader({
   class: className,
   ...props
 }: JSX.HTMLAttributes<HTMLDivElement>) {
-  return (
-    <div class={cn("flex flex-col space-y-1.5 p-6", className)} {...props} />
-  );
+  return <div class={cn("flex flex-col space-y-1.5 p-6", className)} {...props} />;
 }
 
 export function CardTitle({
@@ -392,7 +390,7 @@ export function CardContent({
 }
 
 // ✅ Usage - Identical to ShadCN!
-import { Card, CardHeader, CardTitle, CardContent } from "../components/ui/Card.tsx";
+import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/Card.tsx";
 import { Button } from "../components/ui/Button.tsx";
 
 <Card>
@@ -403,14 +401,14 @@ import { Button } from "../components/ui/Button.tsx";
     <p>This is a proposal card with ShadCN-style API!</p>
     <Button variant="default" class="mt-4">Approve</Button>
   </CardContent>
-</Card>
+</Card>;
 ```
 
 ### Step 4: Complete Dashboard Example
 
 ```typescript
 // routes/dashboard.tsx
-import { Card, CardHeader, CardTitle, CardContent } from "../components/ui/Card.tsx";
+import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/Card.tsx";
 import { Button } from "../components/ui/Button.tsx";
 import { signal } from "@preact/signals";
 
@@ -530,14 +528,14 @@ import React from "https://esm.sh/react@18";
 
 ### When to Use React vs Preact
 
-| Use Case | Choose |
-|----------|--------|
-| **New Deno project** | ✅ **Preact (Fresh)** |
-| **Existing React codebase** | Migrate to Preact OR use Next.js |
-| **Need specific React library** | Check for Preact alternative first |
-| **Team knows only React** | ✅ Preact API is 95% compatible, easy to learn |
-| **Bundle size matters** | ✅ **Preact** (40x smaller) |
-| **Deno-native project** | ✅ **Preact (Fresh)** |
+| Use Case                        | Choose                                         |
+| ------------------------------- | ---------------------------------------------- |
+| **New Deno project**            | ✅ **Preact (Fresh)**                          |
+| **Existing React codebase**     | Migrate to Preact OR use Next.js               |
+| **Need specific React library** | Check for Preact alternative first             |
+| **Team knows only React**       | ✅ Preact API is 95% compatible, easy to learn |
+| **Bundle size matters**         | ✅ **Preact** (40x smaller)                    |
+| **Deno-native project**         | ✅ **Preact (Fresh)**                          |
 
 ---
 
@@ -658,14 +656,14 @@ deployctl deploy --project=axis-eboard
 
 ## Summary Table
 
-| Question | Answer |
-|----------|--------|
-| **Fresh + Tailwind v4?** | ✅ Via **Twind** (Tailwind-in-JS, zero config) |
-| **Fresh + ShadCN?** | ⚠️ Port to Preact using **CVA patterns** (shown above) |
-| **Fresh + React?** | ❌ Possible but defeats Fresh's purpose. Use Preact! |
-| **Fresh + Preact?** | ✅ **Built-in!** This IS Fresh |
-| **ShadCN alternative?** | ✅ Build custom components with **CVA + Twind** |
-| **Best approach?** | ✅ Fresh + Twind + Custom CVA components |
+| Question                 | Answer                                                 |
+| ------------------------ | ------------------------------------------------------ |
+| **Fresh + Tailwind v4?** | ✅ Via **Twind** (Tailwind-in-JS, zero config)         |
+| **Fresh + ShadCN?**      | ⚠️ Port to Preact using **CVA patterns** (shown above) |
+| **Fresh + React?**       | ❌ Possible but defeats Fresh's purpose. Use Preact!   |
+| **Fresh + Preact?**      | ✅ **Built-in!** This IS Fresh                         |
+| **ShadCN alternative?**  | ✅ Build custom components with **CVA + Twind**        |
+| **Best approach?**       | ✅ Fresh + Twind + Custom CVA components               |
 
 ---
 
@@ -697,8 +695,9 @@ deployctl deploy --project=axis-eboard
 
 ---
 
-**Conclusion:** 
+**Conclusion:**
 
-Fresh + Twind + Preact + CVA = **ShadCN-level developer experience** with **zero build step** and **Deno-native** workflow! 🚀
+Fresh + Twind + Preact + CVA = **ShadCN-level developer experience** with **zero build step** and
+**Deno-native** workflow! 🚀
 
 No need for React or traditional Tailwind. The Deno way is simpler and better!

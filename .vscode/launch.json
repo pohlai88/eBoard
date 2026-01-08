@@ -1,0 +1,36 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "deno",
+      "request": "launch",
+      "name": "Run Admin API (watch)",
+      "program": "${workspaceFolder}/admin-api/main.ts",
+      "cwd": "${workspaceFolder}",
+      "allowNet": true,
+      "allowEnv": true,
+      "allowRead": true,
+      "allowWrite": true,
+      "watch": true
+    },
+    {
+      "type": "deno",
+      "request": "launch",
+      "name": "Run Main App (watch)",
+      "program": "${workspaceFolder}/main-app/main.ts",
+      "cwd": "${workspaceFolder}",
+      "allowAll": true,
+      "watch": true
+    },
+    {
+      "type": "deno",
+      "request": "launch",
+      "name": "Serve PRD Docs",
+      "program": "${workspaceFolder}/tools/serve-prd.ts",
+      "cwd": "${workspaceFolder}",
+      "allowNet": true,
+      "allowRead": true,
+      "watch": true
+    }
+  ]
+}

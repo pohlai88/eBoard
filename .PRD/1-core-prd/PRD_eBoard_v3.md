@@ -1,4 +1,4 @@
-# PRD: The Apex (Executive Board Decision Engine)
+sq# PRD: The Apex (Executive Board Decision Engine)
 
 ## Product Requirements Document v3.0.0
 
@@ -8,15 +8,15 @@
 
 ### Document Metadata
 
-| Field | Value |
-|-------|-------|
-| **Version** | 3.0.0 (Olympian Implementation) |
-| **Status** | Approved for Engineering |
-| **Architectural Standard** | NexusCanon v4.0.0 + Olympian v1.0.0 |
-| **Runtime** | Deno 2.x + Fresh 2.x (Islands Architecture) |
-| **Database** | PostgreSQL 15+ (ACID Compliance) |
-| **Target Release** | Q1 2026 |
-| **Product Owner** | The Axis High Council |
+| Field                      | Value                                       |
+| -------------------------- | ------------------------------------------- |
+| **Version**                | 3.0.0 (Olympian Implementation)             |
+| **Status**                 | Approved for Engineering                    |
+| **Architectural Standard** | NexusCanon v4.0.0 + Olympian v1.0.0         |
+| **Runtime**                | Deno 2.x + Fresh 2.x (Islands Architecture) |
+| **Database**               | PostgreSQL 15+ (ACID Compliance)            |
+| **Target Release**         | Q1 2026                                     |
+| **Product Owner**          | The Axis High Council                       |
 
 ---
 
@@ -25,6 +25,7 @@
 ### I.1 The Problem (The Legal Fragility)
 
 **Current Reality:** Executive decision-making is fragmented across informal channels:
+
 - WhatsApp approvals lack forensic audit trails
 - Email chains bury critical decisions in noise
 - Spreadsheets become "Shadow Systems of Record"
@@ -32,30 +33,36 @@
 - Decision latency measured in days (email + meetings) instead of seconds
 
 **Business Impact:**
+
 - Missed market windows due to slow approvals
 - Compliance risk from undocumented decisions
 - Administrative overhead for CFO/COO managing approval chains
 
 ### I.2 The Solution (The Apex)
 
-**The Apex** is a High-Frequency Decision Engine that transforms executive governance from **"Slow Email"** to **"Fast Boardroom."**
+**The Apex** is a High-Frequency Decision Engine that transforms executive governance from **"Slow
+Email"** to **"Fast Boardroom."**
 
 **Core Value Proposition:**
 
-1. **Zero Latency Decisions:** The "Dual-Screen Strategy" (Proposal + Impact) enables Sovereigns to approve in seconds, not days
-2. **Forensic Accountability:** Every decision generates a 6W1H immutable audit trail (The Thanos Trace)
-3. **Encrypted Privacy:** "Eyes Only" documents are client-side encrypted; even admins cannot decrypt them
-4. **Structured Intent:** The "Living Schema" ensures proposals are machine-readable, enabling downstream automation
+1. **Zero Latency Decisions:** The "Dual-Screen Strategy" (Proposal + Impact) enables Sovereigns to
+   approve in seconds, not days
+2. **Forensic Accountability:** Every decision generates a 6W1H immutable audit trail (The Thanos
+   Trace)
+3. **Encrypted Privacy:** "Eyes Only" documents are client-side encrypted; even admins cannot
+   decrypt them
+4. **Structured Intent:** The "Living Schema" ensures proposals are machine-readable, enabling
+   downstream automation
 
 **Metaphorical Model:**
 
-| Concept | Traditional | The Apex |
-|---------|-----------|----------|
-| What we solve | Customer support tickets | Executive proposals |
-| Who decides | Help desk agents | The Sovereign (CEO) |
-| How we structure input | Free-form text | Schema-based stencils |
-| How we track history | Ticket updates | Tri-Vector trace (Past/Present/Future) |
-| Approval mechanism | Agent assignment | Digital signature + watermark |
+| Concept                | Traditional              | The Apex                               |
+| ---------------------- | ------------------------ | -------------------------------------- |
+| What we solve          | Customer support tickets | Executive proposals                    |
+| Who decides            | Help desk agents         | The Sovereign (CEO)                    |
+| How we structure input | Free-form text           | Schema-based stencils                  |
+| How we track history   | Ticket updates           | Tri-Vector trace (Past/Present/Future) |
+| Approval mechanism     | Agent assignment         | Digital signature + watermark          |
 
 ---
 
@@ -66,17 +73,20 @@
 #### The Sovereign (Primary User: CEO / Board Chair)
 
 **Goals:**
+
 - Make high-impact decisions in seconds without getting lost in details
 - Have immediate visibility into financial/strategic consequences before voting
 - Maintain cryptographic proof of decision accountability
 
 **Key Behaviors:**
+
 - Scans proposals at high speed (5+ per session)
 - Relies on the "Right Eye" (The Thanos Trace) to verify risk before clicking "Approve"
 - Demands <200ms response time when switching between proposals
 - May use one-handed gestures (iPad, pen) while in meetings
 
 **Frustrations:**
+
 - "Inbox Zero" anxiety from email chains
 - Uncertainty about decision impact
 - Lack of permanent audit trail for compliance
@@ -88,17 +98,20 @@
 **Examples:** CTO, CFO, CMO, Regional Head, VP of Engineering
 
 **Goals:**
+
 - Submit standardized proposals to unblock their teams
 - Get rapid feedback/approval without ambiguity
 - Collaborate with other council members via comments
 
 **Key Behaviors:**
+
 - Uses "Codex Stencils" (pre-defined templates) for 90% of submissions
 - Tags colleagues (@CFO) to build consensus before formal vote
 - Monitors "The Listening" status to track approval progress
 - May add custom metadata (risk scores, alternative options)
 
 **Frustrations:**
+
 - Ambiguous rejection reasons ("Need more info")
 - Waiting for next board meeting to get sign-off
 - No real-time presence indicators
@@ -108,11 +121,13 @@
 #### The Guardian (Tertiary User: Compliance/Auditor)
 
 **Goals:**
+
 - Verify all high-impact decisions have complete audit trails
 - Ensure sensitive decisions use encryption ("Eyes Only")
 - Report on decision velocity, approval patterns
 
 **Key Behaviors:**
+
 - Views proposals in "Audit Mode" (read-only)
 - Exports decision history for compliance reporting
 - Sets up "alerts" for decisions exceeding thresholds (e.g., >$1M spend)
@@ -125,7 +140,8 @@ The Apex implements a **"Split-Brain Viewport"** that eliminates context-switchi
 
 **Left Panel (60% - The Pool Table / Functional Dashboard):**
 
-The Pool Table is a **live operational dashboard**, not just a list. It combines proposal visibility with decision velocity metrics.
+The Pool Table is a **live operational dashboard**, not just a list. It combines proposal visibility
+with decision velocity metrics.
 
 **Core Components:**
 
@@ -159,15 +175,18 @@ The Pool Table is a **live operational dashboard**, not just a list. It combines
    - Faded text if proposal is archived
 
 **Right Panel (40% - The Strategy Drawer):**
+
 - **Tab 1: The Thanos Trace** (Default view)
   - **Past Vector:** Version history, editor timeline, comment count
   - **Present Vector:** Real-time viewers (who is looking right now?), last activity timestamp
-  - **Future Vector:** Calculated impact (budget, headcount, timeline), risk score, affected downstream systems
-  
+  - **Future Vector:** Calculated impact (budget, headcount, timeline), risk score, affected
+    downstream systems
+
 - **Tab 2: The BoardDialog** (Chat/Collaboration)
   - Comment thread for council discussion
   - @mentions trigger haptic alerts for tagged users
-  - Three modes: Open Floor (all see), Sovereign Consultation (one person replies), Whisper (encrypted sidebar)
+  - Three modes: Open Floor (all see), Sovereign Consultation (one person replies), Whisper
+    (encrypted sidebar)
 
 - **Tab 3: The Codex** (Schema Definition)
   - Shows the "stencil" this proposal is using
@@ -181,6 +200,7 @@ The Pool Table is a **live operational dashboard**, not just a list. It combines
   - Allows closing to-dos directly from this panel
 
 **Interaction Model:**
+
 - Clicking a proposal on the Left instantly populates all four Tabs on the Right
 - No page navigation; Thumb Zone FAB remains fixed for Approve/Veto
 - <200ms response time from click to content render (critical performance requirement)
@@ -192,16 +212,21 @@ The Pool Table is a **live operational dashboard**, not just a list. It combines
 **Location:** Fixed to bottom-right "Thumb Zone" (one-handed accessible)
 
 **Actions:**
+
 1. **APPROVE** — Locks proposal to APPROVED state + generates cryptographic signature
 2. **VETO** — Locks proposal to VETOED state + requires comment explaining reason
 3. **CONSULT** — Reopens proposal back to LISTENING + assigns to specific council member
 
 **The Watermark Engine (Optimistic UI):**
-- **Client-Side (16ms):** UI instantly overlays "SIGNED BY SOVEREIGN" watermark + locks form + provides haptic feedback
-- **Server-Side (async):** Database transaction commits the decision + Chronos generates 6W1H audit record
+
+- **Client-Side (16ms):** UI instantly overlays "SIGNED BY SOVEREIGN" watermark + locks form +
+  provides haptic feedback
+- **Server-Side (async):** Database transaction commits the decision + Chronos generates 6W1H audit
+  record
 - **Reconciliation:** If server rejects (rare), UI rolls back with error message
 
-This optimistic UI gives the Sovereign instant visual feedback while the backend persists asynchronously.
+This optimistic UI gives the Sovereign instant visual feedback while the backend persists
+asynchronously.
 
 ---
 
@@ -258,11 +283,13 @@ export interface GlobalConfig {
 
 **Where It's Set:** Admin console at `/routes/admin/settings.tsx`
 
-**Audit Trail:** Every change to Global Config is logged in Thanos with reason + who changed it + timestamp
+**Audit Trail:** Every change to Global Config is logged in Thanos with reason + who changed it +
+timestamp
 
 **Change Propagation:** Updates apply immediately to all active sessions (via WebSocket broadcast)
 
-**Risk:** If CEO sets `capex_requires_board_vote = $1M`, existing $500k approvals cannot be modified retroactively (immutable law)
+**Risk:** If CEO sets `capex_requires_board_vote = $1M`, existing $500k approvals cannot be modified
+retroactively (immutable law)
 
 ---
 
@@ -331,6 +358,7 @@ export interface UserConfig {
 ## Part III — Core Features (The Weapons: 9 Domains of Authority)
 
 **Weapons Overview:**
+
 1. **The Codex** — Living Schema (proposal templates)
 2. **The Thanos Trace** — Forensic Audit Trail
 3. **The BoardDialog** — Real-Time Collaboration
@@ -400,6 +428,7 @@ export const HIRING_STENCIL: Stencil = {
 ```
 
 **Benefits:**
+
 - Proposals are machine-readable (enables automation, reporting)
 - No ambiguous free-form fields
 - Schema can be updated without code deployment (hot-swappable)
@@ -413,27 +442,27 @@ export const HIRING_STENCIL: Stencil = {
 
 **The Tri-Vector Model:**
 
-| Vector | What it Shows | Example |
-|--------|---------------|---------|
-| **Past (Forensic)** | Proposal history and evolution | "Manager X submitted 2 hours ago. 3 versions. Last edit by CFO 15 min ago." |
-| **Present (Pulse)** | Real-time activity | "CFO & CMO currently viewing. 4 comments in last hour." |
-| **Future (Prediction)** | Calculated consequences | "Approval impacts Q3 Marketing Budget by 12%. Risk Score: MEDIUM. Affects 3 downstream projects." |
+| Vector                  | What it Shows                  | Example                                                                                           |
+| ----------------------- | ------------------------------ | ------------------------------------------------------------------------------------------------- |
+| **Past (Forensic)**     | Proposal history and evolution | "Manager X submitted 2 hours ago. 3 versions. Last edit by CFO 15 min ago."                       |
+| **Present (Pulse)**     | Real-time activity             | "CFO & CMO currently viewing. 4 comments in last hour."                                           |
+| **Future (Prediction)** | Calculated consequences        | "Approval impacts Q3 Marketing Budget by 12%. Risk Score: MEDIUM. Affects 3 downstream projects." |
 
 **Implementation (Deno):**
 
 ```typescript
 // /canon/loom/schema.ts (NexusCanon: The Loom domain)
 import { InferSelectModel } from "drizzle-orm";
-import { pgTable, uuid, jsonb, timestamp } from "drizzle-orm/pg-core";
+import { jsonb, pgTable, timestamp, uuid } from "drizzle-orm/pg-core";
 
 export const thanos_events = pgTable("thanos_events", {
   id: uuid("id").primaryKey().defaultRandom(),
   proposal_id: uuid("proposal_id").notNull(),
   actor_id: uuid("actor_id").notNull(),
-  
+
   // The Tri-Vector
   vector: text("vector").notNull(), // "PAST" | "PRESENT" | "FUTURE"
-  
+
   // 6W1H Forensic Signature
   who: uuid("who").notNull(),
   what: text("what").notNull(), // "CREATED" | "EDITED" | "APPROVED" | "COMMENTED"
@@ -442,7 +471,7 @@ export const thanos_events = pgTable("thanos_events", {
   why: text("why"), // Reason for action
   which: jsonb("which"), // Alternatives considered
   how: text("how"), // Method (UI click, API call, batch)
-  
+
   payload: jsonb("payload").notNull(), // Full snapshot of data at that moment
   created_at: timestamp("created_at").notNull().defaultNow(),
 });
@@ -451,6 +480,7 @@ export type ThanosEvent = InferSelectModel<typeof thanos_events>;
 ```
 
 **Real-Time Updates:**
+
 - WebSocket feed pushes new Thanos events to all viewers
 - Client subscribes to `proposal/:id/trace` channel
 - Updates appear instantly without page refresh
@@ -482,7 +512,7 @@ export type ThanosEvent = InferSelectModel<typeof thanos_events>;
 ```typescript
 // /canon/loom/mutations.ts (NexusCanon: Write operations)
 import { db } from "./client.ts";
-import { proposals, board_comments } from "./schema.ts";
+import { board_comments, proposals } from "./schema.ts";
 import { trace } from "@/lib/audit/tracer.ts";
 
 export async function addComment(
@@ -490,7 +520,7 @@ export async function addComment(
   actor_id: string,
   content: string,
   mode: "open" | "consultation" | "whisper",
-  mentions: string[] = []
+  mentions: string[] = [],
 ) {
   // [THE LOOM] Write to database with ACID guarantee
   const comment = await db.insert(board_comments).values({
@@ -567,6 +597,7 @@ export interface AdminHat {
 ```
 
 **Permission Model:**
+
 - Being in a Circle grants implicit **read access** to all proposals in that Circle
 - **Comment access** is Circle-wide (no granular blocking)
 - **Approve access** is defined by the stencil's `required_approvers` field
@@ -598,13 +629,13 @@ export default function VaultToggle() {
     const keyMaterial = await crypto.subtle.generateKey(
       { name: "AES-GCM", length: 256 },
       true, // extractable
-      ["encrypt", "decrypt"]
+      ["encrypt", "decrypt"],
     );
 
     const encryptedData = await crypto.subtle.encrypt(
       { name: "AES-GCM", iv: new Uint8Array(12) },
       keyMaterial,
-      new TextEncoder().encode(file)
+      new TextEncoder().encode(file),
     );
 
     // Store encrypted blob
@@ -628,6 +659,7 @@ export default function VaultToggle() {
 ```
 
 **Key Storage:**
+
 - The encryption key is stored in a separate, highly-restricted table
 - Only Sovereign + Author can retrieve it
 - Admin Hat does NOT grant access to keys
@@ -688,6 +720,7 @@ export async function enrichProposalWithVectors(proposal: Proposal) {
 ```
 
 **Important:** Vector calls are **non-blocking** and **non-critical**.
+
 - If SAP is slow, the proposal still renders with cached "Stale" data
 - Fresh vector data is fetched in the background via `GET /api/v1/proposals/:id/vectors`
 - Client-side updates the Future Vector section when fresh data arrives
@@ -696,9 +729,11 @@ export async function enrichProposalWithVectors(proposal: Proposal) {
 
 ### III.7 Weapon 7: The Compass (Lite To-Dos App Integration)
 
-**Purpose:** Convert approval decisions into actionable to-do tasks. Makes The Apex more "decisive" by linking governance → execution.
+**Purpose:** Convert approval decisions into actionable to-do tasks. Makes The Apex more "decisive"
+by linking governance → execution.
 
-**Core Concept:** When a manager approves a proposal, they can immediately create a to-do task ("Implement this hire", "Allocate budget", "Brief the team") without leaving the approval flow.
+**Core Concept:** When a manager approves a proposal, they can immediately create a to-do task
+("Implement this hire", "Allocate budget", "Brief the team") without leaving the approval flow.
 
 **Feature Set:**
 
@@ -729,6 +764,7 @@ Linked To: <proposal_id>  // Immutable backlink
   - Delete (soft-delete only)
 
 **Example UI:**
+
 ```
 Proposal: "Hire Senior Engineer"
 
@@ -766,10 +802,14 @@ export const todos = pgTable("todos", {
 
 **5. Why This Makes Decisions More Decisive**
 
-- **Execution Clarity:** "Approve" doesn't mean "let it happen passively." It means "approve + define what happens next."
-- **Accountability:** Every to-do is tied to the approval decision, creating an unbroken chain: Proposal → Approval → Action → Completion
-- **Audit Trail:** Chronos tracks when to-dos are completed, enabling metrics like "How fast do we execute on approvals?"
-- **Reduced Friction:** No context switch ("I approved a hire, now how do I tell the team?"). It's all in one flow.
+- **Execution Clarity:** "Approve" doesn't mean "let it happen passively." It means "approve +
+  define what happens next."
+- **Accountability:** Every to-do is tied to the approval decision, creating an unbroken chain:
+  Proposal → Approval → Action → Completion
+- **Audit Trail:** Chronos tracks when to-dos are completed, enabling metrics like "How fast do we
+  execute on approvals?"
+- **Reduced Friction:** No context switch ("I approved a hire, now how do I tell the team?"). It's
+  all in one flow.
 
 **6. To-Do Notifications**
 
@@ -805,9 +845,14 @@ export async function getProposalTodos(proposal_id: string) {
 
 ### III.8 Weapon 8: The Oracle (What-If Variance Analysis & Scenario Planning) ⭐ STRATEGIC UPGRADE
 
-**Purpose:** Transform What-If from "approval gating" to "decisiveness enablement." Managers come to CEO meetings with Budgeted/Planned/Actual variance analysis, eliminating last-minute surprises and enabling fact-based decisions at scale (50+ pending proposals).
+**Purpose:** Transform What-If from "approval gating" to "decisiveness enablement." Managers come to
+CEO meetings with Budgeted/Planned/Actual variance analysis, eliminating last-minute surprises and
+enabling fact-based decisions at scale (50+ pending proposals).
 
-**Core Concept:** Every Case has a "What-If Planning" section (built into Codex Stencils). As time progresses, actual outcomes are tracked against budgeted/planned forecasts, creating a "Tri-Vector" learning loop: **Past (Budgeted) → Present (Planned) → Future (Actual)**. This teaches the organization "Know-How" (what happened) and "Know-Why" (why it happened).
+**Core Concept:** Every Case has a "What-If Planning" section (built into Codex Stencils). As time
+progresses, actual outcomes are tracked against budgeted/planned forecasts, creating a "Tri-Vector"
+learning loop: **Past (Budgeted) → Present (Planned) → Future (Actual)**. This teaches the
+organization "Know-How" (what happened) and "Know-Why" (why it happened).
 
 **Feature 1: What-If Case Template Extension**
 
@@ -819,32 +864,42 @@ Each proposal stencil (Hiring, Capex, Marketing Budget, etc.) includes a plannin
 // Example: Hiring Request with What-If Planning
 export const HIRING_REQUEST_WHATIF = {
   stencil_id: "hiring_request_v2",
-  
+
   // Existing proposal fields (role, salary, department, etc.)
-  
+
   // NEW: What-If Planning Section
   budgeted_section: {
     label: "📋 Budget Plan",
     fields: [
       { label: "Annual Salary", key: "budgeted_salary", type: "currency", required: true },
-      { label: "Benefits (% of salary)", key: "budgeted_benefits_pct", type: "percentage", required: true },
+      {
+        label: "Benefits (% of salary)",
+        key: "budgeted_benefits_pct",
+        type: "percentage",
+        required: true,
+      },
       { label: "Equipment & Setup", key: "budgeted_equipment", type: "currency" },
       { label: "Training & Development", key: "budgeted_training", type: "currency" },
-      { label: "Total First-Year Cost", key: "budgeted_total", type: "currency", readonly: true }
-    ]
+      { label: "Total First-Year Cost", key: "budgeted_total", type: "currency", readonly: true },
+    ],
   },
-  
+
   planned_section: {
     label: "🎯 Execution Plan",
     fields: [
       { label: "Target Start Date", key: "planned_start_date", type: "date", required: true },
-      { label: "Time-to-Productivity (days)", key: "planned_ttp_days", type: "number", required: true },
+      {
+        label: "Time-to-Productivity (days)",
+        key: "planned_ttp_days",
+        type: "number",
+        required: true,
+      },
       { label: "Expected ROI (months)", key: "planned_roi_months", type: "number" },
       { label: "Retention Confidence (%)", key: "planned_retention_pct", type: "percentage" },
-      { label: "Key Success Metrics", key: "planned_metrics", type: "textarea" }
-    ]
+      { label: "Key Success Metrics", key: "planned_metrics", type: "textarea" },
+    ],
   },
-  
+
   variance_tracking: {
     enabled: true,
     review_interval: "quarterly",
@@ -852,9 +907,9 @@ export const HIRING_REQUEST_WHATIF = {
       { key: "onboarded", label: "Employee Onboarded", offset_days: 30 },
       { key: "productive", label: "Reached Productivity Baseline", offset_days: 90 },
       { key: "q1_review", label: "Q1 Review & Actual Cost Analysis", offset_days: 90 },
-      { key: "annual_review", label: "Annual Review & ROI Validation", offset_days: 365 }
-    ]
-  }
+      { key: "annual_review", label: "Annual Review & ROI Validation", offset_days: 365 },
+    ],
+  },
 };
 
 // Capex Example
@@ -866,8 +921,8 @@ export const CAPEX_REQUEST_WHATIF = {
       { label: "Equipment Cost", key: "budgeted_equipment_cost", type: "currency" },
       { label: "Installation & Setup", key: "budgeted_installation", type: "currency" },
       { label: "Maintenance (Year 1)", key: "budgeted_maintenance", type: "currency" },
-      { label: "Total Budgeted", key: "budgeted_total", type: "currency", readonly: true }
-    ]
+      { label: "Total Budgeted", key: "budgeted_total", type: "currency", readonly: true },
+    ],
   },
   planned_section: {
     label: "📊 Performance Plan",
@@ -875,8 +930,8 @@ export const CAPEX_REQUEST_WHATIF = {
       { label: "Implementation Timeline (weeks)", key: "planned_timeline_weeks", type: "number" },
       { label: "Expected Utilization (%)", key: "planned_utilization_pct", type: "percentage" },
       { label: "Payback Period (months)", key: "planned_payback_months", type: "number" },
-      { label: "Capacity Increase (%)", key: "planned_capacity_increase", type: "percentage" }
-    ]
+      { label: "Capacity Increase (%)", key: "planned_capacity_increase", type: "percentage" },
+    ],
   },
   variance_tracking: {
     enabled: true,
@@ -885,9 +940,9 @@ export const CAPEX_REQUEST_WHATIF = {
       { key: "installed", label: "Equipment Installed", offset_days: 30 },
       { key: "operational", label: "Fully Operational", offset_days: 60 },
       { key: "six_month_review", label: "6-Month Review", offset_days: 180 },
-      { key: "annual_review", label: "Annual ROI Review", offset_days: 365 }
-    ]
-  }
+      { key: "annual_review", label: "Annual ROI Review", offset_days: 365 },
+    ],
+  },
 };
 ```
 
@@ -900,36 +955,36 @@ Track the reality: what was budgeted vs what was planned vs what actually happen
 export const case_whatif_budgets = pgTable("case_whatif_budgets", {
   id: uuid("id").primaryKey().defaultRandom(),
   proposal_id: uuid("proposal_id").notNull(),
-  case_number: text("case_number").notNull(),        // Reference to Case system
-  stencil_id: text("stencil_id").notNull(),          // Which template
-  
+  case_number: text("case_number").notNull(), // Reference to Case system
+  stencil_id: text("stencil_id").notNull(), // Which template
+
   // BUDGETED: Manager's initial estimate when creating proposal
   budgeted_total: numeric("budgeted_total", { precision: 12, scale: 2 }).notNull(),
-  budgeted_breakdown: jsonb("budgeted_breakdown"),   // { salary: 150000, benefits: 45000, equipment: 5000 }
+  budgeted_breakdown: jsonb("budgeted_breakdown"), // { salary: 150000, benefits: 45000, equipment: 5000 }
   budgeted_at: timestamp("budgeted_at").notNull().defaultNow(),
-  
+
   // PLANNED: Manager's forecast at approval time (may differ from budgeted)
   planned_total: numeric("planned_total", { precision: 12, scale: 2 }),
-  planned_metrics: jsonb("planned_metrics"),         // { ttp: 60, roi: 9, retention: 85, payback: 18 }
-  planned_notes: text("planned_notes"),              // Why does planned differ from budgeted?
+  planned_metrics: jsonb("planned_metrics"), // { ttp: 60, roi: 9, retention: 85, payback: 18 }
+  planned_notes: text("planned_notes"), // Why does planned differ from budgeted?
   planned_at: timestamp("planned_at"),
-  
+
   // ACTUAL: Reality as it unfolds (updated at milestone reviews)
   actual_total: numeric("actual_total", { precision: 12, scale: 2 }),
-  actual_breakdown: jsonb("actual_breakdown"),       // Updated as reality unfolds
-  actual_metrics: jsonb("actual_metrics"),           // Measured outcomes
+  actual_breakdown: jsonb("actual_breakdown"), // Updated as reality unfolds
+  actual_metrics: jsonb("actual_metrics"), // Measured outcomes
   last_actual_at: timestamp("last_actual_at"),
-  
+
   // VARIANCE ANALYSIS: The Learning Signal
   variance_pct: numeric("variance_pct", { precision: 5, scale: 2 }), // (actual - budgeted) / budgeted * 100
-  variance_status: text("variance_status"),          // "on_track" | "warning" | "overrun" | "underrun"
-  variance_reason: text("variance_reason"),          // Why did it vary? (learning opportunity)
-  
+  variance_status: text("variance_status"), // "on_track" | "warning" | "overrun" | "underrun"
+  variance_reason: text("variance_reason"), // Why did it vary? (learning opportunity)
+
   // Governance
-  created_by: uuid("created_by").notNull(),          // Manager who created case
-  reviewed_by: uuid("reviewed_by"),                  // Guardian/CEO who approved
+  created_by: uuid("created_by").notNull(), // Manager who created case
+  reviewed_by: uuid("reviewed_by"), // Guardian/CEO who approved
   approved_by: uuid("approved_by"),
-  
+
   created_at: timestamp("created_at").notNull().defaultNow(),
   updated_at: timestamp("updated_at").notNull().defaultNow(),
 });
@@ -938,24 +993,24 @@ export const case_whatif_budgets = pgTable("case_whatif_budgets", {
 export const case_whatif_milestones = pgTable("case_whatif_milestones", {
   id: uuid("id").primaryKey().defaultRandom(),
   whatif_budget_id: uuid("whatif_budget_id").notNull(),
-  
-  milestone_key: text("milestone_key").notNull(),     // "onboarded", "q1_review", "annual"
+
+  milestone_key: text("milestone_key").notNull(), // "onboarded", "q1_review", "annual"
   milestone_label: text("milestone_label").notNull(),
-  
-  scheduled_date: date("scheduled_date").notNull(),  // When milestone should occur
-  actual_date: date("actual_date"),                  // When it actually occurred
-  status: text("status"),                            // "scheduled" | "completed" | "overdue"
-  
+
+  scheduled_date: date("scheduled_date").notNull(), // When milestone should occur
+  actual_date: date("actual_date"), // When it actually occurred
+  status: text("status"), // "scheduled" | "completed" | "overdue"
+
   // Metrics at this point in time
-  budget_to_date: numeric("budget_to_date", { precision: 12, scale: 2 }),      // Cumulative budgeted spend
-  actual_to_date: numeric("actual_to_date", { precision: 12, scale: 2 }),      // Cumulative actual spend
+  budget_to_date: numeric("budget_to_date", { precision: 12, scale: 2 }), // Cumulative budgeted spend
+  actual_to_date: numeric("actual_to_date", { precision: 12, scale: 2 }), // Cumulative actual spend
   variance_pct_to_date: numeric("variance_pct_to_date", { precision: 5, scale: 2 }), // Running variance
-  
+
   // Observations from reviewer
-  notes: text("notes"),                              // "On track. Candidate ramps faster than expected."
+  notes: text("notes"), // "On track. Candidate ramps faster than expected."
   reviewed_by: uuid("reviewed_by"),
   reviewed_at: timestamp("reviewed_at"),
-  
+
   created_at: timestamp("created_at").notNull().defaultNow(),
 });
 ```
@@ -971,7 +1026,7 @@ interface WhatIfScenario {
   case_number: string;
   proposal_title: string;
   status: "active" | "under_review" | "completed" | "archived";
-  
+
   // The Three Vectors
   past: {
     label: "📋 Budgeted";
@@ -980,7 +1035,7 @@ interface WhatIfScenario {
     date: Date;
     color: "#9e9e9e"; // Gray = past
   };
-  
+
   present: {
     label: "📊 Planned";
     total: number;
@@ -988,7 +1043,7 @@ interface WhatIfScenario {
     date: Date;
     color: "#2196f3"; // Blue = present
   };
-  
+
   future: {
     label: "🎯 Actual (Now)";
     current_total: number;
@@ -998,7 +1053,7 @@ interface WhatIfScenario {
     variance_status: "on_track" | "warning" | "overrun" | "underrun";
     color: "#4caf50" | "#ff9800" | "#f44336"; // Green/Orange/Red based on status
   };
-  
+
   next_milestone: {
     label: string;
     scheduled_date: Date;
@@ -1011,7 +1066,7 @@ export function WhatIfAnalysisCard({ scenario }: { scenario: WhatIfScenario }) {
   return (
     <div className="what-if-card">
       <h3>{scenario.case_number}: {scenario.proposal_title}</h3>
-      
+
       {/* Tri-Vector Visualization */}
       <div className="tri-vector-display">
         <div className="vector vector-past">
@@ -1026,7 +1081,7 @@ export function WhatIfAnalysisCard({ scenario }: { scenario: WhatIfScenario }) {
             ))}
           </dl>
         </div>
-        
+
         <div className="vector vector-present">
           <h4>{scenario.present.label}</h4>
           <p className="amount">${scenario.present.total.toLocaleString()}</p>
@@ -1039,40 +1094,55 @@ export function WhatIfAnalysisCard({ scenario }: { scenario: WhatIfScenario }) {
             ))}
           </dl>
         </div>
-        
+
         <div className={`vector vector-future vector-${scenario.future.variance_status}`}>
           <h4>{scenario.future.label}</h4>
           <p className="amount">${scenario.future.current_total.toLocaleString()}</p>
           <p className="variance">
-            {scenario.future.variance_pct > 0 ? '+' : ''}{scenario.future.variance_pct.toFixed(1)}%
+            {scenario.future.variance_pct > 0 ? "+" : ""}
+            {scenario.future.variance_pct.toFixed(1)}%
           </p>
           <p className={`status status-${scenario.future.variance_status}`}>
-            {scenario.future.variance_status === 'on_track' && '✅ On Track'}
-            {scenario.future.variance_status === 'warning' && '⚠️ Warning (-5% to +5%)'}
-            {scenario.future.variance_status === 'overrun' && '❌ Over Budget (+5% or more)'}
-            {scenario.future.variance_status === 'underrun' && '💰 Under Budget (-5% or more)'}
+            {scenario.future.variance_status === "on_track" && "✅ On Track"}
+            {scenario.future.variance_status === "warning" && "⚠️ Warning (-5% to +5%)"}
+            {scenario.future.variance_status === "overrun" && "❌ Over Budget (+5% or more)"}
+            {scenario.future.variance_status === "underrun" && "💰 Under Budget (-5% or more)"}
           </p>
         </div>
       </div>
-      
+
       {/* Variance Chart Over Time */}
       <div className="variance-chart">
         <h4>Budget vs Reality Timeline</h4>
         <LineChart
           datasets={[
-            { label: "Budgeted", data: scenario.milestones.map(m => m.budget_to_date), color: "#9e9e9e" },
-            { label: "Planned", data: scenario.milestones.map(m => m.planned_to_date), color: "#2196f3" },
-            { label: "Actual", data: scenario.milestones.map(m => m.actual_to_date), color: "#4caf50" }
+            {
+              label: "Budgeted",
+              data: scenario.milestones.map((m) => m.budget_to_date),
+              color: "#9e9e9e",
+            },
+            {
+              label: "Planned",
+              data: scenario.milestones.map((m) => m.planned_to_date),
+              color: "#2196f3",
+            },
+            {
+              label: "Actual",
+              data: scenario.milestones.map((m) => m.actual_to_date),
+              color: "#4caf50",
+            },
           ]}
-          xAxis={scenario.milestones.map(m => m.milestone_label)}
+          xAxis={scenario.milestones.map((m) => m.milestone_label)}
         />
       </div>
-      
+
       {/* Next Milestone */}
       <div className="next-milestone">
         <h4>📌 Next Milestone</h4>
         <p>{scenario.next_milestone.label}</p>
-        <p className="date">Scheduled: {scenario.next_milestone.scheduled_date.toLocaleDateString()}</p>
+        <p className="date">
+          Scheduled: {scenario.next_milestone.scheduled_date.toLocaleDateString()}
+        </p>
         <button className="btn-schedule-review">Schedule Review</button>
       </div>
     </div>
@@ -1242,15 +1312,16 @@ Response:
 
 **Why This Transforms Decision-Making:**
 
-| Before | After |
-|--------|-------|
-| CEO asks "Can we afford this?" → Manager scrambles | Manager comes prepared with Budgeted/Planned/Actual analysis |
-| "50 pending proposals" = paralysis | "50 pending proposals" = pool them into 3-4 scenarios + see impacts |
-| No learning from past decisions | Variance tracking creates institutional memory: "hiring always overruns by 8%" |
-| What-If is tactical (this proposal only) | What-If is strategic (portfolio-level decisions) |
-| Executives have gut feelings | Executives have data-driven "Know-Why" |
+| Before                                             | After                                                                          |
+| -------------------------------------------------- | ------------------------------------------------------------------------------ |
+| CEO asks "Can we afford this?" → Manager scrambles | Manager comes prepared with Budgeted/Planned/Actual analysis                   |
+| "50 pending proposals" = paralysis                 | "50 pending proposals" = pool them into 3-4 scenarios + see impacts            |
+| No learning from past decisions                    | Variance tracking creates institutional memory: "hiring always overruns by 8%" |
+| What-If is tactical (this proposal only)           | What-If is strategic (portfolio-level decisions)                               |
+| Executives have gut feelings                       | Executives have data-driven "Know-Why"                                         |
 
 **Phase 1 MVP:**
+
 - ✅ Single-case variance tracking (Budgeted → Planned → Actual)
 - ✅ Case template What-If sections
 - ✅ Tri-Vector dashboard visualization
@@ -1259,6 +1330,7 @@ Response:
 - **Effort: MEDIUM | Value: VERY HIGH**
 
 **Phase 2 Expansion:**
+
 - Multi-case scenario pooling
 - Predictive variance modeling (ML: hiring tends to overrun)
 - Automated recommendations ("defer this to Q2")
@@ -1268,21 +1340,24 @@ Response:
 
 ### III.9 Weapon 9: The Herald (Broadcast Announcements System) ⭐ NEW
 
-**Purpose:** Enable CEO/Admin to broadcast critical decisions and announcements organization-wide with persistent visibility (sticky banner). Ensures alignment and maintains forensic audit trail.
+**Purpose:** Enable CEO/Admin to broadcast critical decisions and announcements organization-wide
+with persistent visibility (sticky banner). Ensures alignment and maintains forensic audit trail.
 
-**Core Concept:** The Sovereign's voice carries authority. When a decision is made (Approved, Vetoed, Policy Change), every manager needs to know immediately. No notification fatigue—sticky banner persists until read.
+**Core Concept:** The Sovereign's voice carries authority. When a decision is made (Approved,
+Vetoed, Policy Change), every manager needs to know immediately. No notification fatigue—sticky
+banner persists until read.
 
 **Feature Set:**
 
 **1. Broadcast Types**
 
-| Type | Use Case | Example | Icon |
-|------|----------|---------|------|
-| **Approval** | Significant decisions | "Approved: Q1 Marketing Budget Expansion ($500k)" | ✅ |
-| **Veto** | Rejected proposals (with reason) | "Vetoed: Annual Capex - needs rework" | ❌ |
-| **Announcement** | Policy changes, org news | "New policy: All hires >$150k require board vote" | 📢 |
-| **Poll** | Quick surveys to council | "Voting: Should we acquire StartupX?" | 🗳️ |
-| **Emergency** | Urgent action required | "PAUSE all hiring approvals immediately" | 🚨 |
+| Type             | Use Case                         | Example                                           | Icon |
+| ---------------- | -------------------------------- | ------------------------------------------------- | ---- |
+| **Approval**     | Significant decisions            | "Approved: Q1 Marketing Budget Expansion ($500k)" | ✅   |
+| **Veto**         | Rejected proposals (with reason) | "Vetoed: Annual Capex - needs rework"             | ❌   |
+| **Announcement** | Policy changes, org news         | "New policy: All hires >$150k require board vote" | 📢   |
+| **Poll**         | Quick surveys to council         | "Voting: Should we acquire StartupX?"             | 🗳️   |
+| **Emergency**    | Urgent action required           | "PAUSE all hiring approvals immediately"          | 🚨   |
 
 **2. Sticky Banner (Always Visible)**
 
@@ -1304,6 +1379,7 @@ Response:
 ```
 
 **Design Rules:**
+
 - **Non-dismissible** (until explicitly marked read)
 - **Sticky position** (stays at top while scrolling)
 - **Color-coded** by type (green=approval, red=veto, orange=announcement, blue=poll, red=emergency)
@@ -1317,26 +1393,26 @@ Response:
 // /canon/loom/schema.ts
 export const broadcasts = pgTable("broadcasts", {
   id: uuid("id").primaryKey().defaultRandom(),
-  
+
   // WHO
-  created_by: uuid("created_by").notNull(),    // CEO/Admin only
-  
+  created_by: uuid("created_by").notNull(), // CEO/Admin only
+
   // WHAT
-  type: text("type").notNull(),                // "approval" | "veto" | "announcement" | "poll" | "emergency"
-  title: text("title").notNull(),              // "Approved: Q1 Marketing Budget"
-  message: text("message"),                    // Full explanation
-  
+  type: text("type").notNull(), // "approval" | "veto" | "announcement" | "poll" | "emergency"
+  title: text("title").notNull(), // "Approved: Q1 Marketing Budget"
+  message: text("message"), // Full explanation
+
   // LINKED TO
-  proposal_id: uuid("proposal_id"),            // If about a proposal
-  case_number: text("case_number"),            // If about a ticket/support case
-  
+  proposal_id: uuid("proposal_id"), // If about a proposal
+  case_number: text("case_number"), // If about a ticket/support case
+
   // TARGETING
-  audience: text("audience").notNull(),        // "all" | "circle:{id}" | "role:{role}"
-  
+  audience: text("audience").notNull(), // "all" | "circle:{id}" | "role:{role}"
+
   // VISIBILITY
-  sticky: boolean("sticky").default(true),     // Non-dismissible?
-  expires_at: timestamp("expires_at"),         // Auto-hide after N days
-  
+  sticky: boolean("sticky").default(true), // Non-dismissible?
+  expires_at: timestamp("expires_at"), // Auto-hide after N days
+
   // TRACKING
   created_at: timestamp("created_at").notNull().defaultNow(),
   updated_at: timestamp("updated_at").notNull().defaultNow(),
@@ -1407,11 +1483,12 @@ Response: {
 **5. UI Components**
 
 **Sticky Banner Island:**
+
 ```typescript
 // /islands/BroadcastBanner.tsx
 export default function BroadcastBanner() {
   const [broadcasts, setBroadcasts] = useState<Broadcast[]>([]);
-  
+
   // Subscribe to new broadcasts via WebSocket
   useEffect(() => {
     const ws = new WebSocket("ws://localhost/api/broadcasts/stream");
@@ -1420,26 +1497,22 @@ export default function BroadcastBanner() {
       setBroadcasts([newBroadcast, ...broadcasts]);
     };
   }, []);
-  
+
   const handleMarkRead = async (broadcastId: string) => {
     await fetch(`/api/broadcasts/${broadcastId}/read`, { method: "POST" });
-    setBroadcasts(broadcasts.filter(b => b.id !== broadcastId));
+    setBroadcasts(broadcasts.filter((b) => b.id !== broadcastId));
   };
-  
+
   return (
     <div className="broadcast-stack">
-      {broadcasts.map(bc => (
+      {broadcasts.map((bc) => (
         <div className={`banner banner--${bc.type}`}>
           <div className="banner-icon">{getIcon(bc.type)}</div>
           <div className="banner-content">
             <h3>{bc.title}</h3>
             <p>{bc.message}</p>
-            {bc.proposal_id && (
-              <a href={`/proposals/${bc.proposal_id}`}>View Proposal</a>
-            )}
-            {bc.case_number && (
-              <a href={`/cases/${bc.case_number}`}>View Case</a>
-            )}
+            {bc.proposal_id && <a href={`/proposals/${bc.proposal_id}`}>View Proposal</a>}
+            {bc.case_number && <a href={`/cases/${bc.case_number}`}>View Case</a>}
           </div>
           <button onClick={() => handleMarkRead(bc.id)}>Mark Read</button>
         </div>
@@ -1450,6 +1523,7 @@ export default function BroadcastBanner() {
 ```
 
 **Broadcast Creation Modal (CEO Only):**
+
 ```typescript
 // /routes/admin/broadcast.tsx
 // Form fields:
@@ -1466,14 +1540,14 @@ export default function BroadcastBanner() {
 
 **6. Why This Matters (The Voice of Authority)**
 
-| Benefit | Impact |
-|---------|--------|
-| **Org Alignment** | Everyone knows CEO decisions instantly (no rumors) |
-| **Transparency** | Reasoning visible org-wide (builds trust) |
+| Benefit            | Impact                                                     |
+| ------------------ | ---------------------------------------------------------- |
+| **Org Alignment**  | Everyone knows CEO decisions instantly (no rumors)         |
+| **Transparency**   | Reasoning visible org-wide (builds trust)                  |
 | **Accountability** | Forensic record: "CEO announced this on Jan 8 at 11:23 AM" |
-| **Urgency** | Emergency broadcasts are inescapable (sticky banner) |
-| **Compliance** | Audit trail for policy announcements |
-| **Morale** | Recognition of big wins (positive feedback to team) |
+| **Urgency**        | Emergency broadcasts are inescapable (sticky banner)       |
+| **Compliance**     | Audit trail for policy announcements                       |
+| **Morale**         | Recognition of big wins (positive feedback to team)        |
 
 **7. Notifications**
 
@@ -1507,11 +1581,13 @@ Templates:
 **9. Read Tracking & Analytics**
 
 CEO can see:
+
 - "Broadcast #BCAST-001 read by 32/45 council members (71%)"
 - Who hasn't read it yet (reminder opportunity)
 - When each person read it (compliance audit)
 
 **Phase 1 MVP:**
+
 - Sticky banner + broadcast creation
 - Basic types (approval, veto, announcement)
 - Proposal + case linking
@@ -1519,6 +1595,7 @@ CEO can see:
 - WebSocket real-time delivery
 
 **Phase 2 Expansion:**
+
 - Broadcast history page
 - Email notifications
 - Slack integration
@@ -1533,13 +1610,13 @@ CEO can see:
 
 **Stack Decision:**
 
-| Layer | Technology | Why (NexusCanon Rationale) |
-|-------|-----------|---------------------------|
-| **Runtime** | Deno 2.x | [The Prime Monad] Secure by default. No node_modules entropy. Native TypeScript. |
-| **Framework** | Fresh 2.x | [The Cobalt] Islands Architecture = zero JS by default. Only hydrates interactive components. |
-| **Database** | PostgreSQL 15+ | [The Loom] ACID compliance for financial transactions. Supports JSONB for flexible schemas. |
-| **ORM** | Drizzle ORM | Type-safe SQL. Deno-compatible. Supports migrations natively. |
-| **Validation** | Zod | Schema validation (isomorphic). Used in both Deno backend + client-side forms. |
+| Layer          | Technology     | Why (NexusCanon Rationale)                                                                    |
+| -------------- | -------------- | --------------------------------------------------------------------------------------------- |
+| **Runtime**    | Deno 2.x       | [The Prime Monad] Secure by default. No node_modules entropy. Native TypeScript.              |
+| **Framework**  | Fresh 2.x      | [The Cobalt] Islands Architecture = zero JS by default. Only hydrates interactive components. |
+| **Database**   | PostgreSQL 15+ | [The Loom] ACID compliance for financial transactions. Supports JSONB for flexible schemas.   |
+| **ORM**        | Drizzle ORM    | Type-safe SQL. Deno-compatible. Supports migrations natively.                                 |
+| **Validation** | Zod            | Schema validation (isomorphic). Used in both Deno backend + client-side forms.                |
 
 ---
 
@@ -1676,7 +1753,7 @@ CEO can see:
     "@lib/": "./lib/",
     "@components/": "./components/",
     "@islands/": "./islands/",
-    
+
     "fresh": "https://deno.land/x/fresh@2.0.0/mod.ts",
     "drizzle-orm": "npm:drizzle-orm@^0.33.0",
     "postgres": "npm:postgres@^3.4.0",
@@ -1823,8 +1900,7 @@ GET /api/proposals/search?q=budget
 // GET /api/proposals/:id/trace
 // [THE CHRONOS] Returns complete forensic history
 
-GET /api/proposals/uuid/trace
-[
+GET / api / proposals / uuid / trace[
   {
     "id": "trace_1",
     "who": "ceo_user_id",
@@ -1835,9 +1911,9 @@ GET /api/proposals/uuid/trace
     "which": ["option_A", "option_B"], // alternatives considered
     "how": "UI golden thumb click",
     "vector": "FUTURE",
-    "payload": { "budget_impact": 12.5, "risk_score": "MEDIUM" }
+    "payload": { "budget_impact": 12.5, "risk_score": "MEDIUM" },
   }
-]
+];
 ```
 
 #### Proactive (Anticipatory Risk)
@@ -1859,24 +1935,26 @@ If (proposal.amount > $1M AND approval_count < required_approvals):
 
 ### V.1 Performance Targets (Critical)
 
-| Metric | Target | Rationale |
-|--------|--------|-----------|
-| **Time-to-Interactive (Pool Table Load)** | <1s | User must scan proposals without lag |
-| **Right Drawer Population** | <200ms | When clicking a proposal, Thanos Trace must appear immediately |
-| **Watermark Rendering** | <16ms (1 frame) | Golden Thumb click must show approval stamp optimistically |
-| **WebSocket Message Latency** | <300ms | Real-time mentions + trace updates |
-| **Database Transaction Time** | <200ms | Write latency (Loom constraint per Constitution) |
+| Metric                                    | Target          | Rationale                                                      |
+| ----------------------------------------- | --------------- | -------------------------------------------------------------- |
+| **Time-to-Interactive (Pool Table Load)** | <1s             | User must scan proposals without lag                           |
+| **Right Drawer Population**               | <200ms          | When clicking a proposal, Thanos Trace must appear immediately |
+| **Watermark Rendering**                   | <16ms (1 frame) | Golden Thumb click must show approval stamp optimistically     |
+| **WebSocket Message Latency**             | <300ms          | Real-time mentions + trace updates                             |
+| **Database Transaction Time**             | <200ms          | Write latency (Loom constraint per Constitution)               |
 
 ### V.2 Reliability & Uptime
 
 **SLA Target:** 99.5% uptime (43 minutes downtime/month)
 
 **Circuit Breaker Pattern:**
+
 - If ERP Vector (SAP) is slow/unavailable → serve cached data to users
 - If notifications (Herald) fail → queue them for retry, don't block proposal approval
 - If Thanos Trace DB is slow → show "Loading..." indicator, don't block UI
 
 **Backup & Recovery:**
+
 - PostgreSQL replication (primary + 1 replica)
 - Deno Deploy global distribution (ultra-low latency via isolates)
 - Automated daily backup to S3 with 30-day retention
@@ -1898,16 +1976,19 @@ deno run \
   main.ts
 ```
 
-**Principle:** If a process is compromised, attacker cannot automatically exfiltrate all secrets or access arbitrary network endpoints.
+**Principle:** If a process is compromised, attacker cannot automatically exfiltrate all secrets or
+access arbitrary network endpoints.
 
 ### VI.2 Authentication & Authorization
 
 **Authentication (The Argus):**
+
 - OAuth 2.0 via corporate identity provider (Okta, Entra ID)
 - JWT tokens stored in secure, httpOnly cookies
 - Session timeout: 8 hours (with optional "remember me" extending to 30 days)
 
 **Authorization (The Quorum):**
+
 - Role-based access control (RBAC) enforced at API layer
 - Circle membership determines proposal access
 - Admin Hat is a temporary, auditable capability grant
@@ -1916,7 +1997,7 @@ deno run \
 // /lib/auth/rbac.ts
 export async function canApproveProposal(
   user_id: string,
-  proposal_id: string
+  proposal_id: string,
 ): Promise<boolean> {
   const proposal = await db.query.proposals.findFirst({
     where: eq(proposals.id, proposal_id),
@@ -1941,21 +2022,22 @@ export async function canApproveProposal(
 
 ## Part VII — User Stories & Acceptance Criteria
 
-| ID | Persona | Story | Acceptance Criteria |
-|----|---------|-------|-------------------|
+| ID       | Persona   | Story                                                                               | Acceptance Criteria                                                                                          |
+| -------- | --------- | ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
 | **US-1** | Sovereign | As a CEO, I want to see the financial impact of a proposal without opening it fully | <200ms render time when clicking a proposal. Right drawer shows budget impact, risk score, affected systems. |
-| **US-2** | Council | As a Manager, I want to submit a hiring request using a standard template | Stencil picker loads <1s. Form validates real-time. Submit creates draft in <500ms. |
-| **US-3** | Sovereign | As a CEO, I want instant visual confirmation that I approved a decision | Clicking "Approve" shows watermark within 16ms. Database commit happens asynchronously. |
-| **US-4** | Council | As a CFO, I want to be alerted when someone mentions me in proposal discussion | @mention triggers browser notification + haptic alert within 300ms. |
-| **US-5** | Guardian | As Auditor, I want a complete forensic trail of how every decision was made | Exporting decision history shows 6W1H data for 100% of approvals. |
-| **US-6** | Sovereign | As a CEO, I want sensitive documents encrypted so only I can read them | Toggling "Eyes Only" encrypts attachment client-side. Even admins cannot decrypt. |
-| **US-7** | Council | As a Manager, I want to see live budget data from SAP when proposing a hire | Future Vector fetches current headcount/budget. Updates every 5 minutes. |
+| **US-2** | Council   | As a Manager, I want to submit a hiring request using a standard template           | Stencil picker loads <1s. Form validates real-time. Submit creates draft in <500ms.                          |
+| **US-3** | Sovereign | As a CEO, I want instant visual confirmation that I approved a decision             | Clicking "Approve" shows watermark within 16ms. Database commit happens asynchronously.                      |
+| **US-4** | Council   | As a CFO, I want to be alerted when someone mentions me in proposal discussion      | @mention triggers browser notification + haptic alert within 300ms.                                          |
+| **US-5** | Guardian  | As Auditor, I want a complete forensic trail of how every decision was made         | Exporting decision history shows 6W1H data for 100% of approvals.                                            |
+| **US-6** | Sovereign | As a CEO, I want sensitive documents encrypted so only I can read them              | Toggling "Eyes Only" encrypts attachment client-side. Even admins cannot decrypt.                            |
+| **US-7** | Council   | As a Manager, I want to see live budget data from SAP when proposing a hire         | Future Vector fetches current headcount/budget. Updates every 5 minutes.                                     |
 
 ---
 
 ## Part VIII — Implementation Roadmap
 
 ### Phase 1: MVP (Weeks 1-4)
+
 **Scope:** Core decision engine without external integrations
 
 - ✅ Stencil-based proposal creation (The Codex)
@@ -1971,6 +2053,7 @@ export async function canApproveProposal(
 ---
 
 ### Phase 2: Expanded Features (Weeks 5-8)
+
 **Scope:** Advanced governance + integrations
 
 - ✅ Admin Hat (Capability grants)
@@ -1985,6 +2068,7 @@ export async function canApproveProposal(
 ---
 
 ### Phase 3: Production & Launch (Weeks 9+)
+
 **Scope:** Performance hardening + compliance
 
 - ✅ Global Deno Deploy distribution
@@ -2001,33 +2085,33 @@ export async function canApproveProposal(
 
 ### Product-Level KPIs
 
-| KPI | Target | Rationale |
-|-----|--------|-----------|
-| **Decision Velocity** | Avg 2 days from submission to approval (Phase 2: <4 hours) | Faster decisions = faster business execution |
-| **Approval Accuracy** | 100% of decisions have complete 6W1H audit trail | Compliance requirement |
-| **User Adoption** | 80% of C-Suite using The Apex within 6 months | Product viability |
-| **Proposal Standardization** | 95% of submissions use Codex Stencils (not free-text) | Enables automation |
+| KPI                          | Target                                                     | Rationale                                    |
+| ---------------------------- | ---------------------------------------------------------- | -------------------------------------------- |
+| **Decision Velocity**        | Avg 2 days from submission to approval (Phase 2: <4 hours) | Faster decisions = faster business execution |
+| **Approval Accuracy**        | 100% of decisions have complete 6W1H audit trail           | Compliance requirement                       |
+| **User Adoption**            | 80% of C-Suite using The Apex within 6 months              | Product viability                            |
+| **Proposal Standardization** | 95% of submissions use Codex Stencils (not free-text)      | Enables automation                           |
 
 ### Technical KPIs
 
-| KPI | Target | Rationale |
-|-----|--------|-----------|
-| **API Response Time (p95)** | <200ms | Thanos Trace render speed |
-| **Database Query Time (p95)** | <100ms | The Loom constraint |
-| **Uptime** | 99.5% | Enterprise reliability |
-| **Test Coverage** | >85% | Code quality |
+| KPI                           | Target | Rationale                 |
+| ----------------------------- | ------ | ------------------------- |
+| **API Response Time (p95)**   | <200ms | Thanos Trace render speed |
+| **Database Query Time (p95)** | <100ms | The Loom constraint       |
+| **Uptime**                    | 99.5%  | Enterprise reliability    |
+| **Test Coverage**             | >85%   | Code quality              |
 
 ---
 
 ## Part X — Risk Management
 
-| Risk | Likelihood | Impact | Mitigation |
-|------|-----------|--------|-----------|
-| **Stencil Schema Breaks Existing Proposals** | Medium | High | Implement immutable schema versioning. Old proposals rendered with their original stencil version. |
-| **Sovereign Loses Eyes Only Key** | Low | Critical | Shamir's Secret Sharing recovery (3 of 5 council members can reconstruct key). |
-| **ERP Integration Latency** | High | Medium | Vector calls are non-blocking. Serve cached data immediately, refresh background. |
-| **Deno Ecosystem Immaturity** | Low | Medium | Fallback plan: Port critical code to Node.js/Next.js if needed. (Codex is isomorphic) |
-| **Database Migration Complexity** | Medium | High | Pre-production testing of migrations on replica. Rollback procedure documented. |
+| Risk                                         | Likelihood | Impact   | Mitigation                                                                                         |
+| -------------------------------------------- | ---------- | -------- | -------------------------------------------------------------------------------------------------- |
+| **Stencil Schema Breaks Existing Proposals** | Medium     | High     | Implement immutable schema versioning. Old proposals rendered with their original stencil version. |
+| **Sovereign Loses Eyes Only Key**            | Low        | Critical | Shamir's Secret Sharing recovery (3 of 5 council members can reconstruct key).                     |
+| **ERP Integration Latency**                  | High       | Medium   | Vector calls are non-blocking. Serve cached data immediately, refresh background.                  |
+| **Deno Ecosystem Immaturity**                | Low        | Medium   | Fallback plan: Port critical code to Node.js/Next.js if needed. (Codex is isomorphic)              |
+| **Database Migration Complexity**            | Medium     | High     | Pre-production testing of migrations on replica. Rollback procedure documented.                    |
 
 ---
 
@@ -2035,7 +2119,8 @@ export async function canApproveProposal(
 
 This PRD represents the **Comprehensive Olympian Implementation Standard** for The Apex.
 
-Every decision aligns with the **NexusCanon Constitution v4.0.0** and the **Olympian Implementation Guide v1.0.0**.
+Every decision aligns with the **NexusCanon Constitution v4.0.0** and the **Olympian Implementation
+Guide v1.0.0**.
 
 **Architecture approved by:** The Axis High Council
 
@@ -2047,6 +2132,6 @@ Every decision aligns with the **NexusCanon Constitution v4.0.0** and the **Olym
 
 ---
 
-*Document Version: 3.0.0*  
-*Status: Approved for Engineering*  
-*Last Updated: January 8, 2026*
+_Document Version: 3.0.0_\
+_Status: Approved for Engineering_\
+_Last Updated: January 8, 2026_

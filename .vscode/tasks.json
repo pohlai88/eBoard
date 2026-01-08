@@ -1,0 +1,59 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "deno: dev:admin",
+      "type": "shell",
+      "command": "deno task dev:admin",
+      "isBackground": true
+    },
+    {
+      "label": "deno: dev:app",
+      "type": "shell",
+      "command": "deno task dev:app",
+      "isBackground": true
+    },
+    {
+      "label": "deno: coverage:html",
+      "type": "shell",
+      "command": "deno coverage coverage --html coverage_html"
+    },
+    {
+      "label": "deno: test:coverage",
+      "type": "shell",
+      "command": "deno task test:coverage"
+    },
+    {
+      "label": "deno: coverage:lcov",
+      "type": "shell",
+      "command": "deno coverage coverage --lcov > coverage.lcov"
+    },
+    {
+      "label": "deno: docs:serve",
+      "type": "shell",
+      "command": "deno task docs:serve",
+      "isBackground": true
+    },
+    {
+      "label": "deno: docs:validate",
+      "type": "shell",
+      "command": "deno task docs:validate"
+    },
+    {
+      "label": "deno: analyze:prd",
+      "type": "shell",
+      "command": "deno task analyze:prd"
+    },
+    {
+      "label": "deno: check",
+      "type": "shell",
+      "command": "deno task check"
+    },
+    {
+      "label": "deno: validate:lsp",
+      "type": "shell",
+      "command": "deno task validate:lsp",
+      "problemMatcher": []
+    }
+  ]
+}

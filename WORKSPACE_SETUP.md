@@ -32,22 +32,27 @@ Axis_eBoard/                    ← ROOT (Coordinator)
 ## 🚀 How to Run
 
 ### Run Admin API Only
+
 ```bash
 deno task dev:admin
 # or
 cd admin-api && deno task dev
 ```
+
 Runs on **http://localhost:3001**
 
 ### Run Main App Only
+
 ```bash
 deno task dev:app
 # or
 cd main-app && deno task dev
 ```
+
 Runs on **http://localhost:3000**
 
 ### Run Both (in separate terminals)
+
 ```bash
 # Terminal 1
 deno task dev:admin
@@ -57,16 +62,19 @@ deno task dev:app
 ```
 
 ### Format All Workspaces
+
 ```bash
 deno fmt
 ```
 
 ### Lint All Workspaces
+
 ```bash
 deno lint
 ```
 
 ### Test All Workspaces
+
 ```bash
 deno test
 ```
@@ -76,6 +84,7 @@ deno test
 ## 📦 Workspace Structure
 
 ### Root `deno.json` (Coordinator)
+
 ```json
 {
   "workspace": ["./admin-api", "./main-app", "./shared"],
@@ -89,6 +98,7 @@ deno test
 ```
 
 ### Admin API `deno.json`
+
 ```json
 {
   "name": "@axis/admin-api",
@@ -100,6 +110,7 @@ deno test
 ```
 
 ### Main App `deno.json`
+
 ```json
 {
   "name": "@axis/main-app",
@@ -109,6 +120,7 @@ deno test
 ```
 
 ### Shared `deno.json`
+
 ```json
 {
   "name": "@axis/shared",
@@ -124,6 +136,7 @@ deno test
 ## 📝 What's in Each Workspace
 
 ### `admin-api/main.ts` - Hono Server
+
 ```typescript
 import { Hono } from "@hono/hono";
 
@@ -138,6 +151,7 @@ Deno.serve({ port: 3001 }, app.fetch);
 ```
 
 **Features:**
+
 - ✅ Ultra-fast (Hono is tiny)
 - ✅ No rendering overhead
 - ✅ Perfect for admin APIs
@@ -147,7 +161,9 @@ Deno.serve({ port: 3001 }, app.fetch);
 ---
 
 ### `main-app/main.ts` - Your Main App
+
 Currently a placeholder. Ready for:
+
 - Fresh (Full-stack framework like Next.js)
 - Hono (if you prefer lightweight)
 - Oak (Express-style)
@@ -160,6 +176,7 @@ Add your framework and code here!
 ### `shared/` - Shared Code
 
 **types.ts** - Interfaces
+
 ```typescript
 export interface User {
   id: string;
@@ -176,23 +193,26 @@ export interface Post {
 ```
 
 **validation.ts** - Zod Schemas
+
 ```typescript
 export const UserSchema = z.object({
   id: z.string().uuid(),
   name: z.string().min(1),
-  email: z.string().email()
+  email: z.string().email(),
 });
 ```
 
 **utils.ts** - Helper Functions
+
 ```typescript
 export function generateId(): string { ... }
 export function createApiResponse<T>(...) { ... }
 ```
 
 **Both workspaces import from shared:**
+
 ```typescript
-import { User, UserSchema, generateId } from "@shared";
+import { generateId, User, UserSchema } from "@shared";
 ```
 
 ---
@@ -200,6 +220,7 @@ import { User, UserSchema, generateId } from "@shared";
 ## 🔄 Workflow
 
 ### 1. Develop Locally
+
 ```bash
 # Terminal 1 - Admin API
 deno task dev:admin
@@ -211,16 +232,18 @@ deno task dev:app
 ```
 
 ### 2. Add Features to Shared
-Edit `shared/types.ts`, `shared/validation.ts`, etc.
-Both apps automatically see the updates!
+
+Edit `shared/types.ts`, `shared/validation.ts`, etc. Both apps automatically see the updates!
 
 ### 3. Format & Lint Everything
+
 ```bash
 deno fmt    # Formats all files
 deno lint   # Checks all files
 ```
 
 ### 4. Deploy Independently
+
 ```bash
 # Deploy admin-api
 cd admin-api && deno deploy
@@ -233,19 +256,17 @@ cd main-app && deno deploy
 
 ## 💡 Key Points
 
-✅ **Zero coupling** - Apps are completely independent
-✅ **Shared code** - No duplication via `@shared`
-✅ **Single lock file** - No version conflicts
-✅ **Independent scaling** - Admin on cheap tier, app on powerful tier
-✅ **Separate CI/CD** - Deploy independently
-✅ **Clear separation** - Easy to understand structure
-✅ **Right tool for job** - Hono for admin, Fresh/anything for main app
+✅ **Zero coupling** - Apps are completely independent ✅ **Shared code** - No duplication via
+`@shared` ✅ **Single lock file** - No version conflicts ✅ **Independent scaling** - Admin on cheap
+tier, app on powerful tier ✅ **Separate CI/CD** - Deploy independently ✅ **Clear separation** -
+Easy to understand structure ✅ **Right tool for job** - Hono for admin, Fresh/anything for main app
 
 ---
 
 ## 🛠️ Next Steps
 
 ### Add Framework to Main App
+
 ```bash
 # Option 1: Fresh (Full-stack, like Next.js)
 cd main-app && deno add jsr:@fresh/fresh
@@ -258,6 +279,7 @@ cd main-app && deno add jsr:@oak/oak
 ```
 
 ### Add More Features
+
 ```bash
 # Add database to admin-api
 cd admin-api && deno add jsr:@db/sqlite
@@ -270,7 +292,9 @@ cd main-app && deno run main.ts  # Automatically sees @shared
 ```
 
 ### Create More Workspaces
+
 Want a separate analytics app? Mobile API? Blog?
+
 ```bash
 # Just add to root deno.json
 {
@@ -283,6 +307,7 @@ Want a separate analytics app? Mobile API? Blog?
 ## Test It Now!
 
 ### Test Admin API
+
 ```bash
 deno task dev:admin
 # Open new terminal/browser
@@ -291,9 +316,11 @@ curl http://localhost:3001/dashboard
 ```
 
 ### Test Shared Types
+
 The admin-api already imports from `@shared`!
 
 ### Test Everything Formatting
+
 ```bash
 deno fmt
 deno lint
@@ -304,6 +331,7 @@ deno lint
 ## This is Your Production-Ready Architecture! 🎉
 
 You now have:
+
 - ✅ Proper monorepo structure
 - ✅ Lightweight admin API (Hono)
 - ✅ Ready-to-extend main app

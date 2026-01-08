@@ -2,13 +2,15 @@
 
 ## Yes! Deno Workspaces = Monorepo Power ✅
 
-Deno has **native workspace support** - no additional tools needed (unlike Node.js which needs pnpm/yarn/lerna).
+Deno has **native workspace support** - no additional tools needed (unlike Node.js which needs
+pnpm/yarn/lerna).
 
 ---
 
 ## Your Exact Use Case: Admin API + Full Website
 
 **Setup:**
+
 ```
 Axis_eBoard/
 ├── deno.json                    ← Root workspace config
@@ -31,6 +33,7 @@ Axis_eBoard/
 ## Root Workspace Config
 
 **deno.json** (at root):
+
 ```json
 {
   "workspace": ["./admin-api", "./main-app", "./shared"],
@@ -49,6 +52,7 @@ Axis_eBoard/
 ## Admin API Setup (Lightweight - Hono)
 
 **admin-api/deno.json:**
+
 ```json
 {
   "name": "@axis/admin-api",
@@ -66,6 +70,7 @@ Axis_eBoard/
 ```
 
 **admin-api/main.ts:**
+
 ```typescript
 import { Hono } from "@hono/hono";
 import { load } from "@std/dotenv";
@@ -76,11 +81,12 @@ const app = new Hono();
 // Super lightweight - just admin functions
 app.get("/", (c) => c.json({ status: "admin api running" }));
 
-app.get("/dashboard", (c) => c.json({
-  users: 1234,
-  posts: 5678,
-  visits_today: 89
-}));
+app.get("/dashboard", (c) =>
+  c.json({
+    users: 1234,
+    posts: 5678,
+    visits_today: 89,
+  }));
 
 app.post("/users/:id/ban", async (c) => {
   const id = c.req.param("id");
@@ -94,6 +100,7 @@ console.log(`✅ Admin API on port ${port}`);
 ```
 
 **Why Hono for Admin?**
+
 - ✅ Ultra-light (no rendering overhead)
 - ✅ Fast API endpoints
 - ✅ Minimal dependencies
@@ -105,6 +112,7 @@ console.log(`✅ Admin API on port ${port}`);
 ## Main App Setup (Full-Stack - Fresh)
 
 **main-app/deno.json:**
+
 ```json
 {
   "name": "@axis/main-app",
@@ -124,6 +132,7 @@ console.log(`✅ Admin API on port ${port}`);
 ```
 
 **main-app/main.ts:**
+
 ```typescript
 import { start } from "fresh/server.ts";
 import { load } from "@std/dotenv";
@@ -133,13 +142,14 @@ const env = await load();
 // Full Fresh app with SSR, islands, etc.
 await start(import.meta.url, {
   port: parseInt(env["APP_PORT"] || "3000"),
-  hostname: "0.0.0.0"
+  hostname: "0.0.0.0",
 });
 
 console.log(`✅ Main App running`);
 ```
 
 **Why Fresh for Main App?**
+
 - ✅ Full-stack capabilities
 - ✅ Server-side rendering
 - ✅ Island architecture (interactive parts)
@@ -152,6 +162,7 @@ console.log(`✅ Main App running`);
 ## Shared Code (Optional but Recommended)
 
 **shared/deno.json:**
+
 ```json
 {
   "name": "@axis/shared",
@@ -164,6 +175,7 @@ console.log(`✅ Main App running`);
 ```
 
 **shared/mod.ts:**
+
 ```typescript
 // Re-export everything shared
 export * from "./types.ts";
@@ -172,6 +184,7 @@ export * from "./validation.ts";
 ```
 
 **shared/types.ts:**
+
 ```typescript
 export interface User {
   id: string;
@@ -188,6 +201,7 @@ export interface Post {
 ```
 
 **shared/validation.ts:**
+
 ```typescript
 import { z } from "zod";
 
@@ -195,22 +209,23 @@ export const UserSchema = z.object({
   id: z.string(),
   name: z.string().min(1),
   email: z.string().email(),
-  role: z.enum(["admin", "user"])
+  role: z.enum(["admin", "user"]),
 });
 
 export const PostSchema = z.object({
   id: z.string(),
   title: z.string().min(5),
-  content: z.string().min(10)
+  content: z.string().min(10),
 });
 ```
 
 **Both apps can import shared:**
+
 ```typescript
 // In admin-api/main.ts
 import { User, UserSchema } from "@shared";
 
-// In main-app/main.ts  
+// In main-app/main.ts
 import { Post, PostSchema } from "@shared";
 ```
 
@@ -221,24 +236,28 @@ import { Post, PostSchema } from "@shared";
 ### Option 1: Deploy Separately (Recommended)
 
 **Admin API → Deno Deploy (Edge)**
+
 ```bash
 cd admin-api
 deno deploy  # Deploy just this
 ```
 
 **Main App → Deno Deploy (or Vercel)**
+
 ```bash
 cd main-app
 deno deploy  # Deploy just this
 ```
 
 **They have:**
+
 - ✅ Different domains (or subdomains)
 - ✅ Independent scaling
 - ✅ Separate databases (if needed)
 - ✅ Independent CI/CD
 
 **Example:**
+
 ```
 Admin API: api.admin.example.com (port 3001, minimal resources)
 Main App:  www.example.com (port 3000, full infrastructure)
@@ -247,6 +266,7 @@ Main App:  www.example.com (port 3000, full infrastructure)
 ### Option 2: Same Server, Different Ports
 
 **Run both locally:**
+
 ```bash
 # Terminal 1
 deno task dev:admin
@@ -256,6 +276,7 @@ deno task dev:app
 ```
 
 **Both running:**
+
 - Admin API: http://localhost:3001
 - Main App: http://localhost:3000
 
@@ -278,6 +299,7 @@ CMD ["deno", "run", "-A", "main.ts"]
 ```
 
 **docker-compose.yml:**
+
 ```yaml
 version: "3"
 services:
@@ -303,6 +325,7 @@ services:
 ```
 
 **Deploy with:**
+
 ```bash
 docker-compose up -d
 ```
@@ -311,22 +334,23 @@ docker-compose up -d
 
 ## Key Advantages of This Setup
 
-| Aspect | Benefit |
-|--------|---------|
-| **Code Organization** | Clear separation of concerns |
-| **Scaling** | Scale admin separately (minimal) |
-| **Technology** | Use right tool for each job |
-| **Deployment** | Independent CI/CD pipelines |
-| **Resource Usage** | Admin doesn't waste resources on rendering |
-| **Development** | Teams can work independently |
-| **Shared Code** | DRY principle with shared types |
-| **No Tech Debt** | Each part optimized for its purpose |
+| Aspect                | Benefit                                    |
+| --------------------- | ------------------------------------------ |
+| **Code Organization** | Clear separation of concerns               |
+| **Scaling**           | Scale admin separately (minimal)           |
+| **Technology**        | Use right tool for each job                |
+| **Deployment**        | Independent CI/CD pipelines                |
+| **Resource Usage**    | Admin doesn't waste resources on rendering |
+| **Development**       | Teams can work independently               |
+| **Shared Code**       | DRY principle with shared types            |
+| **No Tech Debt**      | Each part optimized for its purpose        |
 
 ---
 
 ## Important: Shared Dependencies
 
 **Root deno.lock.json covers all workspaces:**
+
 ```bash
 # Regenerate lock file (includes all workspaces)
 deno cache --lock=deno.lock --lock-write admin-api/deno.json main-app/deno.json
@@ -396,6 +420,7 @@ axis-eboard/
 ## Deployment Strategy
 
 **Admin API (Lightweight):**
+
 ```bash
 # Option A: Deno Deploy Edge (free tier is fine)
 # Option B: Cheap VPS ($2-5/month)
@@ -405,6 +430,7 @@ axis-eboard/
 ```
 
 **Main App (Full-stack):**
+
 ```bash
 # Option A: Deno Deploy Pro (if you need edge)
 # Option B: Standard VPS ($10-50/month)
@@ -418,25 +444,30 @@ axis-eboard/
 ## Zero Tech Debt Approach
 
 ✅ **Use right tool for job**
+
 - Admin = Hono (minimal overhead)
 - App = Fresh (full capabilities)
 
 ✅ **Share types, not code**
+
 - Central type definitions
 - No duplication
 - Validation in one place
 
 ✅ **Independent scaling**
+
 - Admin doesn't scale based on app traffic
 - Can run admin on edge network (very cheap)
 - App scales independently
 
 ✅ **Clear separation**
+
 - Admin engineers can optimize for speed
 - App engineers can optimize for UX
 - No stepping on each other's toes
 
 ✅ **Easy to change**
+
 - Swap admin framework later if needed
 - Upgrade app separately
 - No monolithic lock-in
@@ -469,14 +500,11 @@ deno deploy                    # Deploy app only
 
 **Your exact scenario:**
 
-✅ Admin API is lightweight (Hono) → Stays fast, minimal resources
-✅ Main app is full-featured (Fresh) → Rich UX, proper SSR
-✅ Completely separate → Can evolve independently
-✅ Shared types → No duplication
-✅ Deploy individually → Pay only for what you use
-✅ No "BS rendering" on admin → Just JSON APIs
-✅ HTTPS on main app → Vercel/custom domain
-✅ Can scale differently → Admin on edge (cheap), app on standard (powerful)
+✅ Admin API is lightweight (Hono) → Stays fast, minimal resources ✅ Main app is full-featured
+(Fresh) → Rich UX, proper SSR ✅ Completely separate → Can evolve independently ✅ Shared types → No
+duplication ✅ Deploy individually → Pay only for what you use ✅ No "BS rendering" on admin → Just
+JSON APIs ✅ HTTPS on main app → Vercel/custom domain ✅ Can scale differently → Admin on edge
+(cheap), app on standard (powerful)
 
 **You're not compromising either application for the other!**
 
@@ -487,6 +515,7 @@ deno deploy                    # Deploy app only
 **Yes, Deno workspaces = monorepo = perfect for your use case!**
 
 You get:
+
 - 🎯 Right tool for each job
 - 📦 Single lock file (no version conflicts)
 - 🚀 Independent deployment

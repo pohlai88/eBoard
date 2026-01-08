@@ -1,5 +1,7 @@
 # The Apex v3.0.0 — Complete Documentation Index
+
 ## All PRD Files & Navigation Guide
+
 ### Updated: January 8, 2026
 
 ---
@@ -7,9 +9,12 @@
 ## 📚 Core Specification Files
 
 ### 1. **PRD_eBoard_v3.md** — MAIN SPECIFICATION
-**Size:** ~60KB | **Status:** Production-Ready | **Latest Update:** Jan 8, 2026 (Oracle + Herald added)
+
+**Size:** ~60KB | **Status:** Production-Ready | **Latest Update:** Jan 8, 2026 (Oracle + Herald
+added)
 
 **Contains:**
+
 - Part I: Executive Summary & Product Vision
 - Part II: User Personas + Product Narrative
   - II.1: User Personas (Sovereign, Council, Guardian)
@@ -40,9 +45,11 @@
 ---
 
 ### 2. **PRD_v3_STRATEGIC_ENHANCEMENTS.md** — STRATEGIC EVALUATION
+
 **Size:** ~25KB | **Status:** Complete | **Latest Update:** Jan 8, 2026 (What-If upgraded to YES)
 
 **Contains:**
+
 - Executive Summary (All verdicts at a glance)
 - Feature 1: Delegated Draft Workflow (YES verdict)
 - Feature 2: Decision Simulation - What-If Vector (HYBRID → **YES** verdict with variance)
@@ -54,6 +61,7 @@
 - Final Summary & Strategic Recommendations
 
 **Key Changes (Jan 8):**
+
 - Completely rewrote Section 2 (What-If) with variance tracking architecture
 - Upgraded What-If from HYBRID to YES
 - Added Tri-Vector concept (Budgeted/Planned/Actual)
@@ -65,9 +73,11 @@
 ---
 
 ### 3. **ORACLE_WHATIF_ENHANCEMENT.md** — DETAILED ORACLE DESIGN ⭐ NEW
+
 **Size:** ~15KB | **Status:** Complete | **Date Created:** Jan 8, 2026
 
 **Contains:**
+
 - Executive Summary (the strategic shift)
 - Problem Statement (50+ proposals paralysis)
 - Solution Architecture (Tri-Vector planning)
@@ -83,16 +93,19 @@
 - Next Steps
 - Strategic Alignment Questions
 
-**Purpose:** Deep dive into Oracle (Weapon 8) design. Explains how variance tracking transforms decision-making.
+**Purpose:** Deep dive into Oracle (Weapon 8) design. Explains how variance tracking transforms
+decision-making.
 
 **Start Here If:** You want to understand What-If variance analysis in detail + implementation plan.
 
 ---
 
 ### 4. **APEX_v3_COMPLETE_ARCHITECTURE.md** — INTEGRATION SUMMARY ⭐ NEW
+
 **Size:** ~8KB | **Status:** Complete | **Date Created:** Jan 8, 2026
 
 **Contains:**
+
 - Updated 9 Weapons Architecture table
 - Strategic Enhancement: The Oracle (what changed)
 - Core Integration Points (with Codex, Vectors, Compass, Herald)
@@ -117,6 +130,7 @@
 ## 📋 Supporting Documentation Files
 
 ### 5. **PRD_v3_UPDATES.md**
+
 **Size:** ~18KB | **Purpose:** Feature guide + detailed checklist
 
 Contains step-by-step updates needed to move from v2 to v3 for each weapon.
@@ -124,6 +138,7 @@ Contains step-by-step updates needed to move from v2 to v3 for each weapon.
 ---
 
 ### 6. **PRD_v3_QUICK_REFERENCE.md**
+
 **Size:** ~12KB | **Purpose:** Visual diagrams + quick reference
 
 Contains architecture diagrams, data flow charts, and visual glossary.
@@ -131,6 +146,7 @@ Contains architecture diagrams, data flow charts, and visual glossary.
 ---
 
 ### 7. **PRD_v3_DELIVERY_SUMMARY.md**
+
 **Size:** ~11KB | **Purpose:** Executive summary for stakeholders
 
 High-level overview of v3.0.0 with key metrics and timelines.
@@ -138,6 +154,7 @@ High-level overview of v3.0.0 with key metrics and timelines.
 ---
 
 ### 8. **PRD_v3_DOCUMENT_INDEX.md** (Original)
+
 **Size:** ~9KB | **Purpose:** Navigation guide for all PRD documents
 
 ---
@@ -166,6 +183,7 @@ d:\Axis_eBoard\
 ## 🎯 Reading Guide by Role
 
 ### For CEO/Product Owner
+
 1. Read: APEX_v3_COMPLETE_ARCHITECTURE.md (5 min overview)
 2. Read: PRD_v3_DELIVERY_SUMMARY.md (context)
 3. Skim: PRD_eBoard_v3.md (Parts I-II only for vision + personas)
@@ -174,6 +192,7 @@ d:\Axis_eBoard\
 **Time:** 20-30 minutes for complete understanding
 
 ### For Engineering Lead
+
 1. Read: PRD_eBoard_v3.md (Parts III-IV mandatory)
 2. Read: ORACLE_WHATIF_ENHANCEMENT.md (Implementation Roadmap section)
 3. Read: PRD_v3_STRATEGIC_ENHANCEMENTS.md (Feature verdicts + Phase scope)
@@ -182,6 +201,7 @@ d:\Axis_eBoard\
 **Time:** 2-3 hours for detailed technical understanding
 
 ### For Frontend Developer
+
 1. Read: PRD_eBook_v3.md (Part II for UX context)
 2. Read: ORACLE_WHATIF_ENHANCEMENT.md (Feature 3: Scenario Manager Dashboard)
 3. Review: PRD_v3_QUICK_REFERENCE.md (UI diagrams)
@@ -190,6 +210,7 @@ d:\Axis_eBoard\
 **Time:** 1-2 hours
 
 ### For Backend Developer
+
 1. Read: PRD_eBoard_v3.md (Part IV for architecture)
 2. Read: ORACLE_WHATIF_ENHANCEMENT.md (Feature 2: Database Schema)
 3. Review: APEX_v3_COMPLETE_ARCHITECTURE.md (API Endpoints + Database Migrations)
@@ -198,6 +219,7 @@ d:\Axis_eBoard\
 **Time:** 2-3 hours
 
 ### For Project Manager
+
 1. Read: APEX_v3_COMPLETE_ARCHITECTURE.md (complete overview)
 2. Read: ORACLE_WHATIF_ENHANCEMENT.md (Timeline section)
 3. Reference: PRD_v3_DELIVERY_SUMMARY.md (stakeholder communication)
@@ -209,6 +231,7 @@ d:\Axis_eBoard\
 ## 📊 What Each Document Answers
 
 ### PRD_eBoard_v3.md
+
 - "What are we building?" (Product vision)
 - "Who are our users?" (Personas)
 - "How does each weapon work?" (Complete feature specs)
@@ -216,12 +239,14 @@ d:\Axis_eBoard\
 - "What are success metrics?" (Quantifiable goals)
 
 ### PRD_v3_STRATEGIC_ENHANCEMENTS.md
+
 - "What strategic features should we add?" (5 proposals)
 - "What's the verdict on each?" (YES/NO/HYBRID)
 - "What's the implementation cost?" (Effort estimates)
 - "What should we include in Phase 1?" (MVP scope)
 
 ### ORACLE_WHATIF_ENHANCEMENT.md
+
 - "How does What-If variance tracking work?" (Tri-Vector architecture)
 - "Why is this important?" (50+ proposals problem)
 - "How do managers use it?" (Scenario planning)
@@ -229,6 +254,7 @@ d:\Axis_eBoard\
 - "What's the learning loop?" (Variance analysis for institutional knowledge)
 
 ### APEX_v3_COMPLETE_ARCHITECTURE.md
+
 - "How do all 9 weapons fit together?" (Integration overview)
 - "What's Phase 1 scope?" (Complete MVP feature list)
 - "What are the API endpoints?" (Technical contracts)
@@ -252,6 +278,7 @@ d:\Axis_eBoard\
 ## 📝 Version History
 
 ### v3.0.0 (January 8, 2026) ⭐ LATEST
+
 - Added Weapon 8: The Oracle (What-If Variance Analysis)
 - Added Weapon 9: The Herald (Broadcast Announcements)
 - Upgraded Strategic Enhancement #2 (What-If) from HYBRID → YES
@@ -261,6 +288,7 @@ d:\Axis_eBoard\
 - Updated PRD_eBoard_v3.md (added Parts III.8-9, updated architecture)
 
 ### v2.1.0 (January 5, 2026)
+
 - Added 4 original enhancements (Pool Table, Global Config, User Config, Lite To-Dos)
 - Created 4 supporting guides (Updates, Quick Ref, Delivery Summary, Document Index)
 
@@ -269,7 +297,9 @@ d:\Axis_eBoard\
 ## 💡 Key Insight: The Oracle's Strategic Value
 
 **Your Requirement:**
-> "Everything shall be planned. Budgeted, Planned, Actual. Give managers Know-How and Know-Why, not just asking for approval."
+
+> "Everything shall be planned. Budgeted, Planned, Actual. Give managers Know-How and Know-Why, not
+> just asking for approval."
 
 **How Oracle Delivers:**
 
@@ -287,6 +317,7 @@ This transforms The Apex from a **governance tool** to a **decision intelligence
 ## 🔗 Key Cross-References
 
 ### If you care about:
+
 - **Real-time decision visibility** → Read PRD_eBoard_v3.md Part II (Pool Table Dashboard)
 - **Audit compliance** → Read PRD_eBoard_v3.md Part III.2 (Thanos Trace)
 - **What-If planning** → Read ORACLE_WHATIF_ENHANCEMENT.md (complete guide)
@@ -300,6 +331,7 @@ This transforms The Apex from a **governance tool** to a **decision intelligence
 ## 📞 Questions?
 
 For questions about:
+
 - **Strategic alignment** → Review ORACLE_WHATIF_ENHANCEMENT.md (Alignment Questions section)
 - **Technical implementation** → Review PRD_eBoard_v3.md Part IV
 - **Timeline & resources** → Review APEX_v3_COMPLETE_ARCHITECTURE.md
@@ -310,6 +342,7 @@ For questions about:
 ## ✅ Sign-Off
 
 This documentation represents The Apex v3.0.0 in production-ready form:
+
 - ✅ All 9 weapons fully specified
 - ✅ 4 original enhancements complete
 - ✅ 4 strategic enhancements evaluated with verdicts
@@ -322,4 +355,3 @@ This documentation represents The Apex v3.0.0 in production-ready form:
 **Ready for:** Engineering development sprint starting Week 1.
 
 **Status:** APPROVED FOR DEVELOPMENT
-

@@ -2,6 +2,31 @@
   "deno.enable": true,
   "deno.lint": true,
   "deno.unstable": false,
+  "deno.config": "./deno.json",
+  "deno.cacheOnSave": true,
+  "deno.codeLens.references": true,
+  "deno.codeLens.implementations": true,
+  "deno.suggest.imports.hosts": {
+    "https://deno.land": true,
+    "https://esm.sh": true,
+    "https://jsr.io": true
+  },
+  "deno.suggest.imports": true,
+  "deno.suggest.completeFunctionCalls": true,
+  "deno.inlayHints.parameterNames.enabled": "all",
+  "deno.inlayHints.parameterTypes.enabled": true,
+  "deno.inlayHints.variableTypes.enabled": true,
+  "deno.inlayHints.propertyDeclarationTypes.enabled": true,
+  "deno.enablePaths": [
+    "./",
+    "./admin-api",
+    "./main-app",
+    "./shared"
+  ],
+  "deno.disablePaths": [],
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "always"
+  },
   "editor.formatOnSave": true,
   "[typescript]": {
     "editor.defaultFormatter": "denoland.vscode-deno"
@@ -14,5 +39,17 @@
   },
   "[javascriptreact]": {
     "editor.defaultFormatter": "denoland.vscode-deno"
-  }
+  },
+  "[json]": {
+    "editor.defaultFormatter": "denoland.vscode-deno"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "denoland.vscode-deno"
+  },
+  "files.associations": {
+    "*.ts": "typescript",
+    "*.tsx": "typescriptreact"
+  },
+  "css.lint.unknownAtRules": "ignore",
+  "css.customData": []
 }

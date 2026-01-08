@@ -1,0 +1,156 @@
+# Cursor Operational Rules — eBoard Project
+
+**Normative Specification (RFC-2119 Compliant)**
+
+---
+
+## 1. Authority Order (NON-NEGOTIABLE)
+
+The following authority order MUST be respected at all times:
+
+- Deno CLI (deno check / deno task / deno info) — Primary source of truth
+- Official Deno Documentation — Normative
+- Project Files (deno.json, .vscode/settings.json)
+- Cursor / LLM suggestions — Last resort only
+
+**Cursor MUST NOT override or bypass higher-order authorities.**
+
+---
+
+## 2. Deno LSP Validation (MANDATORY)
+
+### 2.1 Pre-Action Requirement
+
+Before ANY of the following actions:
+
+- Code modification
+- Refactoring
+- Import changes
+- Dependency changes
+- Workspace configuration changes
+
+Cursor MUST first verify Deno LSP status using the CLI:
+
+```bash
+deno task validate:lsp
+```
+
+If this command fails or reports errors:
+
+- Cursor MUST STOP
+- Cursor MUST NOT propose speculative fixes
+- Cursor MUST report the exact CLI output verbatim
+
+### 2.2 Prohibited Behavior
+
+Cursor MUST NOT:
+
+- Debug via trial-and-error
+- "Try" random config changes
+- Disable Deno
+- Switch to Node / tsserver
+- Modify .vscode, deno.json, or workspace layout without CLI confirmation
+
+---
+
+## 3. No Trial-and-Error Rule (CRITICAL)
+
+Cursor MUST NOT perform exploratory debugging.
+
+**Specifically forbidden:**
+
+- "Let's try this and see"
+- "This might fix it"
+- Incremental guessing
+- Workspace-wide edits without root-cause analysis
+
+**REQUIRED FLOW:**
+
+1. Run Deno CLI diagnostic
+2. Analyze actual error messages
+3. Cross-reference official Deno docs
+4. Propose minimal, reversible change
+5. Explain why the change aligns with Deno behavior
+
+**If step (1) is not completed, Cursor MUST NOT PROCEED.**
+
+---
+
+## 4. Official Documentation Compliance (HARD REQUIREMENT)
+
+When instructed to read official documentation:
+
+Cursor MUST explicitly reference:
+
+- The document title
+- The rule / section being applied
+
+Cursor MUST NOT:
+
+- Invent behavior not documented
+- Substitute Node.js or TypeScript defaults
+
+**Failure to cite documentation is considered non-compliance.**
+
+---
+
+## 5. LSP Feature Expectations (Verification Checklist)
+
+After validation, Cursor MUST CONFIRM the following are operational:
+
+- Type checking
+- IntelliSense
+- Go-to-definition
+- CodeLens
+- Inlay hints
+- Import suggestions
+- Format on save
+- Organize imports on save
+
+**If any item fails:**
+
+- Cursor MUST return to CLI diagnostics
+- Cursor MUST NOT patch blindly
+
+---
+
+## 6. Workspace Safety Rule (ANTI-DESTRUCTION)
+
+Cursor MUST NOT:
+
+- Reinitialize the workspace
+- Delete config files
+- Replace deno.json
+- Rewrite .vscode/settings.json
+- Migrate tooling ecosystems
+
+**Unless explicitly authorized in writing by the user.**
+
+**Violating this rule is considered catastrophic failure.**
+
+---
+
+## 7. Files of Record
+
+These files are authoritative and MUST NOT be bypassed:
+
+- deno.json
+- .vscode/settings.json
+- tools/validate-lsp.ts
+- lsp-indicator.ts
+- LSP_VALIDATION.md
+
+**Cursor MUST read before acting.**
+
+---
+
+## 8. When to Halt (FAIL-FAST)
+
+Cursor MUST HALT AND ASK if:
+
+- CLI output is ambiguous
+- Docs contradict assumptions
+- A change affects more than one subsystem
+- The fix is not explicitly documented
+
+**Silence or guessing is not permitted.**

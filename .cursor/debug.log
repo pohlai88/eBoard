@@ -1,0 +1,20 @@
+{"location":"dev.ts:8","message":"dev.ts entry","data":{"args":[]},"timestamp":1767909744615,"sessionId":"debug-session","runId":"run1","hypothesisId":"A"}
+{"location":"dev.ts:12","message":"root resolved","data":{"root":"C:\\AI-BOS\\eBoard\\main-app"},"timestamp":1767909744618,"sessionId":"debug-session","runId":"run1","hypothesisId":"C"}
+{"location":"dev.ts:16","message":"before tailwind plugin","data":{},"timestamp":1767909744619,"sessionId":"debug-session","runId":"run1","hypothesisId":"A"}
+{"location":"dev.ts:34","message":"dev mode - before listen","data":{},"timestamp":1767909744620,"sessionId":"debug-session","runId":"run1","hypothesisId":"A"}
+{"location":"dev.ts:20","message":"tailwind plugin initialized","data":{},"timestamp":1767909744620,"sessionId":"debug-session","runId":"run1","hypothesisId":"A"}
+{"location":"dev.ts:8","message":"dev.ts entry","data":{"args":[]},"timestamp":1767909744617,"sessionId":"debug-session","runId":"run1","hypothesisId":"A"}
+{"location":"dev.ts:12","message":"root resolved","data":{"root":"C:\\AI-BOS\\eBoard\\main-app"},"timestamp":1767909744620,"sessionId":"debug-session","runId":"run1","hypothesisId":"C"}
+{"location":"dev.ts:16","message":"before tailwind plugin","data":{},"timestamp":1767909744621,"sessionId":"debug-session","runId":"run1","hypothesisId":"A"}
+{"location":"dev.ts:20","message":"tailwind plugin initialized","data":{},"timestamp":1767909744622,"sessionId":"debug-session","runId":"run1","hypothesisId":"A"}
+{"location":"dev.ts:34","message":"dev mode - before listen","data":{},"timestamp":1767909744622,"sessionId":"debug-session","runId":"run1","hypothesisId":"A"}
+{"location":"main.ts:3","message":"main.ts entry","data":{},"timestamp":1767909744633,"sessionId":"debug-session","runId":"run1","hypothesisId":"D"}
+{"location":"main.ts:28","message":"before staticFiles middleware","data":{},"timestamp":1767909744634,"sessionId":"debug-session","runId":"run1","hypothesisId":"D"}
+{"location":"main.ts:16","message":"after fsRoutes","data":{},"timestamp":1767909744636,"sessionId":"debug-session","runId":"run1","hypothesisId":"D"}
+{"location":"main.ts:12","message":"after staticFiles middleware","data":{},"timestamp":1767909744635,"sessionId":"debug-session","runId":"run1","hypothesisId":"D"}
+{"location":"main.ts:3","message":"main.ts entry","data":{},"timestamp":1767909744636,"sessionId":"debug-session","runId":"run1","hypothesisId":"D"}
+{"location":"main.ts:28","message":"before staticFiles middleware","data":{},"timestamp":1767909744637,"sessionId":"debug-session","runId":"run1","hypothesisId":"D"}
+{"location":"main.ts:12","message":"after staticFiles middleware","data":{},"timestamp":1767909744637,"sessionId":"debug-session","runId":"run1","hypothesisId":"D"}
+{"location":"main.ts:16","message":"after fsRoutes","data":{},"timestamp":1767909744638,"sessionId":"debug-session","runId":"run1","hypothesisId":"D"}
+{"location":"dev.ts:40","message":"server listening","data":{},"timestamp":1767909744943,"sessionId":"debug-session","runId":"run1","hypothesisId":"A"}
+{"location":"dev.ts:40","message":"server listening","data":{},"timestamp":1767909744949,"sessionId":"debug-session","runId":"run1","hypothesisId":"A"}

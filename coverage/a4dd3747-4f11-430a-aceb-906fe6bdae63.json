@@ -1,0 +1,72 @@
+{
+  "scriptId": "335",
+  "url": "file:///C:/AI-BOS/eBoard/shared/utils.ts",
+  "functions": [
+    {
+      "functionName": "",
+      "ranges": [
+        {
+          "startOffset": 0,
+          "endOffset": 470,
+          "count": 1
+        }
+      ],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "generateId",
+      "ranges": [
+        {
+          "startOffset": 27,
+          "endOffset": 82,
+          "count": 1
+        }
+      ],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "formatDate",
+      "ranges": [
+        {
+          "startOffset": 90,
+          "endOffset": 148,
+          "count": 1
+        }
+      ],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "getCurrentTimestamp",
+      "ranges": [
+        {
+          "startOffset": 156,
+          "endOffset": 211,
+          "count": 2
+        }
+      ],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "createApiResponse",
+      "ranges": [
+        {
+          "startOffset": 219,
+          "endOffset": 358,
+          "count": 1
+        }
+      ],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "logRequest",
+      "ranges": [
+        {
+          "startOffset": 366,
+          "endOffset": 469,
+          "count": 1
+        }
+      ],
+      "isBlockCoverage": true
+    }
+  ]
+}

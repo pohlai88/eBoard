@@ -1,7 +1,8 @@
 # Technical Requirements Document (TRD)
+
 ## Axis eBoard - Deno Implementation Guide
 
-**Generated:** 2026-01-08T15:25:14.731Z  
+**Generated:** 2026-01-08T15:25:14.731Z\
 **Priority:** Deno Built-in → @std → JSR → npm (last resort)
 
 ---
@@ -9,16 +10,18 @@
 ## 1. Architecture Decision Records (ADR)
 
 ### ADR-001: Use Deno KV as Primary Database
+
 - **Status:** Accepted
 - **Context:** Need simple, distributed data storage for MVP
 - **Decision:** Use Deno KV instead of PostgreSQL/MongoDB
-- **Consequences:** 
+- **Consequences:**
   - ✅ Zero setup, ACID transactions, free replication
   - ✅ Perfect for user sessions, settings, simple data
   - ⚠️ Limited query capabilities (no joins, complex filters)
   - 🔄 Migration path to PostgreSQL exists if needed
 
 ### ADR-002: Native WebSocket over Socket.io
+
 - **Status:** Accepted
 - **Context:** Real-time features (chat, notifications)
 - **Decision:** Use Deno's native WebSocket API
@@ -29,6 +32,7 @@
   - 🔄 Can add library later if needed
 
 ### ADR-003: Web Crypto API for Authentication
+
 - **Status:** Accepted
 - **Context:** Password hashing, JWT signing
 - **Decision:** Use Web Crypto API (crypto.subtle)
@@ -42,35 +46,43 @@
 
 ## 2. Capability Mapping
 
-
 ### HTTP Server
+
 **Feature:** HTTP/HTTPS Server
 
 **Built-in Solutions:**
+
 - ✅ Deno.serve() - Native HTTP server
 - ✅ Request/Response Web APIs
 
 **Standard Library:**
+
 - 📦 @std/http - Enhanced routing and middleware
 
 **External (if needed):**
+
 - ⚠️ hono - Lightweight web framework (optional)
 - ⚠️ oak - Express-like framework
 
-**💡 Recommendation:** Use Deno.serve() for simple APIs, @std/http for routing, Hono for complex apps
+**💡 Recommendation:** Use Deno.serve() for simple APIs, @std/http for routing, Hono for complex
+apps
 
 ---
 
 ### WebSocket
+
 **Feature:** Real-time Communication
 
 **Built-in Solutions:**
+
 - ✅ WebSocket API - Native support
 
 **Standard Library:**
+
 - 📦 @std/http/websocket - WebSocket utilities
 
 **External (if needed):**
+
 - ⚠️ socket.io alternative not needed - use native WebSocket
 
 **💡 Recommendation:** Deno's native WebSocket is production-ready. No external deps needed.
@@ -78,34 +90,43 @@
 ---
 
 ### Database
+
 **Feature:** Data Persistence
 
 **Built-in Solutions:**
+
 - ✅ Deno KV - Built-in key-value database (ACID, replicated)
 
 **Standard Library:**
+
 - 📦 @std/csv, @std/json - Data format handling
 
 **External (if needed):**
+
 - ⚠️ PostgreSQL - npm:postgres or deno.land/x/postgres
 - ⚠️ MongoDB - npm:mongodb
 - ⚠️ SQLite - jsr:@db/sqlite
 
-**💡 Recommendation:** START with Deno KV for MVP. Scale to PostgreSQL only if complex queries needed.
+**💡 Recommendation:** START with Deno KV for MVP. Scale to PostgreSQL only if complex queries
+needed.
 
 ---
 
 ### Authentication
+
 **Feature:** User Authentication & Authorization
 
 **Built-in Solutions:**
+
 - ✅ Web Crypto API - Password hashing, JWT signing
 - ✅ crypto.subtle for encryption
 
 **Standard Library:**
+
 - 📦 @std/encoding/base64 - Token encoding
 
 **External (if needed):**
+
 - ⚠️ djwt - JWT library (jsr:@zaubrik/djwt)
 - ⚠️ bcrypt - For legacy compatibility only
 
@@ -114,17 +135,21 @@
 ---
 
 ### File Storage
+
 **Feature:** File Upload & Storage
 
 **Built-in Solutions:**
+
 - ✅ Deno.readFile, Deno.writeFile - Local storage
 - ✅ Deno.stat - File metadata
 
 **Standard Library:**
+
 - 📦 @std/fs - File system utilities
 - 📦 @std/path - Path manipulation
 
 **External (if needed):**
+
 - ⚠️ S3 SDK - For cloud storage (npm:@aws-sdk/client-s3)
 - ⚠️ MinIO - Self-hosted S3 alternative
 
@@ -133,15 +158,19 @@
 ---
 
 ### Task Queue
+
 **Feature:** Background Jobs & Scheduled Tasks
 
 **Built-in Solutions:**
+
 - ✅ Deno.cron() - Built-in cron scheduler
 
 **Standard Library:**
+
 - (None needed)
 
 **External (if needed):**
+
 - ⚠️ BullMQ alternative: Use Deno KV + Deno.cron()
 - ⚠️ Temporal (if complex workflows)
 
@@ -150,15 +179,19 @@
 ---
 
 ### Email
+
 **Feature:** Email Notifications
 
 **Built-in Solutions:**
+
 - ✅ fetch() - Call email APIs
 
 **Standard Library:**
+
 - (None needed)
 
 **External (if needed):**
+
 - ⚠️ Resend - Modern email API (fetch-based)
 - ⚠️ SendGrid - Classic provider
 - ⚠️ SMTP client - jsr:@std/smtp (if needed)
@@ -168,15 +201,19 @@
 ---
 
 ### Validation
+
 **Feature:** Data Validation
 
 **Built-in Solutions:**
+
 - ✅ TypeScript types - Compile-time validation
 
 **Standard Library:**
+
 - (None needed)
 
 **External (if needed):**
+
 - ⚠️ Zod - Runtime validation (npm:zod)
 - ⚠️ ArkType - TypeScript-first validator
 
@@ -185,40 +222,45 @@
 ---
 
 ### Testing
+
 **Feature:** Testing Framework
 
 **Built-in Solutions:**
+
 - ✅ Deno.test() - Built-in test runner
 - ✅ deno test --watch
 
 **Standard Library:**
+
 - 📦 @std/assert - Assertion library
 - 📦 @std/testing - Testing utilities
 
 **External (if needed):**
-
 
 **💡 Recommendation:** 100% built-in. No Jest/Mocha needed. Use --coverage for reports.
 
 ---
 
 ### Frontend
+
 **Feature:** UI Framework
 
 **Built-in Solutions:**
+
 - ✅ JSX/TSX support - Native
 
 **Standard Library:**
+
 - (None needed)
 
 **External (if needed):**
+
 - ⚠️ Fresh - Deno-native full-stack framework (RECOMMENDED)
 - ⚠️ React - npm:react (if needed)
 - ⚠️ Preact - Lighter alternative
 - ⚠️ htmx - HTML-over-the-wire
 
 **💡 Recommendation:** Fresh for full-stack. Preact for SPA. htmx for simplicity.
-
 
 ---
 
@@ -296,6 +338,7 @@ import { createUser, getUser } from "../shared/db.ts";
 ## 5. Development Workflow
 
 ### Phase 1: Setup (Day 1)
+
 ```bash
 # Initialize workspace
 deno init
@@ -308,11 +351,13 @@ deno task fmt            # Format code
 ```
 
 ### Phase 2: Build Shared Library (Week 1)
+
 - Create `shared/` modules
 - Write tests for each utility
 - Document exports in `mod.ts`
 
 ### Phase 3: Build Features (Week 2-4)
+
 - Import from `shared/`
 - Focus on business logic
 - No reinventing wheels
@@ -340,6 +385,7 @@ Deno.test("verifyPassword validates correct password", async () => {
 ```
 
 Run with:
+
 ```bash
 deno test --coverage=coverage/
 deno coverage coverage/ --lcov > coverage.lcov
@@ -358,6 +404,7 @@ deployctl deploy --project=axis-eboard main-app/main.ts
 ```
 
 **Benefits:**
+
 - Zero configuration
 - Auto-scaling
 - Global edge deployment

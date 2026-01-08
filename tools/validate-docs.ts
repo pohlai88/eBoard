@@ -64,13 +64,13 @@ async function main() {
 
   // Check critical PRD files
   const criticalFiles = [
-    "./.PRD/PRD_eBoard_v3.md",
-    "./.PRD/v3_DOCUMENTATION_INDEX.md",
-    "./.PRD/APEX_v3_COMPLETE_ARCHITECTURE.md",
-    "./.PRD/PRD_v3_STRATEGIC_ENHANCEMENTS.md",
-    "./.PRD/ORACLE_WHATIF_ENHANCEMENT.md",
-    "./.PRD/NexusCanon_Constitution.md",
-    "./.PRD/NexusCanon_Olympian.md",
+    "./.PRD/1-core-prd/PRD_eBoard_v3.md",
+    "./.PRD/1-core-prd/v3_DOCUMENTATION_INDEX.md",
+    "./.PRD/1-core-prd/APEX_v3_COMPLETE_ARCHITECTURE.md",
+    "./.PRD/1-core-prd/PRD_v3_STRATEGIC_ENHANCEMENTS.md",
+    "./.PRD/1-core-prd/ORACLE_WHATIF_ENHANCEMENT.md",
+    "./.PRD/2-architecture/NexusCanon_Constitution.md",
+    "./.PRD/2-architecture/NexusCanon_Olympian.md",
   ];
 
   console.log("📋 Checking critical files...");

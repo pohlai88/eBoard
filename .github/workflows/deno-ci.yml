@@ -1,0 +1,46 @@
+name: Deno CI
+
+on:
+  push:
+    branches: ["main", "master"]
+  pull_request:
+    branches: ["main", "master"]
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Deno
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: v2.x
+
+      - name: Format (check)
+        run: deno fmt --check
+
+      - name: Lint
+        run: deno lint
+
+      - name: Test with coverage
+        run: deno test --coverage=coverage
+
+      - name: Generate lcov
+        run: deno coverage coverage --lcov > coverage.lcov
+
+      - name: Generate HTML coverage
+        run: deno coverage coverage --html coverage_html
+
+      - name: Upload coverage artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-lcov
+          path: coverage.lcov
+
+      - name: Upload HTML coverage
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-html
+          path: coverage_html

@@ -1,7 +1,8 @@
 # Frontend Styling Guide - Deno-First Approaches
+
 ## How Far Can Deno Go? (Spoiler: ALL THE WAY! 🚀)
 
-**Generated:** ${new Date().toISOString()}  
+**Generated:** ${new Date().toISOString()}\
 **Philosophy:** Zero Build Step, Zero npm, Maximum Performance
 
 ---
@@ -59,6 +60,7 @@ export function Button({ variant = "primary", size = "md", children, onClick }: 
 ## DRY Patterns - Don't Repeat Yourself! 🔄
 
 ### ❌ Problem: Repeating Classes (Anti-Pattern)
+
 ```typescript
 // DON'T DO THIS - Violates DRY principle
 <button class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Save</button>
@@ -72,6 +74,7 @@ export function Button({ variant = "primary", size = "md", children, onClick }: 
 ## Option 1: Fresh + Twind (⭐ BEST - Zero Config)
 
 ### What is Fresh?
+
 - Deno's official full-stack web framework
 - **Ships with Twind pre-installed** (Tailwind-in-JS)
 - Islands architecture (only ship JS for interactive components)
@@ -108,7 +111,7 @@ export default function Home() {
             Login
           </button>
         </nav>
-        
+
         <main class="container mx-auto p-8">
           <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Cards auto-generate responsive layouts */}
@@ -134,9 +137,13 @@ function Card({ title, count, color }: CardProps) {
     yellow: "bg-yellow-100 border-yellow-500 text-yellow-700",
     green: "bg-green-100 border-green-500 text-green-700",
   };
-  
+
   return (
-    <div class={`p-6 rounded-lg border-l-4 ${colorClasses[color]} shadow-md hover:shadow-xl transition`}>
+    <div
+      class={`p-6 rounded-lg border-l-4 ${
+        colorClasses[color]
+      } shadow-md hover:shadow-xl transition`}
+    >
       <h2 class="text-xl font-semibold mb-2">{title}</h2>
       <p class="text-4xl font-bold">{count}</p>
     </div>
@@ -169,10 +176,11 @@ export default {
 };
 
 // Usage
-<div class="bg-brand-primary font-sans">Custom branded component</div>
+<div class="bg-brand-primary font-sans">Custom branded component</div>;
 ```
 
 ### Why Twind Wins
+
 - ✅ **10KB** vs Tailwind CDN 300KB
 - ✅ **Zero config** out of the box
 - ✅ **Production-ready** (used by Deno Deploy dashboard)
@@ -185,6 +193,7 @@ export default {
 ## Option 2: UnoCSS (🚀 Fastest Alternative)
 
 ### What is UnoCSS?
+
 - "Instant on-demand atomic CSS engine"
 - **3x faster** than Tailwind
 - Compatible with Tailwind/Windi syntax
@@ -222,20 +231,20 @@ const uno = createGenerator({ presets: [presetUno()] });
 
 export async function handler(req: Request, ctx: any) {
   const resp = await ctx.next();
-  
+
   // Inject UnoCSS on every page
   if (resp.headers.get("content-type")?.includes("text/html")) {
     const html = await resp.text();
     const { css } = await uno.generate(html);
-    
+
     const injected = html.replace(
       "</head>",
-      `<style>${css}</style></head>`
+      `<style>${css}</style></head>`,
     );
-    
+
     return new Response(injected, { headers: resp.headers });
   }
-  
+
   return resp;
 }
 ```
@@ -281,10 +290,11 @@ export function Button({ variant = "button", children }: any) {
 }
 
 // Usage
-<Button variant="primary">Click Me</Button>
+<Button variant="primary">Click Me</Button>;
 ```
 
 ### Why CSS Modules?
+
 - ✅ **Zero dependencies**
 - ✅ **Scoped styles** (no conflicts)
 - ✅ **TypeScript support**
@@ -306,12 +316,12 @@ export const card = style({
   boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
   background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
   color: "white",
-  
+
   ":hover": {
     transform: "translateY(-4px)",
     boxShadow: "0 8px 12px rgba(0, 0, 0, 0.2)",
   },
-  
+
   // Responsive
   "@media": {
     "(min-width: 768px)": {
@@ -341,6 +351,7 @@ export function Card() {
 ```
 
 ### Benefits
+
 - ✅ **Full TypeScript** autocomplete for CSS
 - ✅ **Zero runtime** (CSS extracted at build time)
 - ✅ **Type-safe themes** and variants
@@ -363,7 +374,7 @@ export function Card() {
     padding: 1.5rem;
     border-radius: 0.75rem;
     background: white;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
 </style>
 
@@ -376,9 +387,10 @@ export function Card() {
 // server.ts
 Deno.serve((req) => {
   const url = new URL(req.url);
-  
+
   if (url.pathname === "/") {
-    return new Response(`
+    return new Response(
+      `
       <!DOCTYPE html>
       <html>
         <head>
@@ -389,9 +401,11 @@ Deno.serve((req) => {
           <div hx-get="/api/users" hx-trigger="load">Loading...</div>
         </body>
       </html>
-    `, { headers: { "content-type": "text/html" } });
+    `,
+      { headers: { "content-type": "text/html" } },
+    );
   }
-  
+
   if (url.pathname === "/api/users") {
     return new Response(`
       <ul>
@@ -400,7 +414,7 @@ Deno.serve((req) => {
       </ul>
     `);
   }
-  
+
   return new Response("Not found", { status: 404 });
 });
 ```
@@ -409,15 +423,15 @@ Deno.serve((req) => {
 
 ## Performance Comparison
 
-| Solution | Bundle Size | Runtime Cost | Build Step | Deno-Native |
-|----------|-------------|--------------|------------|-------------|
-| **Fresh + Twind** ⭐ | 10KB | Minimal | ✅ None | ✅ Yes |
-| **UnoCSS** | 8KB | Minimal | ✅ None | ✅ Yes |
-| **CSS Modules** | 0KB | Zero | ✅ None | ✅ Yes |
-| **Vanilla Extract** | 0KB | Zero | ⚠️ Optional | ✅ Yes |
-| **htmx + CSS** | 14KB (htmx) | Zero | ✅ None | ✅ Yes |
-| Tailwind CDN ❌ | **300KB** | **High** | ✅ None | ⚠️ Not ideal |
-| Tailwind Traditional ❌ | 50KB | Zero | ❌ **Node.js** | ❌ No |
+| Solution                | Bundle Size | Runtime Cost | Build Step     | Deno-Native  |
+| ----------------------- | ----------- | ------------ | -------------- | ------------ |
+| **Fresh + Twind** ⭐    | 10KB        | Minimal      | ✅ None        | ✅ Yes       |
+| **UnoCSS**              | 8KB         | Minimal      | ✅ None        | ✅ Yes       |
+| **CSS Modules**         | 0KB         | Zero         | ✅ None        | ✅ Yes       |
+| **Vanilla Extract**     | 0KB         | Zero         | ⚠️ Optional    | ✅ Yes       |
+| **htmx + CSS**          | 14KB (htmx) | Zero         | ✅ None        | ✅ Yes       |
+| Tailwind CDN ❌         | **300KB**   | **High**     | ✅ None        | ⚠️ Not ideal |
+| Tailwind Traditional ❌ | 50KB        | Zero         | ❌ **Node.js** | ❌ No        |
 
 ---
 
@@ -436,7 +450,7 @@ interface Props {
 
 export default function StatsCard({ title, initialValue }: Props) {
   const count = signal(initialValue);
-  
+
   return (
     <div class="group relative overflow-hidden rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 p-6 shadow-lg hover:shadow-2xl transition-all duration-300">
       <div class="relative z-10">
@@ -453,7 +467,7 @@ export default function StatsCard({ title, initialValue }: Props) {
           Increment
         </button>
       </div>
-      
+
       {/* Animated background effect */}
       <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
     </div>
@@ -474,7 +488,7 @@ export default function Dashboard() {
         <h1 class="text-4xl font-bold text-gray-900 mb-8">
           Dashboard
         </h1>
-        
+
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           <StatsCard title="Active Proposals" initialValue={42} />
           <StatsCard title="Completed Tasks" initialValue={128} />
@@ -487,6 +501,7 @@ export default function Dashboard() {
 ```
 
 **Result:**
+
 - ✅ Interactive islands (only StatsCard has JS)
 - ✅ Server-rendered by default (instant FCP)
 - ✅ Hot reload in dev
@@ -508,6 +523,7 @@ deno run -A https://deno.land/x/deploy/deployctl.ts deploy --project=axis-eboard
 ```
 
 **Features:**
+
 - Global edge network (35+ regions)
 - Automatic HTTPS
 - Environment variables
@@ -539,6 +555,7 @@ deno run -A https://deno.land/x/deploy/deployctl.ts deploy --project=axis-eboard
 ```
 
 **Problems:**
+
 - 500MB `node_modules`
 - 30+ dependencies
 - Complex build chain
@@ -553,6 +570,7 @@ deno task start
 ```
 
 **Benefits:**
+
 - **Zero** `node_modules`
 - **Zero** config files
 - **Zero** build step in dev
@@ -563,23 +581,33 @@ deno task start
 ## Recommendations by Project Type
 
 ### 1. **Full-Stack App (eBoard, Dashboard)**
+
 → **Fresh + Twind** (⭐ Best choice)
+
 - Reasoning: Complete solution, SSR, islands, styling all-in-one
 
 ### 2. **Static Site / Blog**
+
 → **Fresh + CSS Modules** or **Lume** (Deno's static site generator)
+
 - Reasoning: Simple, fast, no runtime JS needed
 
 ### 3. **Admin Panel / Internal Tool**
+
 → **htmx + Plain CSS**
+
 - Reasoning: Minimal JS, server-driven, easy to maintain
 
 ### 4. **Design System / Component Library**
+
 → **Vanilla Extract**
+
 - Reasoning: Type-safe, reusable, zero runtime
 
 ### 5. **Maximum Performance Critical**
+
 → **UnoCSS + Preact**
+
 - Reasoning: Smallest bundle, fastest rendering
 
 ---
@@ -589,6 +617,7 @@ deno task start
 ### ✅ Deno Can 100% Replace Node.js for Frontend
 
 **Evidence:**
+
 1. **Fresh framework** = Next.js for Deno (better DX)
 2. **Twind** = Tailwind without build step
 3. **Deno Deploy** = Vercel but simpler
@@ -597,6 +626,7 @@ deno task start
 6. **esbuild integration** = Fast production builds (when needed)
 
 **What Deno Does BETTER:**
+
 - Zero config
 - TypeScript by default
 - Web standards (fetch, Response, Request)
@@ -604,6 +634,7 @@ deno task start
 - Single executable (no `package.json` hell)
 
 **What Deno Lacks (Currently):**
+
 - ~~Large ecosystem~~ (Solved: npm: imports work)
 - ~~Complex state management~~ (Solved: Preact signals)
 - ~~CSS-in-JS~~ (Solved: Twind, Vanilla Extract)
@@ -611,6 +642,7 @@ deno task start
 ### 🎯 Bottom Line
 
 **For Axis eBoard:**
+
 ```bash
 # This is literally all you need:
 deno run -A -r https://fresh.deno.dev axis-eboard
@@ -626,7 +658,8 @@ deno task start
 # ✅ Production-ready
 ```
 
-**Deno has achieved feature parity with Node.js for web development, with significantly better developer experience.**
+**Deno has achieved feature parity with Node.js for web development, with significantly better
+developer experience.**
 
 ---
 
@@ -653,7 +686,7 @@ deno task start
    deployctl deploy --project=test
    ```
 
-5. **Report back:** 
+5. **Report back:**
    - Share findings
    - Identify gaps (if any)
    - Refine SRS/TRD docs
@@ -662,5 +695,5 @@ deno task start
 
 **Conclusion:** Deno + Fresh + Twind = **Zero Compromise Frontend Stack**
 
-No Node.js. No npm. No webpack. No babel. No postcss.  
+No Node.js. No npm. No webpack. No babel. No postcss.\
 Just TypeScript, Web Standards, and Pure Speed. 🚀
