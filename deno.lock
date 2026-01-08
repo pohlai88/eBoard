@@ -2,17 +2,130 @@
   "version": "5",
   "specifiers": {
     "jsr:@hono/hono@^4.11.3": "4.11.3",
-    "jsr:@std/dotenv@0.224": "0.224.2"
+    "jsr:@std/cli@^1.0.25": "1.0.25",
+    "jsr:@std/dotenv@0.224": "0.224.2",
+    "jsr:@std/encoding@^1.0.10": "1.0.10",
+    "jsr:@std/fmt@^1.0.8": "1.0.8",
+    "jsr:@std/fs@*": "1.0.21",
+    "jsr:@std/fs@^1.0.21": "1.0.21",
+    "jsr:@std/html@^1.0.5": "1.0.5",
+    "jsr:@std/http@*": "1.0.23",
+    "jsr:@std/http@1": "1.0.23",
+    "jsr:@std/internal@^1.0.12": "1.0.12",
+    "jsr:@std/media-types@^1.1.0": "1.1.0",
+    "jsr:@std/net@^1.0.6": "1.0.6",
+    "jsr:@std/path@^1.1.4": "1.1.4",
+    "jsr:@std/streams@^1.0.16": "1.0.16",
+    "jsr:@std/yaml@*": "1.0.10",
+    "npm:highlight.js@*": "11.11.1",
+    "npm:highlight.js@^11.9.0": "11.11.1",
+    "npm:marked-gfm-heading-id@*": "3.2.0_marked@12.0.2",
+    "npm:marked-gfm-heading-id@^3.1.0": "3.2.0_marked@12.0.2",
+    "npm:marked-highlight@*": "2.2.3_marked@12.0.2",
+    "npm:marked-highlight@^2.1.0": "2.2.3_marked@12.0.2",
+    "npm:marked@*": "12.0.2",
+    "npm:marked@12": "12.0.2",
+    "npm:zod@^3.22.0": "3.25.76"
   },
   "jsr": {
     "@hono/hono@4.11.3": {
       "integrity": "de7f245516a970c60c6f4bf5b0f1585efbee38ee4e01171994c2b9d69d035d70"
     },
+    "@std/cli@1.0.25": {
+      "integrity": "1f85051b370c97a7a9dfc6ba626e7ed57a91bea8c081597276d1e78d929d8c91"
+    },
     "@std/dotenv@0.224.2": {
       "integrity": "29081695357e4534696c9e986b2560be29c141ccf52daa32b6c20ff5b5c64ab9"
+    },
+    "@std/encoding@1.0.10": {
+      "integrity": "8783c6384a2d13abd5e9e87a7ae0520a30e9f56aeeaa3bdf910a3eaaf5c811a1"
+    },
+    "@std/fmt@1.0.8": {
+      "integrity": "71e1fc498787e4434d213647a6e43e794af4fd393ef8f52062246e06f7e372b7"
+    },
+    "@std/fs@1.0.21": {
+      "integrity": "d720fe1056d78d43065a4d6e0eeb2b19f34adb8a0bc7caf3a4dbf1d4178252cd",
+      "dependencies": [
+        "jsr:@std/internal",
+        "jsr:@std/path"
+      ]
+    },
+    "@std/html@1.0.5": {
+      "integrity": "4e2d693f474cae8c16a920fa5e15a3b72267b94b84667f11a50c6dd1cb18d35e"
+    },
+    "@std/http@1.0.23": {
+      "integrity": "6634e9e034c589bf35101c1b5ee5bbf052a5987abca20f903e58bdba85c80dee",
+      "dependencies": [
+        "jsr:@std/cli",
+        "jsr:@std/encoding",
+        "jsr:@std/fmt",
+        "jsr:@std/fs@^1.0.21",
+        "jsr:@std/html",
+        "jsr:@std/media-types",
+        "jsr:@std/net",
+        "jsr:@std/path",
+        "jsr:@std/streams"
+      ]
+    },
+    "@std/internal@1.0.12": {
+      "integrity": "972a634fd5bc34b242024402972cd5143eac68d8dffaca5eaa4dba30ce17b027"
+    },
+    "@std/media-types@1.1.0": {
+      "integrity": "c9d093f0c05c3512932b330e3cc1fe1d627b301db33a4c2c2185c02471d6eaa4"
+    },
+    "@std/net@1.0.6": {
+      "integrity": "110735f93e95bb9feb95790a8b1d1bf69ec0dc74f3f97a00a76ea5efea25500c"
+    },
+    "@std/path@1.1.4": {
+      "integrity": "1d2d43f39efb1b42f0b1882a25486647cb851481862dc7313390b2bb044314b5",
+      "dependencies": [
+        "jsr:@std/internal"
+      ]
+    },
+    "@std/streams@1.0.16": {
+      "integrity": "85030627befb1767c60d4f65cb30fa2f94af1d6ee6e5b2515b76157a542e89c4"
+    },
+    "@std/yaml@1.0.10": {
+      "integrity": "245706ea3511cc50c8c6d00339c23ea2ffa27bd2c7ea5445338f8feff31fa58e"
+    }
+  },
+  "npm": {
+    "github-slugger@2.0.0": {
+      "integrity": "sha512-IaOQ9puYtjrkq7Y0Ygl9KDZnrf/aiUJYUpVf89y8kyaxbRG7Y1SrX/jaumrv81vc61+kiMempujsM3Yw7w5qcw=="
+    },
+    "highlight.js@11.11.1": {
+      "integrity": "sha512-Xwwo44whKBVCYoliBQwaPvtd/2tYFkRQtXDWj1nackaV2JPXx3L0+Jvd8/qCJ2p+ML0/XVkJ2q+Mr+UVdpJK5w=="
+    },
+    "marked-gfm-heading-id@3.2.0_marked@12.0.2": {
+      "integrity": "sha512-Xfxpr5lXLDLY10XqzSCA9l2dDaiabQUgtYM9hw8yunyVsB/xYBRpiic6BOiY/EAJw1ik1eWr1ET1HKOAPZBhXg==",
+      "dependencies": [
+        "github-slugger",
+        "marked"
+      ]
+    },
+    "marked-highlight@2.2.3_marked@12.0.2": {
+      "integrity": "sha512-FCfZRxW/msZAiasCML4isYpxyQWKEEx44vOgdn5Kloae+Qc3q4XR7WjpKKf8oMLk7JP9ZCRd2vhtclJFdwxlWQ==",
+      "dependencies": [
+        "marked"
+      ]
+    },
+    "marked@12.0.2": {
+      "integrity": "sha512-qXUm7e/YKFoqFPYPa3Ukg9xlI5cyAtGmyEIzMfW//m6kXwCy2Ps9DYf5ioijFKQ8qyuscrHoY04iJGctu2Kg0Q==",
+      "bin": true
+    },
+    "zod@3.25.76": {
+      "integrity": "sha512-gzUt/qt81nXsFGKIFcC3YnfEAx5NkunCfnDlvuBSSFS02bcXu4Lmea0AFIUwbLWxWPx3d9p8S5QoaujKcNQxcQ=="
     }
   },
   "workspace": {
+    "dependencies": [
+      "jsr:@std/fs@1",
+      "jsr:@std/http@1",
+      "npm:highlight.js@^11.9.0",
+      "npm:marked-gfm-heading-id@^3.1.0",
+      "npm:marked-highlight@^2.1.0",
+      "npm:marked@12"
+    ],
     "members": {
       "admin-api": {
         "dependencies": [

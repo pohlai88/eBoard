@@ -9,45 +9,45 @@ const app = new Hono();
 
 // Health check
 app.get("/", (c) => {
-    return c.json({
-        status: "admin api running",
-        version: "1.0.0",
-        timestamp: new Date().toISOString(),
-    });
+  return c.json({
+    status: "admin api running",
+    version: "1.0.0",
+    timestamp: new Date().toISOString(),
+  });
 });
 
 // Dashboard stats (example)
 app.get("/dashboard", (c) => {
-    return c.json({
-        users: 1234,
-        posts: 5678,
-        visits_today: 89,
-        last_updated: new Date().toISOString(),
-    });
+  return c.json({
+    users: 1234,
+    posts: 5678,
+    visits_today: 89,
+    last_updated: new Date().toISOString(),
+  });
 });
 
 // User management endpoints
 app.get("/users", (c) => {
-    return c.json({ users: [] });
+  return c.json({ users: [] });
 });
 
-app.post("/users/:id/ban", async (c) => {
-    const id = c.req.param("id");
-    // Ban logic here
-    return c.json({ banned: true, user_id: id });
+app.post("/users/:id/ban", (c) => {
+  const id = c.req.param("id");
+  // Ban logic here
+  return c.json({ banned: true, user_id: id });
 });
 
 // Settings
 app.get("/settings", (c) => {
-    return c.json({
-        maintenance_mode: false,
-        max_upload_size: "100MB",
-    });
+  return c.json({
+    maintenance_mode: false,
+    max_upload_size: "100MB",
+  });
 });
 
 app.put("/settings", async (c) => {
-    const body = await c.req.json();
-    return c.json({ updated: true, settings: body });
+  const body = await c.req.json();
+  return c.json({ updated: true, settings: body });
 });
 
 // Start server
