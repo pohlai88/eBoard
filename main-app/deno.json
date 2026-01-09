@@ -11,7 +11,7 @@
     "fresh/dev": "jsr:@fresh/core@^2.0.0/dev",
     "fresh/runtime": "jsr:@fresh/core@^2.0.0/runtime",
     "@fresh/plugin-tailwind": "jsr:@fresh/plugin-tailwind@^1.0.0",
-    "tailwindcss": "npm:tailwindcss@^4.0.0",
+    "tailwindcss": "npm:tailwindcss@^3.4.0",
     "preact": "npm:preact@^10.28.2",
     "preact/": "npm:preact@^10.28.2/",
     "@preact/signals": "npm:@preact/signals@^2.5.1",
