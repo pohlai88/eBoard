@@ -1,6 +1,9 @@
 # Deno
 .deno/
 
+# Node modules
+node_modules/
+
 # OS
 .DS_Store
 Thumbs.db
