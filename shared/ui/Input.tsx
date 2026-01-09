@@ -28,21 +28,21 @@ export function Input({
   class: className,
 }: InputProps): ComponentChild {
   const base =
-    "w-full px-4 py-2 border rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 bg-[var(--color-surface)]";
+    "w-full px-4 py-2 border rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 bg-obsidian";
 
-  // Using semantic tokens from @theme directive
+  // Using Tailwind classes
   const states = error
-    ? "border-[var(--color-border-error)] focus:ring-[var(--color-error)]"
-    : "border-[var(--color-border)] focus:ring-[var(--color-border-focus)] focus:border-[var(--color-border-focus)]";
+    ? "border-ember focus:ring-ember"
+    : "border-charcoal focus:ring-gold focus:border-gold";
 
   const classes = `${base} ${states} ${className || ""}`;
 
   return (
     <div class="mb-4">
       {label && (
-        <label class="block text-sm font-medium text-[var(--color-on-surface)] mb-2">
+        <label class="block text-sm font-medium text-parchment mb-2">
           {label}
-          {required && <span class="text-[var(--color-error)] ml-1">*</span>}
+          {required && <span class="text-ember ml-1">*</span>}
         </label>
       )}
       <input
@@ -54,7 +54,7 @@ export function Input({
         required={required}
         disabled={disabled}
       />
-      {error && <p class="mt-1 text-sm text-[var(--color-error)]">{error}</p>}
+      {error && <p class="mt-1 text-sm text-ember">{error}</p>}
     </div>
   );
 }

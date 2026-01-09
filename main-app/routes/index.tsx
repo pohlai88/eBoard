@@ -1,64 +1,88 @@
 import { define } from "@/utils.ts";
-import { Button, Card, ThemeProvider } from "@shared/ui/mod.ts";
+import { ThemeProvider } from "@shared/ui/mod.ts";
 import { Head } from "fresh/runtime";
 
+/**
+ * ELITE NEXUSCANON - The Apex
+ * ===========================
+ * Prototype7 canonical design using Tailwind theme.
+ */
 export default define.page(() => {
   return (
     <ThemeProvider>
       <Head>
-        <title>Axis eBoard - The Apex</title>
+        <title>The Apex — Governance System</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+          rel="stylesheet"
+        />
       </Head>
-      <div class="min-h-screen bg-[var(--color-obsidian)] text-[var(--color-parchment)]">
-        <div class="max-w-7xl mx-auto px-4 py-8">
-          <header class="mb-8">
-            <h1
-              class="text-4xl font-bold text-[var(--color-parchment)]"
-              style="font-family: 'Cormorant Garamond', serif;"
-            >
-              🎯 The Apex - Governance System
+
+      {/* Main Container */}
+      <div class="min-h-screen flex items-center justify-center p-8">
+        <div class="max-w-4xl w-full">
+          {/* HEADER */}
+          <header class="mb-24">
+            {/* System Status */}
+            <div class="flex items-center gap-3 mb-6 opacity-90">
+              <div class="w-[22px] h-[1px] bg-gold opacity-50"></div>
+              <span class="font-mono text-gold text-[0.6rem] tracking-widest uppercase">
+                System Online
+              </span>
+            </div>
+
+            {/* Title - Inter Light 300, -3% Tracking */}
+            <h1 class="font-sans font-light text-7xl leading-none tracking-apex text-signal mb-2">
+              The Apex
+              <span class="block font-light bg-divergence text-transparent bg-clip-text">
+                Governance.
+              </span>
             </h1>
-            <p class="text-[var(--color-ash)] mt-2">
-              Zero Configuration • Fresh + Tailwind CSS v4 + Preact
+
+            {/* Subtitle */}
+            <p class="font-sans text-sm text-ash mt-8 max-w-lg leading-relaxed opacity-60">
+              Forensic typography enabled. Inter Light (300) with -3% tracking.
+              Signal White degrading into the void. This is the inevitable divergence.
             </p>
           </header>
 
-          <Card variant="elevated">
-            <h2 class="text-2xl font-semibold mb-4 text-[var(--color-parchment)]">
-              ✅ Fresh Setup Complete
-            </h2>
-            <ul class="space-y-2 text-[var(--color-ash)]">
-              <li>✅ Fresh framework initialized</li>
-              <li>✅ Preact included (3KB)</li>
-              <li>✅ Tailwind CSS v4 configured (CSS-first)</li>
-              <li>✅ Theme system with semantic tokens</li>
-              <li>✅ Dark mode support (default)</li>
-              <li>✅ File-based routing ready</li>
-              <li>✅ Reusable UI components created</li>
-            </ul>
-          </Card>
-
-          <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-            <Card variant="bordered">
-              <h3 class="font-semibold text-[var(--color-gold)] mb-2">
-                View Component Demo
+          {/* CARDS GRID */}
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Card 01: Physics */}
+            <div class="card-nexus group">
+              <div class="font-mono text-[0.65rem] tracking-widest text-gold mb-8 opacity-80 uppercase">
+                01 • Physics
+              </div>
+              <h3 class="font-sans font-medium text-xl tracking-apex text-parchment mb-3">
+                Visual Engineering
               </h3>
-              <p class="text-[var(--color-ash)] text-sm mb-4">
-                See all reusable components in action
+              <p class="font-sans font-light text-ash text-sm leading-relaxed mb-10 opacity-80">
+                The organic serif is removed. The header is now pure signal.
+                The gradient fade implies a structure dissolving into data.
               </p>
-              <a href="/demo">
-                <Button variant="primary">View Demo →</Button>
+              <a href="/demo" class="btn-nexus">
+                View Specs →
               </a>
-            </Card>
+            </div>
 
-            <Card variant="bordered">
-              <h3 class="font-semibold text-[var(--color-gold)] mb-2">
-                No Config Needed
+            {/* Card 02: Data */}
+            <div class="card-nexus group">
+              <div class="font-mono text-[0.65rem] tracking-widest text-gold mb-8 opacity-80 uppercase">
+                02 • Data
+              </div>
+              <h3 class="font-sans font-medium text-xl tracking-apex text-parchment mb-3">
+                Forensic Layout
               </h3>
-              <p class="text-[var(--color-ash)] text-sm mb-4">
-                No package.json, no webpack, no babel - just Deno
+              <p class="font-sans font-light text-ash text-sm leading-relaxed mb-10 opacity-80">
+                Data remains in JetBrains Mono, providing mechanical contrast
+                to the smooth, aerodynamic Inter header.
               </p>
-              <Button variant="success" disabled>Running Fresh 🚀</Button>
-            </Card>
+              <a href="#" class="btn-nexus">
+                Inspect Grid →
+              </a>
+            </div>
           </div>
         </div>
       </div>

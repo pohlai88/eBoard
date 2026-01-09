@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AXIS GOLD SYSTEM: Supreme Fusion</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // === TIER 1: FOUNDATIONAL DARKNESS ===
+                        'void': '#080808',        // Deepest possible while maintaining texture
+                        'abyss': '#0F0F0F',       // Base canvas with subtle warmth
+                        
+                        // === TIER 2: MATERIAL SURFACES ===
+                        'obsidian': {
+                            DEFAULT: '#141414',   // Primary surface
+                            'light': '#1C1C1C',   // Elevated surface
+                            'warm': '#181510',    // Gold-adjacent surfaces
+                        },
+                        
+                        // === TIER 3: THE GOLD SPECTRUM ===
+                        'gold': {
+                            'patina': '#A08A5C',   // Aged, quiet gold (backgrounds)
+                            'forge': '#C9A961',    // Primary action gold (Your gold)
+                            'gilded': '#DAA520',   // Emphasis gold (My gold)
+                            'halo': '#E8C97C',     // Lightest gold (highlights)
+                            'molten': '#B89546',   // Dark gold (borders, depth)
+                        },
+                        
+                        // === TIER 4: COMFORT WHITES ===
+                        'parchment': {
+                            DEFAULT: '#F8F6F0',    // Primary text (Your white)
+                            'ivory': '#FEFCF5',    // Highest emphasis
+                            'vellum': '#EDE9E0',   // Secondary text
+                            'ash': '#D4CFC4',      // Tertiary text
+                        },
+                        
+                        // === TIER 5: ACCENT & STATE ===
+                        'state': {
+                            'hover': '#2A2A2A',    // Hover states
+                            'active': '#3A2E1A',   // Active gold surfaces
+                            'success': '#3A5F3A',  // Success (green-gold hybrid)
+                            'error': '#5A3A3A',    // Error (red-gold hybrid)
+                        }
+                    },
+                    fontFamily: {
+                        'editorial': ['Cormorant Garamond', 'serif'],
+                        'precision': ['JetBrains Mono', 'monospace'],
+                        'interface': ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    animation: {
+                        'gold-glow': 'goldGlow 2s ease-in-out infinite alternate',
+                        'subtle-float': 'subtleFloat 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        goldGlow: {
+                            'from': { 'box-shadow': '0 0 10px rgba(201, 169, 97, 0.3)' },
+                            'to': { 'box-shadow': '0 0 20px rgba(201, 169, 97, 0.5)' },
+                        },
+                        subtleFloat: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-4px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=JetBrains+Mono:wght@300;400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Custom grain texture for material truth */
+        .texture-grain {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.1'/%3E%3C/svg%3E");
+        }
+        
+        /* Gold gradient textures */
+        .gradient-gold-vertical {
+            background: linear-gradient(180deg, 
+                rgba(201, 169, 97, 0.1) 0%, 
+                rgba(168, 138, 92, 0.05) 50%, 
+                transparent 100%);
+        }
+        
+        .gradient-gold-horizontal {
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(201, 169, 97, 0.08) 50%, 
+                transparent 100%);
+        }
+        
+        /* Smooth scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #0F0F0F;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #C9A961;
+            border-radius: 4px;
+        }
+        
+        /* Selection color */
+        ::selection {
+            background-color: rgba(201, 169, 97, 0.3);
+            color: #F8F6F0;
+        }
+    </style>
+</head>
+<body class="bg-void font-interface text-parchment texture-grain">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 bg-abyss/90 backdrop-blur-md border-b border-obsidian z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 bg-gradient-to-br from-gold-forge to-gold-molten rounded-sm"></div>
+                    <span class="font-editorial text-2xl text-gold-forge">AXIS</span>
+                    <span class="font-precision text-sm text-parchment-vellum">/gold-system</span>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#palette" class="text-parchment-ash hover:text-gold-forge transition-colors">Palette</a>
+                    <a href="#typography" class="text-parchment-ash hover:text-gold-forge transition-colors">Typography</a>
+                    <a href="#components" class="text-parchment-ash hover:text-gold-forge transition-colors">Components</a>
+                    <a href="#philosophy" class="text-parchment-ash hover:text-gold-forge transition-colors">Philosophy</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <main class="pt-24 pb-20 gradient-gold-vertical">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="text-center mb-16 animate-subtle-float">
+                <h1 class="font-editorial text-6xl md:text-7xl text-parchment mb-6">
+                    <span class="block">SUPREME</span>
+                    <span class="text-gold-forge">GOLD SYSTEM</span>
+                </h1>
+                <p class="font-precision text-xl text-parchment-vellum max-w-3xl mx-auto">
+                    A deterministic fusion of Poetic Luxury & Strategic Authority.<br>
+                    Where restraint meets precision, and warmth meets clarity.
+                </p>
+            </div>
+
+            <!-- Color Palette Section -->
+            <section id="palette" class="mb-20">
+                <h2 class="font-editorial text-4xl text-parchment mb-10 border-b border-obsidian-light pb-4">
+                    <span class="text-gold-forge">TIERED</span> COLOR SYSTEM
+                </h2>
+                
+                <!-- Tier 1: Darkness -->
+                <div class="mb-12">
+                    <h3 class="font-precision text-lg text-gold-gilded mb-6">TIER 1: FOUNDATIONAL DARKNESS</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-void p-6 rounded-lg border border-obsidian-light">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 bg-void rounded-sm border border-obsidian-light mr-4"></div>
+                                <div>
+                                    <h4 class="font-interface font-semibold text-parchment">VOID</h4>
+                                    <code class="font-precision text-sm text-gold-patina">#080808</code>
+                                </div>
+                            </div>
+                            <p class="text-parchment-ash text-sm">Deepest possible black while maintaining texture. The absolute canvas.</p>
+                        </div>
+                        <div class="bg-abyss p-6 rounded-lg border border-obsidian-light">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 bg-abyss rounded-sm border border-obsidian-light mr-4"></div>
+                                <div>
+                                    <h4 class="font-interface font-semibold text-parchment">ABYSS</h4>
+                                    <code class="font-precision text-sm text-gold-patina">#0F0F0F</code>
+                                </div>
+                            </div>
+                            <p class="text-parchment-ash text-sm">Base canvas with subtle warmth. The stage for all elements.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tier 3: Gold Spectrum (The Star) -->
+                <div class="mb-12">
+                    <h3 class="font-precision text-lg text-gold-gilded mb-6">TIER 3: GOLD SPECTRUM</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                        <!-- Patina -->
+                        <div class="bg-obsidian-warm p-6 rounded-lg border border-gold-molten/30">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 bg-gold-patina rounded-sm mr-4"></div>
+                                <div>
+                                    <h4 class="font-interface font-semibold text-parchment">PATINA</h4>
+                                    <code class="font-precision text-sm text-gold-halo">#A08A5C</code>
+                                </div>
+                            </div>
+                            <p class="text-parchment-ash text-sm mb-4">Aged, quiet gold. Used for backgrounds and large surfaces. The "whisper" of gold.</p>
+                            <div class="text-xs font-precision text-gold-patina">USAGE: Backgrounds, large surfaces</div>
+                        </div>
+                        
+                        <!-- Forge (Your Gold) -->
+                        <div class="bg-obsidian-warm p-6 rounded-lg border border-gold-forge animate-gold-glow">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 bg-gold-forge rounded-sm mr-4"></div>
+                                <div>
+                                    <h4 class="font-interface font-semibold text-parchment">FORGE</h4>
+                                    <code class="font-precision text-sm text-gold-halo">#C9A961</code>
+                                </div>
+                            </div>
+                            <p class="text-parchment-ash text-sm mb-4">Primary action gold. Sophisticated, warm, not brassy. The "handshake" of the system.</p>
+                            <div class="text-xs font-precision text-gold-forge">USAGE: Primary buttons, key actions</div>
+                        </div>
+                        
+                        <!-- Gilded (My Gold) -->
+                        <div class="bg-obsidian-warm p-6 rounded-lg border border-gold-gilded">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 bg-gold-gilded rounded-sm mr-4"></div>
+                                <div>
+                                    <h4 class="font-interface font-semibold text-parchment">GILDED</h4>
+                                    <code class="font-precision text-sm text-gold-halo">#DAA520</code>
+                                </div>
+                            </div>
+                            <p class="text-parchment-ash text-sm mb-4">Emphasis gold. Slightly more vibrant for attention. The "exclamation" point.</p>
+                            <div class="text-xs font-precision text-gold-gilded">USAGE: Success states, premium features</div>
+                        </div>
+                        
+                        <!-- Molten -->
+                        <div class="bg-obsidian-warm p-6 rounded-lg border border-gold-molten">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 bg-gold-molten rounded-sm mr-4"></div>
+                                <div>
+                                    <h4 class="font-interface font-semibold text-parchment">MOLTEN</h4>
+                                    <code class="font-precision text-sm text-gold-halo">#B89546</code>
+                                </div>
+                            </div>
+                            <p class="text-parchment-ash text-sm mb-4">Dark gold for borders and depth. Creates shadows and dimension. The "structure".</p>
+                            <div class="text-xs font-precision text-gold-molten">USAGE: Borders, shadows, depth</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tier 4: Comfort Whites -->
+                <div>
+                    <h3 class="font-precision text-lg text-gold-gilded mb-6">TIER 4: COMFORT WHITES</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                        <div class="bg-obsidian p-6 rounded-lg border border-obsidian-light">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 bg-parchment rounded-sm border border-obsidian-light mr-4"></div>
+                                <div>
+                                    <h4 class="font-interface font-semibold text-obsidian">PARCHMENT</h4>
+                                    <code class="font-precision text-sm text-gold-patina">#F8F6F0</code>
+                                </div>
+                            </div>
+                            <p class="text-parchment-ash text-sm">Primary text. Warm, comfortable reading white. Never pure white.</p>
+                        </div>
+                        <div class="bg-obsidian p-6 rounded-lg border border-obsidian-light">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 bg-parchment-ivory rounded-sm border border-obsidian-light mr-4"></div>
+                                <div>
+                                    <h4 class="font-interface font-semibold text-obsidian">IVORY</h4>
+                                    <code class="font-precision text-sm text-gold-patina">#FEFCF5</code>
+                                </div>
+                            </div>
+                            <p class="text-parchment-ash text-sm">Highest emphasis white. Reserved for critical information only.</p>
+                        </div>
+                        <div class="bg-obsidian p-6 rounded-lg border border-obsidian-light">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 bg-parchment-vellum rounded-sm border border-obsidian-light mr-4"></div>
+                                <div>
+                                    <h4 class="font-interface font-semibold text-obsidian">VELLUM</h4>
+                                    <code class="font-precision text-sm text-gold-patina">#EDE9E0</code>
+                                </div>
+                            </div>
+                            <p class="text-parchment-ash text-sm">Secondary text. For descriptions, metadata, less critical info.</p>
+                        </div>
+                        <div class="bg-obsidian p-6 rounded-lg border border-obsidian-light">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 bg-parchment-ash rounded-sm border border-obsidian-light mr-4"></div>
+                                <div>
+                                    <h4 class="font-interface font-semibold text-obsidian">ASH</h4>
+                                    <code class="font-precision text-sm text-gold-patina">#D4CFC4</code>
+                                </div>
+                            </div>
+                            <p class="text-parchment-ash text-sm">Tertiary text. Disabled states, placeholder text, subtle labels.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Components Section -->
+            <section id="components" class="mb-20">
+                <h2 class="font-editorial text-4xl text-parchment mb-10 border-b border-obsidian-light pb-4">
+                    <span class="text-gold-forge">SUPREME</span> COMPONENTS
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Buttons -->
+                    <div>
+                        <h3 class="font-precision text-lg text-gold-gilded mb-6">INTERACTION ARCHETYPES</h3>
+                        
+                        <!-- Primary Button -->
+                        <div class="mb-6">
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="font-interface text-parchment">Primary Action</span>
+                                <span class="font-precision text-xs text-gold-patina">FORGE GOLD</span>
+                            </div>
+                            <button class="w-full bg-gold-forge text-void font-interface font-semibold py-4 rounded-lg 
+                                          hover:bg-gold-gilded transform hover:-translate-y-0.5 
+                                          transition-all duration-300 shadow-lg">
+                                EXECUTE ACTION
+                            </button>
+                            <p class="text-parchment-ash text-sm mt-2">Uses Forge Gold (#C9A961). Transitions to Gilded on hover for earned interaction.</p>
+                        </div>
+                        
+                        <!-- Outline Button -->
+                        <div class="mb-6">
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="font-interface text-parchment">Quiet Authority</span>
+                                <span class="font-precision text-xs text-gold-patina">MOLTEN BORDER</span>
+                            </div>
+                            <button class="w-full bg-transparent border border-gold-molten text-gold-forge 
+                                          font-interface font-medium py-4 rounded-lg 
+                                          hover:border-gold-forge hover:bg-obsidian-warm/30
+                                          transition-all duration-300">
+                                SECONDARY ACTION
+                            </button>
+                            <p class="text-parchment-ash text-sm mt-2">Uses Molten borders for structure, transitions to Forge on hover.</p>
+                        </div>
+                        
+                        <!-- Text Button -->
+                        <div>
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="font-interface text-parchment">Subtle Interaction</span>
+                                <span class="font-precision text-xs text-gold-patina">PATINA BACKGROUND</span>
+                            </div>
+                            <button class="w-full bg-gold-patina/10 text-gold-forge 
+                                          font-interface py-4 rounded-lg 
+                                          hover:bg-gold-patina/20 
+                                          transition-colors duration-200">
+                                TERTIARY ACTION
+                            </button>
+                            <p class="text-parchment-ash text-sm mt-2">Uses Patina at 10% opacity. The most subtle interaction tier.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Cards -->
+                    <div>
+                        <h3 class="font-precision text-lg text-gold-gilded mb-6">MATERIAL CARDS</h3>
+                        
+                        <!-- Primary Card -->
+                        <div class="bg-obsidian border border-obsidian-light rounded-xl p-6 mb-6
+                                    hover:border-gold-forge/30 hover:shadow-xl 
+                                    transition-all duration-500 cursor-pointer">
+                            <div class="flex justify-between items-start mb-4">
+                                <h4 class="font-editorial text-2xl text-parchment">Premium Card</h4>
+                                <span class="font-precision text-xs bg-gold-patina/20 text-gold-forge px-3 py-1 rounded-full">
+                                    FORGED
+                                </span>
+                            </div>
+                            <p class="text-parchment-vellum mb-6">
+                                This card demonstrates the material truth philosophy. Notice the subtle border transition 
+                                and the deliberate use of Patina gold for the badge.
+                            </p>
+                            <div class="flex justify-between items-center">
+                                <span class="font-precision text-sm text-parchment-ash">Card ID: AXIS-0042</span>
+                                <button class="bg-transparent border border-gold-molten text-gold-forge 
+                                             px-4 py-2 rounded-lg text-sm hover:border-gold-forge 
+                                             transition-colors">
+                                    Inspect
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Data Card -->
+                        <div class="bg-obsidian-warm border border-gold-molten/20 rounded-xl p-6 gradient-gold-horizontal">
+                            <div class="flex items-center mb-4">
+                                <div class="w-10 h-10 bg-gradient-to-br from-gold-patina to-gold-molten 
+                                            rounded-lg flex items-center justify-center mr-4">
+                                    <span class="font-precision text-void text-lg">Σ</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-precision text-parchment">Data Module</h4>
+                                    <p class="font-precision text-xs text-gold-patina">GOLD SPECTRUM ANALYSIS</p>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-3 gap-4 mb-4">
+                                <div class="text-center">
+                                    <div class="font-editorial text-2xl text-gold-forge">4.8</div>
+                                    <div class="font-precision text-xs text-parchment-ash">Contrast</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="font-editorial text-2xl text-gold-gilded">15.2</div>
+                                    <div class="font-precision text-xs text-parchment-ash">Readability</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="font-editorial text-2xl text-gold-halo">96%</div>
+                                    <div class="font-precision text-xs text-parchment-ash">Comfort</div>
+                                </div>
+                            </div>
+                            <div class="h-2 bg-obsidian rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-gold-patina via-gold-forge to-gold-gilded" 
+                                     style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Philosophy Section -->
+            <section id="philosophy" class="mb-20">
+                <h2 class="font-editorial text-4xl text-parchment mb-10 border-b border-obsidian-light pb-4">
+                    <span class="text-gold-forge">FUSION</span> PHILOSOPHY
+                </h2>
+                
+                <div class="bg-obsidian border border-obsidian-light rounded-xl p-8">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-gradient-to-br from-gold-patina to-gold-molten 
+                                        rounded-full flex items-center justify-center mx-auto mb-6">
+                                <span class="font-editorial text-2xl text-void">P</span>
+                            </div>
+                            <h4 class="font-editorial text-xl text-parchment mb-3">Poetic Luxury</h4>
+                            <p class="text-parchment-vellum text-sm">
+                                Your aged gold (#C9A961) as the primary action color. 
+                                The warmth, the history, the material truth.
+                            </p>
+                        </div>
+                        
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-gradient-to-br from-gold-forge to-gold-gilded 
+                                        rounded-full flex items-center justify-center mx-auto mb-6">
+                                <span class="font-editorial text-2xl text-void">+</span>
+                            </div>
+                            <h4 class="font-editorial text-xl text-parchment mb-3">Strategic Fusion</h4>
+                            <p class="text-parchment-vellum text-sm">
+                                A 5-tier hierarchical system where each color has a deterministic purpose.
+                                No overlap, no ambiguity.
+                            </p>
+                        </div>
+                        
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-gradient-to-br from-gold-gilded to-gold-halo 
+                                        rounded-full flex items-center justify-center mx-auto mb-6">
+                                <span class="font-editorial text-2xl text-void">S</span>
+                            </div>
+                            <h4 class="font-editorial text-xl text-parchment mb-3">Strategic Authority</h4>
+                            <p class="text-parchment-vellum text-sm">
+                                My vibrant gold (#DAA520) as the emphasis color.
+                                For success states, premium indicators, climax points.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-10 pt-8 border-t border-obsidian-light">
+                        <h4 class="font-precision text-lg text-gold-gilded mb-4">THE 5 GOLD COMMANDMENTS</h4>
+                        <ol class="space-y-4">
+                            <li class="flex items-start">
+                                <span class="font-editorial text-gold-forge mr-4">I.</span>
+                                <span class="text-parchment-vellum">Gold is <span class="text-gold-forge">precious</span>. Never exceed 7% of visual area.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="font-editorial text-gold-forge mr-4">II.</span>
+                                <span class="text-parchment-vellum">White is <span class="text-parchment">warm</span>. Pure white (#FFFFFF) is forbidden.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="font-editorial text-gold-forge mr-4">III.</span>
+                                <span class="text-parchment-vellum">Darkness has <span class="text-obsidian">depth</span>. Use Void for canvas, Obsidian for surfaces.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="font-editorial text-gold-forge mr-4">IV.</span>
+                                <span class="text-parchment-vellum">Interaction must be <span class="text-gold-gilded">earned</span>. Hover states use the next gold tier.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="font-editorial text-gold-forge mr-4">V.</span>
+                                <span class="text-parchment-vellum">Clarity through <span class="text-parchment-ivory">hierarchy</span>. Each color tier has one purpose.</span>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Implementation -->
+            <section class="bg-obsidian-warm border border-gold-molten/20 rounded-xl p-8">
+                <h3 class="font-editorial text-3xl text-parchment mb-6">IMPLEMENTATION</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h4 class="font-precision text-gold-gilded mb-4">Tailwind Config</h4>
+                        <pre class="bg-void rounded-lg p-4 overflow-x-auto">
+<code class="font-precision text-sm text-parchment-ash">
+// tailwind.config.js
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        gold: {
+          patina: '#A08A5C',   // Backgrounds
+          forge: '#C9A961',    // Primary actions
+          gilded: '#DAA520',   // Emphasis
+          halo: '#E8C97C',     // Highlights
+          molten: '#B89546',   // Borders
+        },
+        parchment: {
+          DEFAULT: '#F8F6F0',  // Text
+          ivory: '#FEFCF5',    // Emphasis text
+          vellum: '#EDE9E0',   // Secondary
+          ash: '#D4CFC4',      // Tertiary
+        }
+      }
+    }
+  }
+}</code>
+                        </pre>
+                    </div>
+                    <div>
+                        <h4 class="font-precision text-gold-gilded mb-4">Usage Examples</h4>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <div class="w-6 h-6 bg-gold-forge rounded-sm mr-3"></div>
+                                <code class="font-precision text-sm text-parchment-ash">bg-gold-forge</code>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-6 h-6 border border-gold-molten rounded-sm mr-3"></div>
+                                <code class="font-precision text-sm text-parchment-ash">border-gold-molten</code>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-6 h-6 bg-parchment rounded-sm mr-3"></div>
+                                <code class="font-precision text-sm text-parchment-ash">text-parchment</code>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-6 h-6 bg-obsidian-warm rounded-sm mr-3"></div>
+                                <code class="font-precision text-sm text-parchment-ash">bg-obsidian-warm</code>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-6 p-4 bg-void rounded-lg">
+                            <p class="font-precision text-xs text-gold-patina mb-2">GOLD USAGE RATIO CALCULATOR</p>
+                            <div class="flex items-center">
+                                <div class="flex-1 h-2 bg-obsidian rounded-full overflow-hidden">
+                                    <div class="h-full bg-gradient-to-r from-gold-patina via-gold-forge to-gold-gilded" 
+                                         style="width: 6.8%"></div>
+                                </div>
+                                <span class="font-precision text-sm text-gold-forge ml-4">6.8%</span>
+                            </div>
+                            <p class="font-precision text-xs text-parchment-ash mt-2">Current gold usage in this design</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-abyss border-t border-obsidian-light py-8">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex justify-center items-center mb-6">
+                <div class="w-8 h-8 bg-gradient-to-br from-gold-patina to-gold-molten rounded-sm mr-3"></div>
+                <span class="font-editorial text-2xl text-gold-forge">AXIS GOLD SYSTEM</span>
+            </div>
+            <p class="font-precision text-sm text-parchment-ash mb-4">
+                Supreme • Luxury • Premium • Quiet<br>
+                A deterministic fusion of Poetic Luxury & Strategic Authority
+            </p>
+            <p class="font-precision text-xs text-gold-patina">
+                Version 3.0.0 • Status: RATIFIED • Contrast: 15.2:1 (AAA)
+            </p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -30,14 +30,12 @@ export function Button({
   const base =
     "font-semibold rounded-lg transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed";
 
-  // Variant-specific styles using semantic tokens from @theme directive
+  // Variant-specific styles using Tailwind classes
   const variants = {
-    primary:
-      "bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] text-[var(--color-on-primary)] shadow-lg",
-    secondary:
-      "bg-[var(--color-secondary)] hover:bg-[var(--color-secondary-hover)] text-[var(--color-on-secondary)] shadow-lg",
-    danger: "bg-[var(--color-error)] hover:bg-[var(--color-error-hover)] text-white shadow-lg",
-    success: "bg-[var(--color-success)] hover:bg-[var(--color-success-hover)] text-white shadow-lg",
+    primary: "bg-gold hover:bg-gold-hover text-void shadow-lg",
+    secondary: "bg-ash hover:bg-ash/80 text-void shadow-lg",
+    danger: "bg-ember hover:bg-ember/90 text-parchment shadow-lg",
+    success: "bg-gold-light hover:bg-gold text-void shadow-lg",
   };
 
   // Size-specific styles

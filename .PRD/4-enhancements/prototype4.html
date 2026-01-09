@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Only One: Final Design System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        /* THE ONLY ONE: SOURCE OF TRUTH */
+        :root {
+            /* DEEP VOID (Not flat black, but Ink Black) */
+            --color-void: #0a0a0b;
+            
+            /* OBSIDIAN SURFACE (Matte, heavy) */
+            --color-obsidian: #141416;
+            
+            /* METALLIC GOLD (Ratified, not neon) */
+            --color-gold: #c9a961;
+            --color-gold-dim: rgba(201, 169, 97, 0.15);
+            
+            /* WOOL WHITE (Comfort reading) */
+            --color-parchment: #F8F5F0;
+            
+            /* ASH (Subtle commentary) */
+            --color-ash: #9ca3af;
+            
+            /* BORDERS */
+            --color-border: #252528;
+
+            /* PHYSICS */
+            --ease-gravity: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* GLOBAL RESET */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--color-void);
+            color: var(--color-parchment);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* LAYOUT CONTAINER */
+        .container {
+            max-width: 1000px;
+            width: 90%;
+            padding: 4rem 2rem;
+        }
+
+        /* HEADER: AUTHORITY */
+        header {
+            margin-bottom: 4rem;
+            border-left: 2px solid var(--color-gold);
+            padding-left: 2rem;
+        }
+
+        .system-status {
+            font-family: "JetBrains Mono", monospace;
+            color: var(--color-gold);
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        h1 {
+            font-family: "Cormorant Garamond", serif;
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1;
+            color: var(--color-parchment);
+            margin-bottom: 1rem;
+        }
+
+        h1 span {
+            color: var(--color-gold);
+        }
+
+        p.intro {
+            color: var(--color-ash);
+            max-width: 600px;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+
+        /* GRID SYSTEM */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        /* THE CARD: ILLUMINATION */
+        .card {
+            background-color: var(--color-obsidian);
+            border: 1px solid var(--color-border);
+            padding: 2.5rem;
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.6s var(--ease-gravity);
+            cursor: default;
+        }
+
+        /* HOVER STATE: The "Earned" Light */
+        .card:hover {
+            border-color: var(--color-gold);
+            transform: translateY(-2px);
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5);
+        }
+
+        .card:hover .icon-box {
+            background-color: var(--color-gold);
+            color: var(--color-void);
+        }
+
+        /* CARD CONTENT */
+        .icon-box {
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--color-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: "JetBrains Mono", monospace;
+            color: var(--color-gold);
+            margin-bottom: 1.5rem;
+            transition: all 0.6s var(--ease-gravity);
+        }
+
+        h3 {
+            font-family: "Cormorant Garamond", serif;
+            font-size: 1.75rem;
+            margin-bottom: 0.75rem;
+            color: var(--color-parchment);
+        }
+
+        p.card-text {
+            color: var(--color-ash);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        /* BUTTON: RATIFICATION */
+        .btn {
+            display: inline-block;
+            font-family: "JetBrains Mono", monospace;
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--color-gold);
+            text-decoration: none;
+            padding-bottom: 4px;
+            border-bottom: 1px solid rgba(201, 169, 97, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            border-bottom-color: var(--color-gold);
+            color: var(--color-parchment);
+        }
+
+        /* DATA ROW (Table Style) */
+        .data-panel {
+            margin-top: 4rem;
+            border-top: 1px solid var(--color-border);
+            padding-top: 2rem;
+        }
+        
+        .data-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--color-border);
+            font-family: "JetBrains Mono", monospace;
+            font-size: 0.85rem;
+            color: var(--color-ash);
+        }
+
+        .data-row span.value {
+            color: var(--color-parchment);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <span class="system-status">● SYSTEM ONLINE</span>
+            <h1>The Apex <span style="font-style: italic;">Governance</span></h1>
+            <p class="intro">
+                The "Only One" design system. Merging the deep physics of Ink Black Void with the precision of Metallic Gold. 
+                Optimized for authority and long-form reading.
+            </p>
+        </header>
+
+        <div class="grid">
+            <div class="card">
+                <div class="icon-box">01</div>
+                <h3>Visual Physics</h3>
+                <p class="card-text">
+                    Interact with this surface. Notice the gravitational easing. 
+                    The border lights up slowly, implying weight and material resistance.
+                </p>
+                <a href="#" class="btn">View Logic &rarr;</a>
+            </div>
+
+            <div class="card">
+                <div class="icon-box">02</div>
+                <h3>Forensic Data</h3>
+                <p class="card-text">
+                    Data is rendered in JetBrains Mono. 
+                    It cuts through the "Wool White" atmosphere with absolute clarity.
+                </p>
+                <a href="#" class="btn">Inspect Data &rarr;</a>
+            </div>
+        </div>
+
+        <div class="data-panel">
+            <div class="data-row">
+                <span>Background Token</span>
+                <span class="value" style="color: var(--color-void); background: #222; padding: 0 8px;">--color-void: #0a0a0b</span>
+            </div>
+            <div class="data-row">
+                <span>Gold Token</span>
+                <span class="value" style="color: var(--color-gold);">--color-gold: #c9a961</span>
+            </div>
+            <div class="data-row">
+                <span>White Token</span>
+                <span class="value">--color-parchment: #F8F5F0</span>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

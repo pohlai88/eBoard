@@ -42,8 +42,6 @@
     "jsr:@std/uuid@^1.0.9": "1.1.0",
     "jsr:@std/yaml@*": "1.0.10",
     "npm:@opentelemetry/api@^1.9.0": "1.9.0",
-    "npm:@preact/signals@^2.2.1": "2.5.1_preact@10.28.2",
-    "npm:@preact/signals@^2.5.1": "2.5.1_preact@10.28.2",
     "npm:esbuild-wasm@~0.25.11": "0.25.12",
     "npm:esbuild@0.25.7": "0.25.7",
     "npm:esbuild@~0.25.5": "0.25.7",
@@ -95,7 +93,6 @@
         "jsr:@std/semver",
         "jsr:@std/uuid",
         "npm:@opentelemetry/api",
-        "npm:@preact/signals@^2.2.1",
         "npm:esbuild-wasm",
         "npm:esbuild@0.25.7",
         "npm:preact-render-to-string",
@@ -640,8 +637,13 @@
           "jsr:@std/path@1",
           "npm:@preact/signals@^2.5.1",
           "npm:preact@^10.28.2",
-          "npm:tailwindcss@4"
-        ]
+          "npm:tailwindcss@^3.4.1"
+        ],
+        "packageJson": {
+          "dependencies": [
+            "npm:tailwindcss@^3.4.1"
+          ]
+        }
       },
       "shared": {
         "dependencies": [

@@ -8,14 +8,14 @@ export default define.page(() => {
       <Head>
         <title>Component Demo - Axis eBoard</title>
       </Head>
-      <div class="min-h-screen bg-gray-50 py-8">
+      <div class="min-h-screen bg-obsidian py-8">
         <div class="max-w-7xl mx-auto px-4">
           <header class="mb-8">
-            <h1 class="text-4xl font-bold text-gray-900">
+            <h1 class="text-4xl font-bold text-parchment font-serif">
               🎨 Reusable Components Demo
             </h1>
-            <p class="text-gray-600 mt-2">
-              Zero repeated classes • DRY pattern • Tailwind CSS v4 semantic tokens
+            <p class="text-ash mt-2">
+              Zero repeated classes • DRY pattern • Full Tailwind CSS approach
             </p>
           </header>
 
@@ -24,7 +24,7 @@ export default define.page(() => {
             <Card title="Button Component" variant="elevated">
               <div class="space-y-4">
                 <div>
-                  <p class="text-sm text-gray-600 mb-2">Variants:</p>
+                  <p class="text-sm text-ash mb-2">Variants:</p>
                   <div class="flex gap-3 flex-wrap">
                     <Button variant="primary">Primary</Button>
                     <Button variant="secondary">Secondary</Button>
@@ -94,14 +94,14 @@ export default define.page(() => {
 
             {/* Zero Config Notice */}
             <Card variant="bordered">
-              <div class="bg-green-50 border-l-4 border-green-500 p-4">
-                <h3 class="font-semibold text-green-900">✅ Zero Configuration</h3>
-                <ul class="mt-2 space-y-1 text-green-700 text-sm">
+              <div class="bg-obsidian-light border-l-4 border-gold p-4">
+                <h3 class="font-semibold text-parchment">✅ Zero Configuration</h3>
+                <ul class="mt-2 space-y-1 text-ash text-sm">
                   <li>✅ No package.json needed</li>
                   <li>✅ No webpack/vite config</li>
-                  <li>✅ CSS-first Tailwind v4 configuration</li>
+                  <li>✅ Full Tailwind CSS v3.4 approach</li>
                   <li>✅ No build step in development</li>
-                  <li>✅ Just Deno + Fresh + Tailwind CSS v4 + Preact</li>
+                  <li>✅ Just Deno + Fresh + Tailwind CSS + Preact</li>
                 </ul>
               </div>
             </Card>

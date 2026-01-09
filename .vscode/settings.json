@@ -51,5 +51,27 @@
     "*.tsx": "typescriptreact"
   },
   "css.lint.unknownAtRules": "ignore",
-  "css.customData": []
+  "css.customData": [],
+  "tailwindCSS.experimental.configFile": "./main-app/tailwind.config.ts",
+  "tailwindCSS.rootFontSize": 16,
+  "tailwindCSS.includeLanguages": {
+    "typescript": "javascript",
+    "typescriptreact": "javascript"
+  },
+  "tailwindCSS.files.exclude": [
+    "**/.git/**",
+    "**/node_modules/**",
+    "**/.fresh/**",
+    "**/_fresh/**"
+  ],
+  "tailwindCSS.experimental.classRegex": [
+    ["class:\\s*?[\"'`]([^\"'`]*).*?[\"'`]", "[\"'`]([^\"'`]*).*?[\"'`]"]
+  ],
+  "tailwindCSS.validate": true,
+  "tailwindCSS.emmetCompletions": true,
+  "[css]": {
+    "editor.quickSuggestions": {
+      "strings": true
+    }
+  }
 }

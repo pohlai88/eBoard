@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Apex: NexusCanon Surgery</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* DEEP VOID (Ink Black) */
+            --color-void: #0a0a0b;
+            /* OBSIDIAN (Matte Surface) */
+            --color-obsidian: #141416;
+            /* METALLIC GOLD (Ratified) */
+            --color-gold: #c9a961;
+            /* PARCHMENT (Comfort Reading) */
+            --color-parchment: #F8F5F0;
+            /* ASH (Subtle) */
+            --color-ash: #9ca3af;
+            /* BORDERS */
+            --color-border: #252528;
+            
+            /* PHYSICS */
+            --ease-gravity: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--color-void);
+            color: var(--color-parchment);
+            /* THE SMOOTHNESS: Inter Globally */
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 90%;
+            padding: 4rem 2rem;
+        }
+
+        /* --- THE SURGERY: NEXUS CANON HEADER --- */
+        header {
+            margin-bottom: 5rem;
+            position: relative;
+        }
+
+        /* 1. THE TINY FONT (System Status) */
+        .system-status {
+            font-family: "JetBrains Mono", monospace;
+            color: var(--color-gold);
+            font-size: 0.6rem; /* Microscopic */
+            letter-spacing: 0.25em; /* Wide tracking */
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            opacity: 0.9;
+        }
+
+        .status-line {
+            width: 20px;
+            height: 1px;
+            background-color: var(--color-gold);
+            opacity: 0.5;
+        }
+
+        /* 2. THE CLEAN CREATURE (Main Title) */
+        h1 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 300; /* Light weight for elegance */
+            font-size: 3.5rem; /* Large scale */
+            letter-spacing: -0.04em; /* NexusCanon Tight Tracking */
+            color: #FFFFFF; /* Signal White */
+            margin-bottom: 0.5rem;
+            line-height: 1;
+        }
+
+        /* 3. THE GRADIENT FADE (Visual Physics) */
+        h1 span.divergence {
+            display: block; /* Stack it */
+            font-weight: 300;
+            /* The "Matter to Void" Gradient */
+            background: linear-gradient(to bottom, #FFFFFF 0%, rgba(255, 255, 255, 0.4) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* 4. THE SUBTITLE (Tiny, Smooth) */
+        p.intro {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 400;
+            color: var(--color-ash);
+            margin-top: 1.5rem;
+            max-width: 480px;
+            line-height: 1.6;
+            opacity: 0.7;
+        }
+        /* --- END SURGERY --- */
+
+        /* GRID & CARDS (Maintained from previous logic) */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background-color: var(--color-obsidian);
+            border: 1px solid var(--color-border);
+            padding: 2.5rem;
+            border-radius: 4px;
+            transition: all 0.8s var(--ease-gravity);
+        }
+
+        .card:hover {
+            border-color: var(--color-gold);
+            background-color: #161619;
+            transform: translateY(-2px);
+        }
+
+        .icon-box {
+            font-family: "JetBrains Mono", monospace;
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            color: var(--color-gold);
+            margin-bottom: 1.5rem;
+            opacity: 0.8;
+            text-transform: uppercase;
+        }
+
+        h3 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 1.1rem;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.75rem;
+            color: var(--color-parchment);
+        }
+
+        p.card-text {
+            font-family: 'Inter', sans-serif;
+            font-weight: 300;
+            color: var(--color-ash);
+            font-size: 0.85rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            font-family: "JetBrains Mono", monospace;
+            font-size: 0.65rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--color-gold);
+            text-decoration: none;
+            padding-bottom: 4px;
+            border-bottom: 1px solid rgba(201, 169, 97, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            border-bottom-color: var(--color-gold);
+            color: var(--color-parchment);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <div class="system-status">
+                <div class="status-line"></div>
+                System Online
+            </div>
+            
+            <h1>
+                The Apex
+                <span class="divergence">Governance.</span>
+            </h1>
+            
+            <p class="intro">
+                Forensic typography enabled. Inter Light (300) with -3% tracking. 
+                Signal White degrading into the void. This is the inevitable divergence.
+            </p>
+        </header>
+
+        <div class="grid">
+            <div class="card">
+                <div class="icon-box">01 • Physics</div>
+                <h3>Visual Engineering</h3>
+                <p class="card-text">
+                    The organic serif is removed. The header is now pure signal.
+                    The gradient fade implies a structure dissolving into data.
+                </p>
+                <a href="#" class="btn">View Specs &rarr;</a>
+            </div>
+
+            <div class="card">
+                <div class="icon-box">02 • Data</div>
+                <h3>Forensic Layout</h3>
+                <p class="card-text">
+                    Data remains in JetBrains Mono, providing mechanical contrast 
+                    to the smooth, aerodynamic Inter header.
+                </p>
+                <a href="#" class="btn">Inspect Grid &rarr;</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -21,11 +21,11 @@ export function Card({
 }: CardProps): ComponentChild {
   const base = "rounded-lg p-6";
 
-  // Using semantic tokens from @theme directive
+  // Using Tailwind classes
   const variants = {
-    default: "bg-[var(--color-surface)]",
-    bordered: "bg-[var(--color-surface)] border-2 border-[var(--color-border)]",
-    elevated: "bg-[var(--color-surface)] shadow-lg",
+    default: "bg-obsidian",
+    bordered: "bg-obsidian border-2 border-charcoal",
+    elevated: "bg-obsidian shadow-lg",
   };
 
   const classes = `${base} ${variants[variant]} ${className || ""}`;
@@ -33,13 +33,13 @@ export function Card({
   return (
     <div class={classes}>
       {title && (
-        <h3 class="text-xl font-semibold mb-4 text-[var(--color-on-surface)]">
+        <h3 class="text-xl font-semibold mb-4 text-parchment">
           {title}
         </h3>
       )}
-      <div class="text-[var(--color-on-surface-variant)]">{children}</div>
+      <div class="text-ash">{children}</div>
       {footer && (
-        <div class="mt-4 pt-4 border-t border-[var(--color-border)]">
+        <div class="mt-4 pt-4 border-t border-charcoal">
           {footer}
         </div>
       )}
