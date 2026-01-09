@@ -8,7 +8,7 @@ import { tailwind } from "@fresh/plugin-tailwind";
 const root = path.dirname(path.fromFileUrl(import.meta.url));
 
 const builder = new Builder({ root });
-tailwind(builder); // Add Tailwind CSS v4 plugin
+tailwind(builder); // Add Tailwind CSS v3.4 plugin
 
 if (Deno.args.includes("build")) {
   await builder.build();

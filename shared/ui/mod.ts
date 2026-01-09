@@ -1,6 +1,6 @@
 // Reusable UI Components - DRY Pattern
 // Zero repeated classes - build once, use everywhere
-// Enhanced with Tailwind CSS v4 semantic theme tokens
+// Enhanced with Tailwind CSS v3.4 brand tokens
 
 // Components
 export { Button } from "./Button.tsx";

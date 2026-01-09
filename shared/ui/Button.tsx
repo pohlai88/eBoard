@@ -1,6 +1,6 @@
 // DRY Button Component - Build Once, Use Everywhere
 // From: .PRD/3-documentation/DRY_COMPONENT_PATTERNS.md
-// Enhanced with Tailwind CSS v4 semantic theme tokens
+// Enhanced with Tailwind CSS v3.4 brand tokens
 
 import type { ComponentChild } from "preact";
 

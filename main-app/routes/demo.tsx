@@ -15,7 +15,7 @@ export default define.page(() => {
               🎨 Reusable Components Demo
             </h1>
             <p class="text-gray-600 mt-2">
-              Zero repeated classes • DRY pattern • Tailwind CSS v4 semantic tokens
+              Zero repeated classes • DRY pattern • Tailwind CSS v3.4 brand tokens
             </p>
           </header>
 
@@ -99,9 +99,9 @@ export default define.page(() => {
                 <ul class="mt-2 space-y-1 text-green-700 text-sm">
                   <li>✅ No package.json needed</li>
                   <li>✅ No webpack/vite config</li>
-                  <li>✅ CSS-first Tailwind v4 configuration</li>
+                  <li>✅ Config-based Tailwind v3.4 with brand constraints</li>
                   <li>✅ No build step in development</li>
-                  <li>✅ Just Deno + Fresh + Tailwind CSS v4 + Preact</li>
+                  <li>✅ Just Deno + Fresh + Tailwind CSS v3.4 + Preact</li>
                 </ul>
               </div>
             </Card>

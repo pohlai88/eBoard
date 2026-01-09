@@ -18,7 +18,7 @@ export default define.page(() => {
               🎯 The Apex - Governance System
             </h1>
             <p class="text-[var(--color-ash)] mt-2">
-              Zero Configuration • Fresh + Tailwind CSS v4 + Preact
+              Zero Configuration • Fresh + Tailwind CSS v3.4 + Preact
             </p>
           </header>
 
@@ -29,7 +29,7 @@ export default define.page(() => {
             <ul class="space-y-2 text-[var(--color-ash)]">
               <li>✅ Fresh framework initialized</li>
               <li>✅ Preact included (3KB)</li>
-              <li>✅ Tailwind CSS v4 configured (CSS-first)</li>
+              <li>✅ Tailwind CSS v3.4 configured (config-based)</li>
               <li>✅ Theme system with semantic tokens</li>
               <li>✅ Dark mode support (default)</li>
               <li>✅ File-based routing ready</li>
